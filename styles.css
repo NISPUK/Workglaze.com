@@ -294,7 +294,7 @@ body.dark-mode .cta-button:hover {
   border-radius: 8px;
   text-align: center;
   transition: background-color 0.6s, box-shadow 0.6s;
-  overflow: hidden; /* Add overflow hidden to contain the slider */
+  overflow: hidden; /* Contain the slider */
 }
 body.dark-mode .logos-section {
   background: #1e1e1e;
@@ -315,15 +315,23 @@ body.dark-mode .section-heading {
 .logos-slider {
   width: 100%;
   margin: 0 auto;
-  position: relative; /* Add position relative */
-  overflow: hidden; /* Keep overflow hidden here too */
+  position: relative;
+  overflow: hidden;
 }
+
 .slide-track {
   display: flex;
   gap: 2rem;
   animation: scroll-logos 30s linear infinite;
-  width: calc(250px * 10 + 2rem * 10); /* Calculate exact width based on images and gaps */
+  width: calc(250px * 10 + 2rem * 9); /* Adjusted width calculation */
+  
+  /* Position the track to start from the edge of the container */
+  position: relative;
+  left: 0; /* Start from the left edge */
+  padding-left: 0; /* No padding */
+  margin-left: 0; /* No margin */
 }
+
 .slide-track img {
   width: 250px;
   height: 120px;
@@ -332,6 +340,7 @@ body.dark-mode .section-heading {
   transition: opacity 0.3s, transform 0.3s;
   flex-shrink: 0; /* Prevent images from shrinking */
 }
+
 .slide-track img:hover {
   opacity: 1;
   transform: scale(1.05);
@@ -342,30 +351,35 @@ body.dark-mode .section-heading {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-250px * 5 - 2rem * 5)); /* Move exactly half the track width */
+    transform: translateX(calc(-250px * 5 - 2rem * 4)); /* Adjusted to match half the track */
   }
 }
 
 /* Add responsive adjustments */
 @media (max-width: 768px) {
+  .logos-section {
+    padding: 3rem 0; /* Remove horizontal padding to extend logos to edge */
+  }
+  
   .slide-track {
     gap: 1.5rem;
-    width: calc(200px * 10 + 1.5rem * 10); /* Adjust for mobile */
+    width: calc(200px * 10 + 1.5rem * 9); /* Adjusted for mobile */
   }
+  
   .slide-track img {
     width: 200px;
     height: 100px;
   }
+  
   @keyframes scroll-logos {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-200px * 5 - 1.5rem * 5)); /* Adjust for mobile */
+      transform: translateX(calc(-200px * 5 - 1.5rem * 4)); /* Adjusted for mobile */
     }
   }
 }
-
 /*************************************
  * FOOTER
  *************************************/
