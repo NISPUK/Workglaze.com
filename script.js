@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === GO TO TOP BUTTON (FIX) ===
-  const goTopBtn = document.querySelector(".go-top-button");
-  if (goTopBtn) {
-    goTopBtn.addEventListener("click", () => {
-      document.documentElement.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+// === GO TO TOP BUTTON (FIX) ===
+const goTopBtn = document.querySelector(".go-top-button");
+if (goTopBtn) {
+  goTopBtn.addEventListener("click", () => {
+    // Use window.scrollTo for better compatibility
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
-  }
-});
+  });
+}
