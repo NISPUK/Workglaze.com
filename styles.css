@@ -29,8 +29,7 @@ body.dark-mode {
  * HEADER
  *************************************/
 .site-header {
-  position: fixed;
-  top: 0;
+  position: relative; /* Changed from fixed to relative */
   width: 100%;
   padding: 1rem 5%;
   display: flex;
@@ -65,17 +64,9 @@ body.dark-mode .logo-text {
   color: #ddd;
 }
 
-.logo-icon {
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  background: #f0f0f0;
-  color: #666;
-  border-radius: 4px;
-  transition: background-color 0.6s, color 0.6s;
-}
-body.dark-mode .logo-icon {
-  background: #333;
-  color: #ccc;
+.logo-img {
+  max-height: 50px; /* Set appropriate size for your logo */
+  width: auto;
 }
 
 /*************************************
@@ -112,22 +103,60 @@ body.dark-mode .icon-button:hover {
   transition: fill 0.6s;
 }
 
+/* Sun/Moon Icons */
+.dark-mode-toggle svg {
+  fill: #333; /* Black fill for moon icon */
+  stroke: #333;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.dark-mode .dark-mode-toggle svg {
+  fill: #FFD700;
+  stroke: #FFD700;
+}
+
+.dark-mode-toggle {
+  position: relative;
+}
+
+.dark-mode-toggle::before {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle::before {
+  background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+  opacity: 1;
+}
+
+.dark-mode-toggle.moon-mode::before {
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  opacity: 1;
+}
+
 /*************************************
  * MAIN CONTENT
  *************************************/
 main {
-  margin-top: 5.5rem; /* leave space for fixed header */
   position: relative;
+  /* Removed margin-top as header is no longer fixed */
 }
 
 /*************************************
  * HERO SECTION
  *************************************/
-/* 4rem bottom padding => total vertical space below the video is 4rem */
+/* Double spacing (4rem) between header and first section */
 .hero-section {
-  padding: 4rem 5% 4rem; 
+  padding: 3rem 5% 3rem; 
   max-width: 1200px;
-  margin: 2rem auto 0;
+  margin: 2rem auto 0; /* Doubled from 2rem to 4rem */
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-radius: 8px;
@@ -165,7 +194,7 @@ body.dark-mode .hero-subtitle {
   color: #ccc;
 }
 
-/* VIDEO CONTAINER: NO bottom margin => full 4rem space remains. */
+/* VIDEO CONTAINER: NO bottom margin => space remains consistent */
 .video-container {
   position: relative;
   width: 100%;
@@ -175,7 +204,7 @@ body.dark-mode .hero-subtitle {
   background: #f7f7f7;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 0; /* changed from 2rem to 0 */
+  margin-bottom: 0; 
 }
 body.dark-mode .video-container {
   background: #333;
@@ -228,11 +257,11 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON: now perfectly centered in the 4rem space leftover */
+/* CTA BUTTON: consistent spacing */
 .cta-button {
   display: block;
   width: fit-content;
-  margin: 2rem auto 0 auto; /* 2rem top margin => half of the 4rem hero bottom */
+  margin: 2rem auto 0 auto;
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
@@ -291,6 +320,7 @@ body.dark-mode .section-heading {
   display: flex;
   gap: 2rem;
   animation: scroll-logos 30s linear infinite;
+  width: 200%; /* Double width for smooth continuous scrolling */
 }
 .slide-track img {
   width: 250px;
@@ -320,7 +350,7 @@ body.dark-mode .section-heading {
   padding: 2rem 5%;
   background: #fafafa;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
-  margin-top: 2rem;
+  margin-top: 2rem; /* Consistent 2rem spacing */
   transition: background-color 0.6s, box-shadow 0.6s;
 }
 body.dark-mode .site-footer {
@@ -398,14 +428,4 @@ body.dark-mode .legal-links a {
     width: 200px;
     height: auto;
   }
-}
-
-/* FIX FOR SUN ICON IN DARK MODE */
-.dark-mode-icon {
-  fill: #333;
-  transition: fill 0.3s ease;
-}
-
-body.dark-mode .dark-mode-icon {
-  fill: #fff;
 }
