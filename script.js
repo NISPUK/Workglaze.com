@@ -3,22 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const darkModeToggle = document.querySelector(".dark-mode-toggle");
   if (darkModeToggle) {
     darkModeToggle.addEventListener("click", () => {
-      // Toggle .dark-mode on <body>
       document.body.classList.toggle("dark-mode");
 
-      // Swap icon paths for "sun" vs "moon"
+      // Grab the path in the <svg> of the toggle button
       const svgPath = darkModeToggle.querySelector("svg path");
+      // If we're in dark mode => show a nice "sun" icon
       if (document.body.classList.contains("dark-mode")) {
-        // Sun icon (single-line path)
         svgPath.setAttribute(
           "d",
-          "M5.64 4.22l-.7-.7a.75.75 0 011.06-1.06l.7.7a.75.75 0 11-1.06 1.06zm12.72-.7l.7.7a.75.75 0 11-1.06 1.06l-.7-.7a.75.75 0 011.06-1.06zm1.94 8.73h1a.75.75 0 010 1.5h-1a.75.75 0 010-1.5zm-16 0a.75.75 0 010 1.5H3.5a.75.75 0 010-1.5h.8zm12.57 5.36l.7.7a.75.75 0 11-1.06 1.06l-.7-.7a.75.75 0 111.06-1.06zm-10.5.7l-.7-.7a.75.75 0 01-1.06-1.06l.7-.7a.75.75 0 011.06 1.06zM12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0-3a.75.75 0 01.75-.75h0c.41 0 .75.34.75.75v1a.75.75 0 01-1.5 0v-1zm0 14a.75.75 0 011.5 0v1a.75.75 0 01-1.5 0v-1z"
+          // Prettier "sun" icon from heroicons:
+          "M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zm4.95 3.05l1.414-1.414a1 1 0 011.415 1.414L18.364 4.464A1 1 0 0116.95 3.05zM22 11a1 1 0 010 2h-2a1 1 0 010-2h2zM4 12a1 1 0 110 2H2a1 1 0 110-2h2zm2.636 7.536l-1.414 1.414a1 1 0 101.414 1.414l1.414-1.414a1 1 0 10-1.414-1.414zM13 19a1 1 0 11-2 0v-2a1 1 0 112 0v2zm4.95-3.05a1 1 0 011.414 1.414l-1.414 1.414a1 1 0 01-1.415-1.414l1.415-1.414zM12 6a6 6 0 110 12 6 6 0 010-12z"
         );
       } else {
-        // Moon icon (single-line path)
+        // Otherwise show a nicer "moon" path
         svgPath.setAttribute(
           "d",
-          "M21.75 14.47A9.53 9.53 0 0110.53 3.25a.75.75 0 01-.69-1 10.5 10.5 0 1011.91 12.68.75.75 0 01-1-.69z"
+          "M20.354 15.354A9 9 0 0112.646 3.646 8 8 0 1020.354 15.354z"
         );
       }
     });
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const preview = document.getElementById("youtubePreview");
   const video = document.getElementById("demoVideo");
   if (videoContainer && preview && video) {
-    // Click on container => load real 'src' into iframe, fade out preview
     videoContainer.addEventListener("click", () => {
+      // Load the real src (with autoplay=1), fade out thumbnail
       video.src = video.getAttribute("data-src");
       preview.style.opacity = "0";
       setTimeout(() => {
