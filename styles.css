@@ -259,9 +259,7 @@ body.dark-mode .section-heading {
   color: #ddd;
 }
 
-/* AUTO SLIDER 
-   - Only 5 logos total, repeated, each ~250px wide so ~3 are visible on typical desktop
-*/
+/* AUTO SLIDER */
 .logos-slider {
   overflow: hidden;
   width: 100%;
@@ -270,11 +268,10 @@ body.dark-mode .section-heading {
 .slide-track {
   display: flex;
   gap: 2rem;
-  animation: scroll-logos 30s linear infinite; /* Slower rotation (30s) */
-  /* Adjust if you want even slower/faster. */
+  animation: scroll-logos 30s linear infinite; /* Adjust speed as needed */
 }
 .slide-track img {
-  width: 250px; /* Large enough so ~3 fit per row on ~1200px wide screen */
+  width: 250px;
   height: 120px;
   object-fit: contain;
   opacity: 0.85;
@@ -353,6 +350,7 @@ body.dark-mode .footer-tagline {
 body.dark-mode .legal-links a {
   color: #aaa;
 }
+
 /*************************************
  * RESPONSIVE
  *************************************/
