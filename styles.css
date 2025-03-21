@@ -123,7 +123,7 @@ main {
 /*************************************
  * HERO SECTION
  *************************************/
-/* Extra bottom padding so the button has space beneath it */
+/* 4rem bottom padding => total vertical space below the video is 4rem */
 .hero-section {
   padding: 4rem 5% 4rem; 
   max-width: 1200px;
@@ -165,7 +165,7 @@ body.dark-mode .hero-subtitle {
   color: #ccc;
 }
 
-/* VIDEO CONTAINER: margin-bottom => space between video & button */
+/* VIDEO CONTAINER: NO bottom margin => full 4rem space remains. */
 .video-container {
   position: relative;
   width: 100%;
@@ -175,7 +175,7 @@ body.dark-mode .hero-subtitle {
   background: #f7f7f7;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 2rem;
+  margin-bottom: 0; /* changed from 2rem to 0 */
 }
 body.dark-mode .video-container {
   background: #333;
@@ -228,10 +228,10 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON */
+/* CTA BUTTON: top margin of 2rem -> centers it in the 4rem space leftover */
 .cta-button {
   display: inline-block;
-  margin: 0 auto; /* horizontally centered */
+  margin: 2rem auto 0 auto; /* 2rem top margin => half of the 4rem hero bottom */
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
