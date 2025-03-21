@@ -9,7 +9,7 @@
 
 html, body {
   font-family: 'Poppins', sans-serif;
-  background: #f2f2f2; /* Slight off-white for contrast */
+  background: #f2f2f2; /* Slight off-white */
   color: #333;
   height: 100%;
   overflow-x: hidden;
@@ -22,7 +22,6 @@ html, body {
 body.dark-mode {
   background: #121212;
   color: #ddd;
-  transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 /*************************************
@@ -116,16 +115,20 @@ body.dark-mode .icon-button:hover {
  * MAIN CONTENT
  *************************************/
 main {
-  margin-top: 5.5rem; /* leave space for fixed header */
+  margin-top: 5.5rem; /* space for fixed header */
   position: relative;
 }
 
 /*************************************
  * HERO SECTION
  *************************************/
-/* 4rem bottom padding => total vertical space below the video is 4rem */
+/* 
+  Give 4rem bottom padding so there's 
+  a total of 4rem from the video to 
+  the box bottom.
+*/
 .hero-section {
-  padding: 4rem 5% 4rem; 
+  padding: 4rem 5% 4rem;
   max-width: 1200px;
   margin: 2rem auto 0;
   background: #ffffff;
@@ -165,7 +168,7 @@ body.dark-mode .hero-subtitle {
   color: #ccc;
 }
 
-/* VIDEO CONTAINER: NO bottom margin => full 4rem space remains. */
+/* VIDEO CONTAINER - no bottom margin, so full 4rem remains for the button */
 .video-container {
   position: relative;
   width: 100%;
@@ -175,36 +178,35 @@ body.dark-mode .hero-subtitle {
   background: #f7f7f7;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 0; /* changed from 2rem to 0 */
+  margin-bottom: 0;
 }
 body.dark-mode .video-container {
   background: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* THUMBNAIL & RED PLAY ICON */
+/* THUMBNAIL + RED PLAY ICON */
 .video-thumbnail {
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   z-index: 2;
   transition: opacity 0.3s ease;
 }
-
 .video-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .thumbnail-overlay {
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.3);
 }
-
-/* Red play button in the center of the thumbnail */
+/* Red play icon in center */
 .thumbnail-overlay::after {
   content: "";
   position: absolute;
@@ -215,10 +217,10 @@ body.dark-mode .video-container {
   transform: translate(-50%, -50%);
   background: url("data:image/svg+xml,%3Csvg width='68' height='48' viewBox='0 0 68 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M66.52%207.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13%2034%200%2034%200S12.21.13%206.9%201.55C3.97%202.33%202.27%204.81%201.48%207.74.06%2013.05%200%2024%200%2024s.06%2010.95%201.48%2016.26c.78%202.93%202.49%205.41%205.42%206.19C12.21%2047.87%2034%2048%2034%2048s21.79-.13%2027.1-1.55c2.93-.78%204.64-3.26%205.42-6.19C67.94%2034.95%2068%2024%2068%2024s-.06-10.95-1.48-16.26z' fill='%23f00'/%3E%3Cpath d='M45%2024L27%2014v20l18-10z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center;
   background-size: contain;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
-/* The real iframe, starts blank until clicked */
+/* Actual iframe (starts blank) */
 #demoVideo {
   position: absolute;
   top: 0; left: 0;
@@ -228,10 +230,14 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON: top margin of 2rem -> centers it in the 4rem space leftover */
+/* 
+  CTA BUTTON: 
+  margin-top: 2rem => half the 4rem left, 
+  so the button is centered between video & bottom
+*/
 .cta-button {
   display: inline-block;
-  margin: 2rem auto 0 auto; /* 2rem top margin => half of the 4rem hero bottom */
+  margin: 2rem auto 0 auto;
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
@@ -385,6 +391,7 @@ body.dark-mode .legal-links a {
   .cta-button {
     font-size: 0.9rem;
     padding: 0.75rem 1.5rem;
+    margin-top: 1.5rem; /* slightly smaller on mobile if you want */
   }
   .icon-size {
     width: 20px;
