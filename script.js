@@ -3,22 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const darkModeToggle = document.querySelector(".dark-mode-toggle");
   if (darkModeToggle) {
     darkModeToggle.addEventListener("click", () => {
+      // Toggle .dark-mode on <body>
       document.body.classList.toggle("dark-mode");
 
-      // Grab the path in the <svg> of the toggle button
+      // Swap icon paths for "sun" vs "moon"
       const svgPath = darkModeToggle.querySelector("svg path");
-      // If we're in dark mode => show a nice "sun" icon
       if (document.body.classList.contains("dark-mode")) {
+        // Sun icon (improved path for better appearance)
         svgPath.setAttribute(
           "d",
-          // Prettier "sun" icon from heroicons:
-          "M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zm4.95 3.05l1.414-1.414a1 1 0 011.415 1.414L18.364 4.464A1 1 0 0116.95 3.05zM22 11a1 1 0 010 2h-2a1 1 0 010-2h2zM4 12a1 1 0 110 2H2a1 1 0 110-2h2zm2.636 7.536l-1.414 1.414a1 1 0 101.414 1.414l1.414-1.414a1 1 0 10-1.414-1.414zM13 19a1 1 0 11-2 0v-2a1 1 0 112 0v2zm4.95-3.05a1 1 0 011.414 1.414l-1.414 1.414a1 1 0 01-1.415-1.414l1.415-1.414zM12 6a6 6 0 110 12 6 6 0 010-12z"
+          "M12 3v1.5M12 19.5V21M4.93 4.93l1.06 1.06M18.01 18.01l1.06 1.06M3 12h1.5M19.5 12H21M4.93 19.07l1.06-1.06M18.01 5.99l1.06-1.06M12 6a6 6 0 100 12 6 6 0 000-12z"
         );
       } else {
-        // Otherwise show a nicer "moon" path
+        // Moon icon (single-line path)
         svgPath.setAttribute(
           "d",
-          "M20.354 15.354A9 9 0 0112.646 3.646 8 8 0 1020.354 15.354z"
+          "M21.75 14.47A9.53 9.53 0 0110.53 3.25a.75.75 0 01-.69-1 10.5 10.5 0 1011.91 12.68.75.75 0 01-1-.69z"
         );
       }
     });
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const preview = document.getElementById("youtubePreview");
   const video = document.getElementById("demoVideo");
   if (videoContainer && preview && video) {
+    // Click on container => load real 'src' into iframe, fade out preview
     videoContainer.addEventListener("click", () => {
-      // Load the real src (with autoplay=1), fade out thumbnail
       video.src = video.getAttribute("data-src");
       preview.style.opacity = "0";
       setTimeout(() => {
