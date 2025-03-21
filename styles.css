@@ -353,41 +353,6 @@ body.dark-mode .footer-tagline {
 body.dark-mode .legal-links a {
   color: #aaa;
 }
-
-/*************************************
- * GO TO TOP BUTTON
- *************************************/
-.go-top-button {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
-  background: #333;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  transition: opacity 0.3s, transform 0.3s;
-  opacity: 0.8;
-}
-.go-top-button:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-.go-top-button:active {
-  transform: translateY(-1px);
-}
-body.dark-mode .go-top-button {
-  background: #ccc;
-  color: #111;
-}
-
 /*************************************
  * RESPONSIVE
  *************************************/
