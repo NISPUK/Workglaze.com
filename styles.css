@@ -123,8 +123,9 @@ main {
 /*************************************
  * HERO SECTION
  *************************************/
+/* Extra bottom padding so the button has space beneath it */
 .hero-section {
-  padding: 4rem 5%;
+  padding: 4rem 5% 4rem; 
   max-width: 1200px;
   margin: 2rem auto 0;
   background: #ffffff;
@@ -164,7 +165,7 @@ body.dark-mode .hero-subtitle {
   color: #ccc;
 }
 
-/* VIDEO CONTAINER (added bottom margin for perfect spacing) */
+/* VIDEO CONTAINER: margin-bottom => space between video & button */
 .video-container {
   position: relative;
   width: 100%;
@@ -174,14 +175,14 @@ body.dark-mode .hero-subtitle {
   background: #f7f7f7;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 2rem; /* ensures space between video & button */
+  margin-bottom: 2rem;
 }
 body.dark-mode .video-container {
   background: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* Video thumbnail overlay */
+/* THUMBNAIL & RED PLAY ICON */
 .video-thumbnail {
   position: absolute;
   top: 0; left: 0;
@@ -189,11 +190,13 @@ body.dark-mode .video-container {
   z-index: 2;
   transition: opacity 0.3s ease;
 }
+
 .video-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .thumbnail-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -201,7 +204,21 @@ body.dark-mode .video-container {
   background: rgba(0,0,0,0.3);
 }
 
-/* Real iframe, starts blank */
+/* Red play button in the center of the thumbnail */
+.thumbnail-overlay::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url("data:image/svg+xml,%3Csvg width='68' height='48' viewBox='0 0 68 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M66.52%207.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13%2034%200%2034%200S12.21.13%206.9%201.55C3.97%202.33%202.27%204.81%201.48%207.74.06%2013.05%200%2024%200%2024s.06%2010.95%201.48%2016.26c.78%202.93%202.49%205.41%205.42%206.19C12.21%2047.87%2034%2048%2034%2048s21.79-.13%2027.1-1.55c2.93-.78%204.64-3.26%205.42-6.19C67.94%2034.95%2068%2024%2068%2024s-.06-10.95-1.48-16.26z' fill='%23f00'/%3E%3Cpath d='M45%2024L27%2014v20l18-10z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: contain;
+  pointer-events: none; 
+}
+
+/* The real iframe, starts blank until clicked */
 #demoVideo {
   position: absolute;
   top: 0; left: 0;
@@ -211,10 +228,10 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON: center horizontally & balanced spacing below */
+/* CTA BUTTON */
 .cta-button {
   display: inline-block;
-  margin: 0 auto 2rem auto; /* 2rem bottom margin, auto sides for center */
+  margin: 0 auto; /* horizontally centered */
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
@@ -263,7 +280,7 @@ body.dark-mode .section-heading {
   color: #ddd;
 }
 
-/* LOGO SLIDER (autoscroll) */
+/* LOGO SLIDER (auto scroll) */
 .logos-slider {
   overflow: hidden;
   width: 100%;
@@ -272,7 +289,7 @@ body.dark-mode .section-heading {
 .slide-track {
   display: flex;
   gap: 2rem;
-  animation: scroll-logos 30s linear infinite; 
+  animation: scroll-logos 30s linear infinite;
 }
 .slide-track img {
   width: 250px;
