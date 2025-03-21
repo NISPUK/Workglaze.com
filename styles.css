@@ -9,7 +9,7 @@
 
 html, body {
   font-family: 'Poppins', sans-serif;
-  background: #f2f2f2; /* Slightly off-white for contrast */
+  background: #f2f2f2; /* Slight off-white for contrast */
   color: #333;
   height: 100%;
   overflow-x: hidden;
@@ -207,10 +207,10 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON (with extra margin to separate from video) */
+/* CTA BUTTON */
 .cta-button {
   display: inline-block;
-  margin-top: 2rem; /* <-- adds space below video */
+  margin-top: 2rem;
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
@@ -259,7 +259,9 @@ body.dark-mode .section-heading {
   color: #ddd;
 }
 
-/* AUTO SLIDER */
+/* AUTO SLIDER 
+   5 logos total, repeated => ~250px wide => ~3 visible on a 1200px screen
+*/
 .logos-slider {
   overflow: hidden;
   width: 100%;
@@ -268,7 +270,7 @@ body.dark-mode .section-heading {
 .slide-track {
   display: flex;
   gap: 2rem;
-  animation: scroll-logos 30s linear infinite; /* Adjust speed as needed */
+  animation: scroll-logos 30s linear infinite;
 }
 .slide-track img {
   width: 250px;
