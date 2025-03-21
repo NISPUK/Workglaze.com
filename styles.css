@@ -41,12 +41,13 @@ body.dark-mode {
   z-index: 1000;
   transition: background-color 0.6s ease;
 }
-
 body.dark-mode .site-header {
   background: #1e1e1e;
 }
 
-.header-left, .header-center, .header-right {
+.header-left,
+.header-center,
+.header-right {
   display: flex;
   align-items: center;
 }
@@ -163,7 +164,7 @@ body.dark-mode .hero-subtitle {
   color: #ccc;
 }
 
-/* VIDEO CONTAINER */
+/* VIDEO CONTAINER (added bottom margin for perfect spacing) */
 .video-container {
   position: relative;
   width: 100%;
@@ -173,12 +174,14 @@ body.dark-mode .hero-subtitle {
   background: #f7f7f7;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 2rem; /* ensures space between video & button */
 }
 body.dark-mode .video-container {
   background: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
+/* Video thumbnail overlay */
 .video-thumbnail {
   position: absolute;
   top: 0; left: 0;
@@ -198,6 +201,7 @@ body.dark-mode .video-container {
   background: rgba(0,0,0,0.3);
 }
 
+/* Real iframe, starts blank */
 #demoVideo {
   position: absolute;
   top: 0; left: 0;
@@ -207,10 +211,10 @@ body.dark-mode .video-container {
   z-index: 1;
 }
 
-/* CTA BUTTON */
+/* CTA BUTTON: center horizontally & balanced spacing below */
 .cta-button {
   display: inline-block;
-  margin-top: 2rem;
+  margin: 0 auto 2rem auto; /* 2rem bottom margin, auto sides for center */
   padding: 1rem 2rem;
   background: #333;
   color: #fff;
@@ -259,9 +263,7 @@ body.dark-mode .section-heading {
   color: #ddd;
 }
 
-/* AUTO SLIDER 
-   5 logos total, repeated => ~250px wide => ~3 visible on a 1200px screen
-*/
+/* LOGO SLIDER (autoscroll) */
 .logos-slider {
   overflow: hidden;
   width: 100%;
@@ -270,7 +272,7 @@ body.dark-mode .section-heading {
 .slide-track {
   display: flex;
   gap: 2rem;
-  animation: scroll-logos 30s linear infinite;
+  animation: scroll-logos 30s linear infinite; 
 }
 .slide-track img {
   width: 250px;
