@@ -60,25 +60,32 @@
           Automated solutions for enhanced workflow efficiency
         </p>
 
-        <!-- VIDEO BLOCK -->
-        <div class="video-container">
-          <!-- The clickable thumbnail layer -->
-          <div class="video-thumbnail" id="youtubePreview">
-            <img
-              src="https://img.youtube.com/vi/NKDXtorzOrY/maxresdefault.jpg"
-              alt="Video thumbnail"
-            />
-            <div class="thumbnail-overlay"></div>
-          </div>
-          <!-- The actual iframe (starts as blank) -->
-          <iframe
-            id="demoVideo"
-            src="about:blank"
-            data-src="https://www.youtube.com/watch?v=NKDXtorzOrY"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope"
-            allowfullscreen
-          ></iframe>
-        </div>
+  <!-- VIDEO BLOCK -->
+<div class="video-container">
+  <!-- Clickable thumbnail layer -->
+  <div class="video-thumbnail" id="youtubePreview">
+    <img
+      src="https://img.youtube.com/vi/NKDXtorzOrY/maxresdefault.jpg"
+      alt="Video thumbnail"
+      style="width:100%; height:auto; cursor:pointer;"
+    />
+    <div class="thumbnail-overlay"></div>
+  </div>
+  
+  <!-- Correct iframe with embed URL -->
+  <iframe
+    id="demoVideo"
+    width="560"
+    height="315"
+    src="about:blank"
+    data-src="https://www.youtube.com/embed/NKDXtorzOrY?autoplay=1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+
 
         <!-- CTA (extra margin below video) -->
         <a
