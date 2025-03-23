@@ -247,6 +247,35 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 /*************************************
+ * GERMAN FLAG BUTTON
+ *************************************/
+.flag-button {
+  overflow: hidden;
+}
+
+.flag-icon {
+  transition: all 0.3s ease;
+}
+
+.flag-button:hover .flag-icon {
+  transform: scale(1.1);
+}
+
+/* Subtle border around the flag */
+.flag-button svg {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .flag-button {
+  background: #333;
+}
+
+body.dark-mode .flag-button:hover {
+  background: #444;
+}
+
+/*************************************
  * MAIN CONTENT
  *************************************/
 main {
