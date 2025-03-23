@@ -249,27 +249,27 @@ body.dark-mode .dark-mode-toggle::before {
 /*************************************
  * GERMAN FLAG BUTTON
  *************************************/
+/*************************************
+ * GERMAN FLAG BUTTON
+ *************************************/
 .flag-button {
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .flag-icon {
   transition: all 0.3s ease;
   border-radius: 4px;
-  width: 24px;
-  height: 18px;
+  width: 18px; /* Smaller width */
+  height: 12px; /* Proportionally smaller height */
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-
 .flag-button:hover .flag-icon {
   transform: scale(1.1);
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
-
 /* Smooth edges and proper ratio */
 .flag-button svg {
   display: block;
@@ -277,16 +277,13 @@ body.dark-mode .dark-mode-toggle::before {
   height: 100%;
   object-fit: cover;
 }
-
 /* Proper color contrast in dark mode */
 body.dark-mode .flag-button {
-  background: #333;
+  background: transparent;
 }
-
 body.dark-mode .flag-button:hover {
-  background: #444;
+  background: transparent;
 }
-
 body.dark-mode .flag-icon {
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
