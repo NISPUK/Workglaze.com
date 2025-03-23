@@ -253,7 +253,7 @@ body.dark-mode .dark-mode-toggle::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px; /* Standard icon button size */
+  width: 44px;
   height: 44px;
   border-radius: 50%;
   background: #f7f7f7;
@@ -261,10 +261,18 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 .flag-icon {
+  width: 28px;  /* Reduced final size */
+  height: 24px;
+  padding: 3px;
+  margin-top: 3px;
   border-radius: 0;
-  transform: scale(0.933); /* Original 1.4 reduced by 33% */
-  margin: 0 -2px;
 }
+
+.flag-icon rect {
+  rx: 0 !important;
+  ry: 0 !important;
+}
+
 /* Dark mode adjustments */
 body.dark-mode .flag-button {
   background: #333;
@@ -273,7 +281,7 @@ body.dark-mode .flag-button:hover {
   background: #444;
 }
 
-/* Maintain consistent hover effects */
+/* Hover effects */
 .flag-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
