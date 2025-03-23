@@ -599,3 +599,32 @@ body.dark-mode .legal-links a {
   text-decoration: none;
 }
 
+/* Remove default bullet on UL, keep custom bullet */
+.content-section ul {
+  list-style: none;        /* no default bullet */
+  padding-left: 1.5rem;    /* space so custom bullet doesn’t overlap text */
+}
+
+.content-section ul li {
+  position: relative;
+  padding-left: 1rem;      /* indentation for text */
+  margin-bottom: 0.5rem;   /* space between list items */
+}
+
+.content-section ul li::before {
+  content: "•";            /* your custom bullet */
+  position: absolute;
+  left: 0;
+  color: #333;
+  font-size: 1.2rem;       /* adjust size if you want it even bigger */
+}
+
+/* Keep normal numbering for OL, no extra bullet */
+.content-section ol {
+  list-style: decimal;     /* or decimal inside, if you prefer */
+  padding-left: 2rem;
+}
+
+.content-section ol li::before {
+  content: none;           /* no custom bullet for numbered lists */
+}
