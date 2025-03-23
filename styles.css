@@ -251,28 +251,44 @@ body.dark-mode .dark-mode-toggle::before {
  *************************************/
 .flag-button {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .flag-icon {
   transition: all 0.3s ease;
+  border-radius: 4px;
+  width: 24px;
+  height: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .flag-button:hover .flag-icon {
   transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-/* Subtle border around the flag */
+/* Smooth edges and proper ratio */
 .flag-button svg {
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+/* Proper color contrast in dark mode */
 body.dark-mode .flag-button {
   background: #333;
 }
 
 body.dark-mode .flag-button:hover {
   background: #444;
+}
+
+body.dark-mode .flag-icon {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 /*************************************
