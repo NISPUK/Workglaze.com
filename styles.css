@@ -246,14 +246,14 @@ body.dark-mode .dark-mode-toggle::before {
   opacity: 1;
 }
 
-/*************************************
- * GERMAN FLAG BUTTON (PROPER VERSION)
+/************************************* 
+ * GERMAN FLAG BUTTON (COMBINED SOLUTION) 
  *************************************/
 .flag-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px; /* Standard icon button size */
+  width: 44px;
   height: 44px;
   border-radius: 50%;
   background: #f7f7f7;
@@ -261,14 +261,22 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 .flag-icon {
-  border-radius: 0;
-  transform: scale(0.933); /* Original 1.4 reduced by 33% */
+  width: 32px;  /* Explicit width to ensure mobile visibility */
+  height: 32px; /* Explicit height to ensure mobile visibility */
   margin: 0 -2px;
+  transform: scale(0.933); /* Keeps the nice size from snippet 1 */
 }
+
+.flag-icon rect {
+  rx: 0 !important;
+  ry: 0 !important;
+}
+
 /* Dark mode adjustments */
 body.dark-mode .flag-button {
   background: #333;
 }
+
 body.dark-mode .flag-button:hover {
   background: #444;
 }
