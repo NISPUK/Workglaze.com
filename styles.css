@@ -246,9 +246,8 @@ body.dark-mode .dark-mode-toggle::before {
   opacity: 1;
 }
 
-Let me adjust the CSS to make the flag slightly bigger (1-2 pixels longer and wider). I'll increase both the base size and adjust the scale factor:
-cssKopieren/************************************* 
- * GERMAN FLAG BUTTON (ADJUSTED SIZE) 
+/************************************* 
+ * GERMAN FLAG BUTTON (LARGER SIZE) 
  *************************************/
 .flag-button {
   display: flex;
@@ -262,10 +261,10 @@ cssKopieren/*************************************
 }
 
 .flag-icon {
-  width: 34px;  /* Increased from 32px to 34px */
-  height: 34px; /* Increased from 32px to 34px */
+  width: 36px;  /* Increased from 34px to 36px */
+  height: 36px; /* Increased from 34px to 36px */
   margin: 0 -2px;
-  transform: scale(0.95); /* Increased from 0.933 to 0.95 */
+  transform: scale(1);  /* Increased from 0.95 to 1 - no scaling down */
 }
 
 .flag-icon rect {
