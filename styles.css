@@ -249,9 +249,6 @@ body.dark-mode .dark-mode-toggle::before {
 /*************************************
  * GERMAN FLAG BUTTON
  *************************************/
-/*************************************
- * GERMAN FLAG BUTTON
- *************************************/
 .flag-button {
   overflow: hidden;
   display: flex;
@@ -260,9 +257,9 @@ body.dark-mode .dark-mode-toggle::before {
 }
 .flag-icon {
   transition: all 0.3s ease;
-  border-radius: 4px;
-  width: 18px; /* Smaller width */
-  height: 12px; /* Proportionally smaller height */
+  border-radius: 50%; /* Circular container */
+  width: 24px;
+  height: 24px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
