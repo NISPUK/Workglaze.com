@@ -247,13 +247,13 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 /*************************************
- * GERMAN FLAG BUTTON (PRECISE MATCH)
+ * GERMAN FLAG BUTTON (PROPER VERSION)
  *************************************/
 .flag-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
+  width: 44px; /* Standard icon button size */
   height: 44px;
   border-radius: 50%;
   background: #f7f7f7;
@@ -261,19 +261,11 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 .flag-icon {
-  width: 24px;
-  height: 24px;
-  padding: 4px;
-  transform: scale(1.15); /* Exact scale to match 16x9 flag in 24x24 viewbox */
-  margin: 0 -1px;
+  border-radius: 0;
+  transform: scale(0.933); /* Original 1.4 reduced by 33% */
+  margin: 0 -2px;
 }
-
-.flag-icon rect {
-  rx: 0 !important;
-  ry: 0 !important;
-}
-
-/* Dark mode */
+/* Dark mode adjustments */
 body.dark-mode .flag-button {
   background: #333;
 }
@@ -281,7 +273,7 @@ body.dark-mode .flag-button:hover {
   background: #444;
 }
 
-/* Hover effects */
+/* Maintain consistent hover effects */
 .flag-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
