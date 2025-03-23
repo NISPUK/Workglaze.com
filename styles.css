@@ -466,3 +466,31 @@ body.dark-mode .legal-links a {
     height: auto;
   }
 }
+
+/*************************************
+ * SNIPPETS FROM USER
+ *************************************/
+
+.logos-section {
+  /* Keep existing styles */
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.logos-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-track {
+  /* Adjust other properties as needed */
+  padding-left: 0;
+  padding-right: 0;
+  width: calc(250px * 10 + 2rem * 9);
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
