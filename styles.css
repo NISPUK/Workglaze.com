@@ -261,10 +261,10 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 .flag-icon {
-  width: 36px;  /* Increased from 34px to 36px */
-  height: 36px; /* Increased from 34px to 36px */
+  width: 42px;  /* Increased from 34px to 36px */
+  height: 42px; /* Increased from 34px to 36px */
   margin: 0 -2px;
-  transform: scale(1);  /* Increased from 0.95 to 1 - no scaling down */
+  transform: scale(1.05);  /* Increased from 0.95 to 1 - no scaling down */
 }
 
 .flag-icon rect {
