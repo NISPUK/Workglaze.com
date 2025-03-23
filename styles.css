@@ -261,11 +261,10 @@ body.dark-mode .dark-mode-toggle::before {
 }
 
 .flag-icon {
-  border-radius: 0; /* Remove any rounded corners */
-  transform: scale(1.4); /* Scale up flag while maintaining 90° corners */
-  margin: 0 -2px; /* Compensate for scale overflow */
+  border-radius: 0;
+  transform: scale(0.933); /* Original 1.4 reduced by 33% */
+  margin: 0 -2px;
 }
-
 /* Dark mode adjustments */
 body.dark-mode .flag-button {
   background: #333;
