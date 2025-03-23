@@ -1,77 +1,221 @@
-<section class="content-section">
-  <h1>Imprint (Impressum)</h1>
-  <p><em>The German version is available below.</em></p>
-  <hr />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Imprint | Workglaze</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <h2>Table of Contents</h2>
-  <ol>
-    <li>Imprint (English)
-      <ul>
-        <li><a href="#company-information">Company Information</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#responsible-for-content">Responsible for Content</a></li>
-        <li><a href="#dispute-resolution">Dispute Resolution</a></li>
-      </ul>
-    </li>
-    <li>Impressum (Deutsch)
-      <ul>
-        <li><a href="#angaben-gemäß--5-tmg">Angaben gemäß § 5 TMG</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#verantwortlich-für-den-inhalt">Verantwortlich für den Inhalt</a></li>
-        <li><a href="#streitbeilegung">Streitbeilegung</a></li>
-      </ul>
-    </li>
-  </ol>
+  <!-- Google Font: Poppins for a modern vibe -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-  <hr />
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../styles.css" />
+  
+  <!-- Additional CSS for content pages -->
+  <style>
+    .content-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 3rem 5%;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      transition: background-color 0.6s, box-shadow 0.6s;
+    }
+    
+    body.dark-mode .content-section {
+      background: #1e1e1e;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      color: #ddd;
+    }
+    
+    .content-section h1, .content-section h2, .content-section h3 {
+      color: #333;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    body.dark-mode .content-section h1, 
+    body.dark-mode .content-section h2, 
+    body.dark-mode .content-section h3 {
+      color: #eee;
+    }
+    
+    .content-section p, .content-section ul, .content-section ol {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .content-section a {
+      color: #333;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    
+    body.dark-mode .content-section a {
+      color: #aaa;
+    }
+    
+    .content-section a:hover {
+      color: #555;
+    }
+    
+    body.dark-mode .content-section a:hover {
+      color: #ddd;
+    }
+    
+    .content-section hr {
+      margin: 2rem 0;
+      border: 0;
+      height: 1px;
+      background: #ddd;
+    }
+    
+    body.dark-mode .content-section hr {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text">Workglaze</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <!-- Center logo image -->
+      <img src="../img/Workglaze Logo Icon.png" alt="Workglaze Logo" class="logo-img">
+    </div>
+    <div class="header-right">
+      <!-- LinkedIn Icon -->
+      
+        href="https://www.linkedin.com/in/carlonicolussi/"
+        class="icon-button"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+          alt="LinkedIn"
+          class="icon-size"
+        />
+      </a>
+      <!-- Dark Mode Toggle -->
+      <button class="icon-button dark-mode-toggle" aria-label="Toggle Dark Mode">
+        <!-- Default moon icon (switch to sun icon in dark mode) -->
+        <svg class="icon-size" viewBox="0 0 24 24">
+          <path
+            d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </header>
 
-  <h2 id="imprint-english">Imprint (English)</h2>
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Your existing content section -->
+    <section class="content-section">
+      <h1>Imprint (Impressum)</h1>
+      <p><em>The German version is available below.</em></p>
+      <hr />
 
-  <h3 id="company-information">Company Information</h3>
-  <p><strong>Workglaze</strong><br>
-  Carlo Nicolussi<br>
-  Am Dahlberg 8<br>
-  46244 Kirchhellen<br>
-  Germany</p>
+      <h2>Table of Contents</h2>
+      <ol>
+        <li>Imprint (English)
+          <ul>
+            <li><a href="#company-information">Company Information</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#responsible-for-content">Responsible for Content</a></li>
+            <li><a href="#dispute-resolution">Dispute Resolution</a></li>
+          </ul>
+        </li>
+        <li>Impressum (Deutsch)
+          <ul>
+            <li><a href="#angaben-gemäß--5-tmg">Angaben gemäß § 5 TMG</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#verantwortlich-für-den-inhalt">Verantwortlich für den Inhalt</a></li>
+            <li><a href="#streitbeilegung">Streitbeilegung</a></li>
+          </ul>
+        </li>
+      </ol>
 
-  <h3 id="contact">Contact</h3>
-  <p><strong>Phone:</strong> +49 176 62693862<br>
-  <strong>Email:</strong> <a href="mailto:carlo@workglaze.com">carlo@workglaze.com</a></p>
+      <hr />
 
-  <h3 id="responsible-for-content">Responsible for Content</h3>
-  <p>Carlo Nicolussi<br>
-  Am Dahlberg 8<br>
-  46244 Kirchhellen<br>
-  Germany</p>
+      <h2 id="imprint-english">Imprint (English)</h2>
 
-  <h3 id="dispute-resolution">Dispute Resolution</h3>
-  <p>The European Commission provides a platform for online dispute resolution (ODR):  
-  <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a></p>
-  <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+      <h3 id="company-information">Company Information</h3>
+      <p><strong>Workglaze</strong><br>
+      Carlo Nicolussi<br>
+      Am Dahlberg 8<br>
+      46244 Kirchhellen<br>
+      Germany</p>
 
-  <hr />
+      <h3 id="contact">Contact</h3>
+      <p><strong>Phone:</strong> +49 176 62693862<br>
+      <strong>Email:</strong> <a href="mailto:carlo@workglaze.com">carlo@workglaze.com</a></p>
 
-  <h2 id="impressum-deutsch">Impressum (Deutsch)</h2>
+      <h3 id="responsible-for-content">Responsible for Content</h3>
+      <p>Carlo Nicolussi<br>
+      Am Dahlberg 8<br>
+      46244 Kirchhellen<br>
+      Germany</p>
 
-  <h3 id="angaben-gemäß--5-tmg">Angaben gemäß § 5 TMG</h3>
-  <p><strong>Workglaze</strong><br>
-  Carlo Nicolussi<br>
-  Am Dahlberg 8<br>
-  46244 Kirchhellen<br>
-  Deutschland</p>
+      <h3 id="dispute-resolution">Dispute Resolution</h3>
+      <p>The European Commission provides a platform for online dispute resolution (ODR):  
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a></p>
+      <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
 
-  <h3 id="kontakt">Kontakt</h3>
-  <p><strong>Telefon:</strong> +49 176 62693862<br>
-  <strong>E-Mail:</strong> <a href="mailto:carlo@workglaze.com">carlo@workglaze.com</a></p>
+      <hr />
 
-  <h3 id="verantwortlich-für-den-inhalt">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-  <p>Carlo Nicolussi<br>
-  Am Dahlberg 8<br>
-  46244 Kirchhellen<br>
-  Deutschland</p>
+      <h2 id="impressum-deutsch">Impressum (Deutsch)</h2>
 
-  <h3 id="streitbeilegung">Streitbeilegung</h3>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:  
-  <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a></p>
-  <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-</section>
+      <h3 id="angaben-gemäß--5-tmg">Angaben gemäß § 5 TMG</h3>
+      <p><strong>Workglaze</strong><br>
+      Carlo Nicolussi<br>
+      Am Dahlberg 8<br>
+      46244 Kirchhellen<br>
+      Deutschland</p>
+
+      <h3 id="kontakt">Kontakt</h3>
+      <p><strong>Telefon:</strong> +49 176 62693862<br>
+      <strong>E-Mail:</strong> <a href="mailto:carlo@workglaze.com">carlo@workglaze.com</a></p>
+
+      <h3 id="verantwortlich-für-den-inhalt">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+      <p>Carlo Nicolussi<br>
+      Am Dahlberg 8<br>
+      46244 Kirchhellen<br>
+      Deutschland</p>
+
+      <h3 id="streitbeilegung">Streitbeilegung</h3>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:  
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a></p>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-company">Workglaze</span>
+        <p class="footer-tagline">Leaders equip their teams with AI</p>
+      </div>
+      <nav class="legal-links">
+        <a href="Imprint.html">Imprint</a>
+        <a href="Privacy-Policy.html">Privacy Policy</a>
+        <a href="Terms-of-Service.html">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- MAIN JS -->
+  <script src="../script.js"></script>
+</body>
+</html>
