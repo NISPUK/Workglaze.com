@@ -72,7 +72,7 @@
   <!-- VIDEO BLOCK -->
 <div class="video-container">
   <!-- Clickable thumbnail layer -->
-  <div class="video-thumbnail" id="youtubePreview">
+  <div class="video-thumbnail" onclick="loadVideo(this, 'oq3_eFfNdgQ')">
     <img
       src="https://img.youtube.com/vi/oq3_eFfNdgQ/maxresdefault.jpg"
       alt="Video thumbnail"
@@ -80,19 +80,44 @@
     />
     <div class="thumbnail-overlay"></div>
   </div>
-  
-  <!-- Correct iframe with embed URL -->
-<iframe 
-width="560" 
-height="315" 
-src="https://www.youtube.com/embed/oq3_eFfNdgQ?si=ahma4XS2LRXLYonf" 
-title="YouTube video player" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen
-></iframe>
 </div>
+
+<!-- Script to swap thumbnail with iframe on click -->
+<script>
+  function loadVideo(container, videoId) {
+    const iframe = document.createElement("iframe");
+    iframe.width = "100%";
+    iframe.height = "315";
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.title = "YouTube video player";
+    iframe.frameBorder = "0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+
+    container.innerHTML = "";
+    container.appendChild(iframe);
+  }
+</script>
+
+<!-- Optional CSS for overlay style -->
+<style>
+  .video-container {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
+</style>
+
 
 
         <!-- CTA (extra margin below video) -->
