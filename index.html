@@ -69,32 +69,74 @@
           Get the benefits of AI — without complexity, confusion, or risk
         </p>
 
-  <!-- VIDEO BLOCK -->
-  <div class="video-container"> 
-    <div class="video-thumbnail" id="youtubePreview" onclick="loadVideo(this.parentNode, 'n6Q5IQGuIeM')"> 
-      <img src="https://img.youtube.com/vi/n6Q5IQGuIeM/maxresdefault.jpg" alt="Videovorschau" style="width:100%; height:auto;" /> 
-      <div class="thumbnail-overlay"></div>
-      <div class="play-button"></div>
-    </div> 
-  </div>
+ <!-- ENGLISH VIDEO BLOCK -->
+<div class="video-container" style="max-width: 100%; width: 560px;"> 
+  <div class="video-thumbnail" id="englishVideoPreview" onclick="loadVideo(this.parentNode, 'oq3_eFfNdgQ')" style="width: 100%; position: relative;"> 
+    <img src="https://img.youtube.com/vi/oq3_eFfNdgQ/maxresdefault.jpg" alt="Video preview" style="width:100%; height:auto; display: block;" /> 
+    <div class="thumbnail-overlay"></div>
+    <div class="play-button"></div>
+  </div> 
+</div>
 
-  <!-- Script to swap thumbnail with iframe on click -->
-  <script>
-    function loadVideo(container, videoId) {
-      const iframe = document.createElement("iframe");
-      iframe.width = "100%";
-      iframe.height = "315";
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      iframe.title = "YouTube video player";
-      iframe.frameBorder = "0";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.allowFullscreen = true;
-      container.innerHTML = "";
-      container.appendChild(iframe);
-    }
-  </script>
+<style>
+  .video-container {
+    position: relative;
+    margin-bottom: 30px;
+    aspect-ratio: 16/9;
+  }
+  .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    pointer-events: none;
+  }
+  .play-button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent white;
+  }
+</style>
 
+<script>
+  function loadVideo(container, videoId) {
+    const thumbnailWidth = container.offsetWidth;
+    const thumbnailHeight = container.offsetWidth * (9/16); // Maintain 16:9 aspect ratio
+    
+    const iframe = document.createElement("iframe");
+    iframe.width = "100%";
+    iframe.height = thumbnailHeight + "px";
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.title = "YouTube video player";
+    iframe.frameBorder = "0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    
+    container.innerHTML = "";
+    container.appendChild(iframe);
+  }
+</script>
 
         <!-- CTA (extra margin below video) -->
         <a
