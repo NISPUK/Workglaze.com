@@ -1,0 +1,119 @@
+/* ———————————  RESET & BASE  ——————————— */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f2f2f2; /* Background */
+  color: #333333;      /* Primary text */
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ———————————  LAYOUT  ——————————— */
+.player {
+  max-width: 1200px;
+  width: 100%;
+  background: #ffffff;                    /* Section BG */
+  padding: 3rem 5%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+}
+
+/* Maintain 16:9 aspect ratio */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+video,
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ———————————  INFO SECTION  ——————————— */
+.info {
+  margin-top: 2rem;
+}
+#video-title {
+  font-size: 1.8rem; /* Section heading */
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+#video-summary {
+  font-size: 1rem; /* Body text */
+  color: #666666;  /* Secondary text */
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+.pdf-link {
+  display: inline-block;
+  font-size: 0.95rem;
+  background: #ffeb3b;  /* Highlight */
+  color: #333333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.pdf-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ———————————  NAVIGATION  ——————————— */
+.nav {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav button {
+  background: #333333;  /* CTA Button */
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.nav button:hover {
+  background: #555555; /* CTA Hover */
+  transform: translateY(-2px);
+}
+.nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
+#counter {
+  font-size: 1rem;
+  color: #666666;
+}
+
+/* ———————————  RESPONSIVE  ——————————— */
+@media (max-width: 768px) {
+  .player {
+    padding: 2rem 1.25rem;
+  }
+  #video-title {
+    font-size: 1.5rem;
+  }
+}
