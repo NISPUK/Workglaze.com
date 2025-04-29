@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>LLM & Prompting – Course Player</title>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="player">
+
+    <!-- Video -->
+    <div class="video-wrapper">
+      <iframe
+        id="video-frame"
+        src=""
+        title="Course video"
+        frameborder="0"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Text / assets -->
+    <section class="info">
+      <h1 id="video-title"></h1>
+      <p id="video-summary"></p>
+
+      <a
+        id="pdf-link"
+        class="pdf-link"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        Download PDF
+      </a>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <button id="prev-btn" aria-label="Previous video">◀ Previous</button>
+      <span id="counter"></span>
+      <button id="next-btn" aria-label="Next video">Next ▶</button>
+    </nav>
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
