@@ -17,7 +17,7 @@ const courses = {
     { title: "12 - Generating Images with Sora",  url: "https://www.youtube.com/embed/DH5u_J1fEdg", summary: "", pdf: "" },
     { title: "13 - Disclaimer",                   url: "https://www.youtube.com/embed/cU_1h87Tr0w", summary: "", pdf: "" },
     { title: "14 - Prompt Engineering Techniques",url: "https://www.youtube.com/embed/cHjbuVNtA3I", summary: "",
-      pdf: "Workglaze.com/img/Workglaze%20Prompt%20Engineering%20Guide.pdf" }
+      pdf: "../img/Workglaze%20Prompt%20Engineering%20Guide.pdf" }
   ],
 
   de: [
