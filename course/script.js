@@ -45,6 +45,7 @@ const courses = {
   ]
 };
 
+
 /* ----------  STATE & DOM  ---------- */
 let currentLang = "en";
 let index = 0;
