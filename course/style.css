@@ -197,32 +197,29 @@ iframe {
 .final-buttons .button { padding: 0.8rem 1.5rem; }
 .hidden { display: none; }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  :root { --icon-size: 20px; }
-  .site-header { padding: 0.8rem 5%; }
-  .header-right { gap: 0.5rem; }
-  .logo-text { font-size: 1.2rem; }
-  .logo-img  { height: 32px; }
-  .player { padding: 2rem 1.25rem; border-radius: 0.75rem; }
-  #video-title { font-size: 1.5rem; }
-
   .nav-buttons {
-    flex-direction: column;
-    min-width: 100%;
-    position: static; /* <-- Added this */
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .nav button {
-    position: static !important; /* <-- Added this */
-    width: 100%;
+  .nav-buttons button {
+    flex: 1 1 48%;
+    max-width: 48%;
+    width: 48%;
   }
 
-  .final-content { padding: 2rem; }
-  .final-buttons { flex-direction: column; }
-}
+  #counter {
+    order: 3;
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
 
-@media (max-width: 480px) {
-  .icon-button { width: 38px; height: 38px; }
-  .lang-toggle button { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+  /* When there's only one button (e.g. first page), allow full-width */
+  #prev-btn:only-of-type,
+  #next-btn:only-of-type {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }
