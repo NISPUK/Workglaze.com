@@ -1,84 +1,282 @@
 /* ——— RESET & BASE ——— */
 *,
 *::before,
-*::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { font-size: 16px; }
-body  {
-  font-family: "Poppins", sans-serif;
-  background: #f2f2f2;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
+*::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
 }
 
-/* ——— LAYOUT ——— */
-.player {
+:root {
+  --primary: #213147;
+  --secondary: #3182ce;
+  --accent: #4299e1;
+  --light: #f7fafc;
+  --dark: #1a202c;
+  --gray: #718096;
+  --light-gray: #e2e8f0;
+  --border-radius: 8px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+html { 
+  font-size: 16px; 
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f8f9fa;
+  color: var(--dark);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.container {
   max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  background: #fff;
-  padding: 3rem 5%;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 0 1.5rem;
+}
+
+/* ——— HEADER ——— */
+.header {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo img {
+  height: 32px;
+  width: auto;
+}
+
+.logo span {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--primary);
 }
 
 /* Language buttons */
 .lang-toggle {
   display: flex;
-  justify-content: flex-end;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  align-items: center;
 }
+
 .lang-toggle button {
   border: none;
-  background: #ebebeb;
-  padding: 0.4rem 1rem;
-  border-radius: 0.5rem;
+  background: var(--light-gray);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: var(--gray);
+}
+
+.lang-toggle button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.lang-toggle button:hover:not(.active) {
+  background: #d1d8e0;
+}
+
+/* ——— COURSE PLAYER ——— */
+.course-player {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin: 2rem auto;
+}
+
+/* Course header with progress */
+.course-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+#video-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--light-gray);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background: var(--secondary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.counter {
   font-size: 0.9rem;
-  transition: background 0.15s;
+  color: var(--gray);
+  white-space: nowrap;
 }
-.lang-toggle button.active,
-.lang-toggle button:hover { background: #ffeb3b; }
 
-/* 16:9 video */
+/* Video container */
 .video-wrapper {
-  position: relative; width: 100%; aspect-ratio: 16/9;
-  border-radius: 0.75rem; overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
 }
-iframe { width: 100%; height: 100%; border: 0; }
 
-/* INFO */
-.info { margin-top: 2rem; }
-#video-title   { font-size: 1.8rem; font-weight: 500; margin-bottom: 1rem; }
-#video-summary { font-size: 1rem;  color: #666;  line-height: 1.5; margin-bottom: 1.25rem; }
-
-/* PDF button */
-.pdf-link{
-  display:inline-block; background:#333; color:#fff; text-decoration:none;
-  padding:0.6rem 1.2rem; border-radius:0.5rem; font-size:0.95rem;
-  transition:transform 0.15s, background 0.15s;
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
-.pdf-link:hover{ background:#555; transform:translateY(-2px); }
 
-/* NAV */
-.nav{
-  margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;
-  justify-content:center; align-items:center;
+/* Content section */
+.content-wrap {
+  padding: 1.5rem 2rem;
 }
-.nav button{
-  background:#333; color:#fff; border:none; padding:0.75rem 1.5rem;
-  border-radius:0.5rem; font-size:1rem; cursor:pointer;
-  transition:background 0.15s, transform 0.15s;
-}
-.nav button:hover{ background:#555; transform:translateY(-2px); }
-.nav button:disabled{ opacity:0.35; cursor:default; transform:none; }
-#counter{ font-size:1rem; color:#666; }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .player{ padding:2rem 1.25rem; }
-  #video-title{ font-size:1.5rem; }
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#video-summary {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* PDF link */
+.pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.pdf-link:hover {
+  background: #2c4366;
+  transform: translateY(-2px);
+}
+
+/* Navigation */
+.course-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--light);
+  color: var(--primary);
+  border: 1px solid var(--light-gray);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--light-gray);
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Button styling */
+.prev svg, .next svg {
+  transition: transform 0.2s ease;
+}
+
+.prev:hover:not(:disabled) svg {
+  transform: translateX(-3px);
+}
+
+.next:hover:not(:disabled) svg {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-header,
+  .content-wrap,
+  .course-nav {
+    padding: 1.25rem;
+  }
+  
+  #video-title {
+    font-size: 1.25rem;
+  }
+  
+  .logo span {
+    font-size: 1.1rem;
+  }
+  
+  .pdf-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
 }
