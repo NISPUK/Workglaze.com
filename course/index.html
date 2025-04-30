@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,53 +5,35 @@
     <title>LLM & Prompting – Course Player</title>
 
     <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- ═══════════ HEADER ═══════════ -->
+    <!-- ══════════ HEADER ══════════ -->
     <header class="site-header">
       <div class="header-left">
-        <img
-          src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png"
-          alt="Workglaze Logo"
-          class="logo-img"
-        />
+        <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png" alt="Workglaze Logo" class="logo-img" />
         <span class="logo-text">Workglaze</span>
       </div>
 
       <div class="header-right">
-        <a
-          href="mailto:info@workglaze.com"
-          class="header-button"
-          aria-label="Email Us"
-        >
-          <i class="fas fa-envelope"></i>
+        <!-- Mail -->
+        <a href="mailto:info@workglaze.com" class="icon-button" aria-label="E-mail">
+          <i class="fas fa-envelope icon-size"></i>
         </a>
 
-        <a
-          href="https://linkedin.com/company/workglaze"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="header-button"
-          aria-label="LinkedIn"
-        >
-          <i class="fab fa-linkedin"></i>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/company/workglaze" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="LinkedIn">
+          <i class="fab fa-linkedin icon-size"></i>
         </a>
 
-        <!-- NEW: segmented-toggle style -->
+        <!-- Language switch -->
         <nav class="lang-toggle" aria-label="Language switch">
           <button data-lang="en" class="lang-btn active">EN</button>
           <button data-lang="de" class="lang-btn">DE</button>
@@ -60,7 +41,7 @@
       </div>
     </header>
 
-    <!-- ═══════════ PLAYER ═══════════ -->
+    <!-- ══════════ PLAYER ══════════ -->
     <main class="player">
       <!-- VIDEO -->
       <div class="video-wrapper">
@@ -77,14 +58,7 @@
       <section class="info">
         <h1 id="video-title"></h1>
         <p id="video-summary"></p>
-        <!-- shows only when slide 14 has a PDF -->
-        <a
-          id="pdf-link"
-          class="button pdf-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Download PDF</a
-        >
+        <a id="pdf-link" class="button pdf-link" target="_blank" rel="noopener noreferrer">Download PDF</a>
       </section>
 
       <!-- NAVIGATION -->
@@ -96,24 +70,15 @@
       </nav>
     </main>
 
-    <!-- ═══════════ FINAL PAGE ═══════════ -->
+    <!-- ══════════ FINAL PAGE ══════════ -->
     <div id="final-page" class="final-page hidden">
       <div class="final-content">
         <h1>Thanks for watching!</h1>
-        <p>Send me an email if you have any questions or add me on LinkedIn.</p>
+        <p>Send me an e-mail if you have any questions or add me on LinkedIn.</p>
 
         <div class="final-buttons">
-          <a href="mailto:info@workglaze.com" class="button">
-            <i class="fas fa-envelope"></i> Email
-          </a>
-          <a
-            href="https://linkedin.com/company/workglaze"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button"
-          >
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
+          <a href="mailto:info@workglaze.com" class="button"><i class="fas fa-envelope"></i> E-mail</a>
+          <a href="https://linkedin.com/company/workglaze" target="_blank" rel="noopener noreferrer" class="button"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
       </div>
     </div>
@@ -122,4 +87,3 @@
     <script src="script.js" defer></script>
   </body>
 </html>
-
