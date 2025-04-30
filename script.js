@@ -42,23 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   
-  // === YOUTUBE VIDEO PREVIEW ===
-  const videoContainer = document.querySelector(".video-container");
-  const preview = document.getElementById("youtubePreview");
-  const video = document.getElementById("demoVideo");
-  if (videoContainer && preview && video) {
-    // Click on container => load real 'src' into iframe with autoplay parameter, fade out preview
-    videoContainer.addEventListener("click", () => {
-      // Get the original data-src and add autoplay parameter
-      const videoSrc = video.getAttribute("data-src");
-      // Add autoplay=1 parameter to ensure immediate playback
-      video.src = videoSrc + (videoSrc.includes('?') ? '&' : '?') + 'autoplay=1';
-      
-      // Fade out preview
-      preview.style.opacity = "0";
-      setTimeout(() => {
-        preview.style.display = "none";
-      }, 300);
-    });
-  }
 });
