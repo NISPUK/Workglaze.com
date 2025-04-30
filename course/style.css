@@ -210,12 +210,7 @@ iframe {
   }
 
   #counter {
-    order: 3;
-    flex-basis: 100%;
-    text-align: center;
-    margin-top: 1.2rem; /* ⬅️ This adds spacing below buttons */
-    font-size: 1rem;
-    color: #666;
+    display: none;
   }
 
   #prev-btn:only-of-type,
@@ -224,3 +219,4 @@ iframe {
     max-width: 100%;
   }
 }
+
