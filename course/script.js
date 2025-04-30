@@ -28,16 +28,20 @@ const courses = {
     { title: "3 - Wie funktioniert ChatGPT",      url: "https://www.youtube.com/embed/w8mUC-OXk88", summary: "", pdf: "" },
     { title: "4 - Basis Regeln",                  url: "https://www.youtube.com/embed/fcqEBu7YcT8", summary: "", pdf: "" },
     { title: "5 - Denkende vs. assistierende Modelle", url: "https://www.youtube.com/embed/VxZAbQX2xWU", summary: "", pdf: "" },
-    { title: "6 - Ein Tool, das Tools verwendet", url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "7 - Mit ChatGPT sprechen",          url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "8 - Die OpenAI-App",                url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "9 - ChatGPTs Gedächtnis",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "10 - CustomGPTs erklärt",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "11 - NotebookLM erklärt",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "12 - Bilder generieren mit Sora",   url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "13 - Der KI-Wahn",                  url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
-    { title: "14 - Prompt-Engineering-Techniken", url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", 
-      pdf: "https://drive.google.com/file/d/1D8lGa22Y_ndbxv0ifRIe741PUjk3Ttge/view?usp=sharing" }
+    { title: "6 - Ein Tool, das Tools verwendet", url: "https://www.youtube.com/embed/0ovxDd5UNPg", summary: "", pdf: "" },
+    { title: "7 - Mit ChatGPT sprechen",          url: "https://www.youtube.com/embed/gjz7qc4rarM", summary: "", pdf: "" },
+    { title: "8 - Die OpenAI-App",                url: "https://www.youtube.com/embed/P3UlRVyyuRQ", summary: "", pdf: "" },
+    { title: "9 - ChatGPTs Gedächtnis",           url: "https://www.youtube.com/embed/Tb-umne2in0", summary: "", pdf: "" },
+    { title: "10 - CustomGPTs erklärt",           url: "https://www.youtube.com/embed/LLdg_wuMKrs", summary: "", pdf: "" },
+    { title: "11 - NotebookLM erklärt",           url: "https://www.youtube.com/embed/Ym9FYNsyfP0", summary: "", pdf: "" },
+    { title: "12 - Bilder generieren mit Sora",   url: "https://www.youtube.com/embed/EAYvp7j5kZ0", summary: "", pdf: "" },
+    { title: "13 - Der KI-Wahn",                  url: "https://www.youtube.com/embed/CrqClGBEd8k", summary: "", pdf: "" },
+    {
+      title: "14 - Prompt-Engineering-Techniken",
+      url: "https://www.youtube.com/embed/bDqJ_DdjzhI",
+      summary: "",
+      pdf: "https://drive.google.com/file/d/1D8lGa22Y_ndbxv0ifRIe741PUjk3Ttge/view?usp=sharing"
+    }
   ]
 };
 
