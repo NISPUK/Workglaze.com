@@ -21,24 +21,22 @@ const courses = {
   ],
 
   de: [
-    { title: "1 - Intro – LLM & Prompting Kurs",  url: "https://www.youtube.com/embed/vy6riqBRpSc", summary: "", pdf: "" },
-    { title: "2 - Das LLM Spielfeld",            url: "https://www.youtube.com/embed/l7O4bXIqcAA", summary: "", pdf: "" },
-    { title: "3 - Wie funktioniert ChatGPT",      url: "https://www.youtube.com/embed/w8mUC-OXk88", summary: "", pdf: "" },
-    { title: "4 - Basis Regeln",                  url: "https://www.youtube.com/embed/fcqEBu7YcT8", summary: "", pdf: "" },
-    { title: "5 - Denkende vs. assistierende Modelle", url: "https://www.youtube.com/embed/VxZAbQX2xWU", summary: "", pdf: "" },
-    { title: "6 - Ein Tool, das Tools verwendet", url: placeholder, summary: "", pdf: "" },
-    { title: "7 - Mit ChatGPT sprechen",          url: placeholder, summary: "", pdf: "" },
-    { title: "8 - Die OpenAI-App",                url: placeholder, summary: "", pdf: "" },
-    { title: "9 - ChatGPTs Gedächtnis",           url: placeholder, summary: "", pdf: "" },
-    { title: "10 - CustomGPTs erklärt",           url: placeholder, summary: "", pdf: "" },
-    { title: "11 - NotebookLM erklärt",           url: placeholder, summary: "", pdf: "" },
-    { title: "12 - Bilder generieren mit Sora",   url: placeholder, summary: "", pdf: "" },
-    { title: "13 - Der KI-Wahn",                  url: placeholder, summary: "", pdf: "" },
-    { title: "14 - Prompt-Engineering-Techniken", url: placeholder, summary: "",
-      pdf: "https://drive.google.com/file/d/1D8lGa22Y_ndbxv0ifRIe741PUjk3Ttge/view?usp=sharing" }
-  ]
-};
-
+  { title: "1 - Intro – LLM & Prompting Kurs",  url: "https://www.youtube.com/embed/vy6riqBRpSc", summary: "", pdf: "" },
+  { title: "2 - Das LLM Spielfeld",             url: "https://www.youtube.com/embed/l7O4bXIqcAA", summary: "", pdf: "" },
+  { title: "3 - Wie funktioniert ChatGPT",      url: "https://www.youtube.com/embed/w8mUC-OXk88", summary: "", pdf: "" },
+  { title: "4 - Basis Regeln",                  url: "https://www.youtube.com/embed/fcqEBu7YcT8", summary: "", pdf: "" },
+  { title: "5 - Denkende vs. assistierende Modelle", url: "https://www.youtube.com/embed/VxZAbQX2xWU", summary: "", pdf: "" },
+  { title: "6 - Ein Tool, das Tools verwendet", url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "7 - Mit ChatGPT sprechen",          url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "8 - Die OpenAI-App",                url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "9 - ChatGPTs Gedächtnis",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "10 - CustomGPTs erklärt",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "11 - NotebookLM erklärt",           url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "12 - Bilder generieren mit Sora",   url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "13 - Der KI-Wahn",                  url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", pdf: "" },
+  { title: "14 - Prompt-Engineering-Techniken", url: "https://www.youtube.com/embed/BvCOZrqGyNU", summary: "", 
+    pdf: "https://drive.google.com/file/d/1D8lGa22Y_ndbxv0ifRIe741PUjk3Ttge/view?usp=sharing" }
+];
 /* ----------  STATE & DOM  ---------- */
 let currentLang = "en";
 let index = 0;
