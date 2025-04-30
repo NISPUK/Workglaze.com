@@ -30,7 +30,7 @@ const courses = {
     { title: "3 - Wie funktioniert ChatGPT",      url: "https://www.youtube.com/embed/w8mUC-OXk88", summary: "", pdf: "" },
     { title: "4 - Basis Regeln",                  url: "https://www.youtube.com/embed/fcqEBu7YcT8", summary: "", pdf: "" },
     { title: "5 - Denkende vs. assistierende Modelle", url: "https://www.youtube.com/embed/VxZAbQX2xWU", summary: "", pdf: "" },
-    { title: "6 - Ein Tool, das Tools verwendet", url: placeholder, summary: "", pdf: "" },
+    { title: "6 - Ein Tool, das Tools verwendet", url: "https://www.youtube.com/embed/0ovxDd5UNPg", summary: "", pdf: "" },
     { title: "7 - Mit ChatGPT sprechen",          url: placeholder, summary: "", pdf: "" },
     { title: "8 - Die OpenAI-App",                url: placeholder, summary: "", pdf: "" },
     { title: "9 - ChatGPTs Gedächtnis",           url: placeholder, summary: "", pdf: "" },
