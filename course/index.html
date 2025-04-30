@@ -1,19 +1,16 @@
-<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LLM & Prompting – Workglaze Course Player</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Workglaze Course Player</title>
 
-  <!-- Google Font -->
+  <!-- Font & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- ===== HEADER ===== -->
+  <!-- ── HEADER ────────────────────────────────────────────── -->
   <header class="header">
     <div class="container header__inner">
       <a class="logo" href="#">
@@ -28,44 +25,41 @@
     </div>
   </header>
 
-  <!-- ===== COURSE PLAYER ===== -->
+  <!-- ── COURSE PLAYER ─────────────────────────────────────── -->
   <main class="container">
     <article id="player" class="course-player">
       <header class="course-header">
-        <h1 id="video-title" class="video-title"> </h1>
+        <h1 id="video-title" class="video-title"></h1>
         <span id="counter" class="counter"></span>
       </header>
 
       <div class="video-wrapper">
-        <iframe
-          id="video-frame"
-          title="Course video"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+        <iframe id="video-frame"
+                title="Course video"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
       </div>
 
       <section class="content-wrap">
         <p id="video-summary"></p>
-        <a id="pdf-link" class="pdf-link" target="_blank" rel="noopener" hidden>Download PDF</a>
+        <a id="pdf-link" class="pdf-link" target="_blank" rel="noopener" hidden></a>
       </section>
 
       <nav class="course-nav" aria-label="Lesson navigation">
-        <button id="prev-btn"  class="nav-btn prev"  disabled>Previous</button>
-        <button id="next-btn"  class="nav-btn next">Next</button>
-        <button id="finish-btn" class="nav-btn finish" hidden>Finish 🎉</button>
+        <button id="prev-btn"  class="nav-btn prev"></button>
+        <button id="next-btn"  class="nav-btn next"></button>
+        <button id="finish-btn" class="nav-btn finish" hidden></button>
       </nav>
     </article>
 
-    <!-- ===== COMPLETE SCREEN ===== -->
+    <!-- ── COMPLETE SCREEN ─────────────────────────────────── -->
     <section id="complete-screen" class="complete-screen" hidden>
-      <h2>Well done – you’ve finished the course!</h2>
-      <p>You can close this tab or switch language to start again.</p>
+      <h2 id="done-title"></h2>
+      <p  id="done-msg"></p>
     </section>
   </main>
 
-  <!-- Scripts -->
-  <script src="app.js" defer></script>
+  <!-- Script -->
+  <script src="script.js" defer></script>
 </body>
 </html>
