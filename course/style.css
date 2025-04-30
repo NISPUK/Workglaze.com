@@ -16,7 +16,7 @@ body {
 :root {
   --icon-size: 24px;
   --icon-button-size: 44px;
-  --icon-bg: #f7f7f7;        /* 👈 always light-gray now */
+  --icon-bg: #f7f7f7;        /* always light-gray */
   --icon-bg-hover: #ebebeb;
 
   --icon-shadow: 0 4px 12px rgba(0,0,0,.06);
@@ -60,7 +60,8 @@ body {
   z-index: 1000;
   margin-bottom: 2rem;
 }
-.header-left, .header-right { display: flex; align-items: center; }
+.header-left,
+.header-right { display: flex; align-items: center; }
 .header-left { gap: 1rem; }
 .header-right { gap: 1rem; }
 .logo-text { font-size: 1.4rem; font-weight: 600; color: #333; }
@@ -170,7 +171,9 @@ iframe {
 }
 .nav button { background: #333; color: #fff; min-width: 100px; }
 #counter   { font-size: 1rem; color: #666; padding: 0 1rem; flex: 0 0 80px; text-align: center; }
-#finish-btn, #next-btn, #prev-btn { min-width: 100px; position: absolute; }
+#finish-btn,
+#next-btn,
+#prev-btn { min-width: 100px; position: absolute; }
 #prev-btn  { left: 0; }
 #next-btn,
 #finish-btn { right: 0; }
@@ -200,17 +203,31 @@ iframe {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   :root { --icon-size: 20px; }
+
   .site-header { padding: 0.8rem 5%; }
   .header-right { gap: 0.5rem; }
   .logo-text { font-size: 1.2rem; }
   .logo-img  { height: 32px; }
+
   .player { padding: 2rem 1.25rem; border-radius: 0.75rem; }
+
   #video-title { font-size: 1.5rem; }
+
   .nav-buttons { flex-direction: column; min-width: 100%; }
   .nav button  { position: static; width: 100%; }
+
+  /* --- override ID-specific positioning so the buttons really stack --- */
+  #prev-btn,
+  #next-btn,
+  #finish-btn {
+    position: static;
+    width: 100%;
+  }
+
   .final-content { padding: 2rem; }
   .final-buttons { flex-direction: column; }
 }
+
 @media (max-width: 480px) {
   .icon-button { width: 38px; height: 38px; }
   .lang-toggle button { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
