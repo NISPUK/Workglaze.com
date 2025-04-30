@@ -213,10 +213,11 @@ iframe {
     order: 3;
     flex-basis: 100%;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.2rem; /* ⬅️ This adds spacing below buttons */
+    font-size: 1rem;
+    color: #666;
   }
 
-  /* When there's only one button (e.g. first page), allow full-width */
   #prev-btn:only-of-type,
   #next-btn:only-of-type {
     flex-basis: 100%;
