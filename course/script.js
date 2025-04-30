@@ -11,7 +11,7 @@ const courses = {
     { title: "6 - A Tool that Uses Tools",        url: "https://www.youtube.com/embed/jI5jNC_KPdg", summary: "", pdf: "" },
     { title: "7 - Talking to ChatGPT",            url: "https://www.youtube.com/embed/uR9mrVGZx7k", summary: "", pdf: "" },
     { title: "8 - The OpenAI App",                url: "https://www.youtube.com/embed/uuxU_jT2KSM", summary: "", pdf: "" },
-    { title: "9 - ChatGPT’s Memory",              url: "https://www.youtube.com/embed/9ay1lsZ1ndQ", summary: "", pdf: "" },
+    { title: "9 - ChatGPT's Memory",              url: "https://www.youtube.com/embed/9ay1lsZ1ndQ", summary: "", pdf: "" },
     { title: "10 - Explaining CustomGPTs",        url: "https://www.youtube.com/embed/Juu7ZgbxocY", summary: "", pdf: "" },
     { title: "11 - Explaining NotebookLM",        url: "https://www.youtube.com/embed/lfDQkDcEHts", summary: "", pdf: "" },
     { title: "12 - Generating Images with Sora",  url: "https://www.youtube.com/embed/DH5u_J1fEdg", summary: "", pdf: "" },
@@ -41,61 +41,101 @@ const courses = {
 
 /* ----------  STATE & DOM  ---------- */
 let currentLang = "en";
-let index       = 0;
+let index = 0;
 
-const frame    = document.getElementById("video-frame");
-const titleEl  = document.getElementById("video-title");
-const summEl   = document.getElementById("video-summary");
-const pdfLink  = document.getElementById("pdf-link");
-const prevBtn  = document.getElementById("prev-btn");
-const nextBtn  = document.getElementById("next-btn");
-const counter  = document.getElementById("counter");
+const frame = document.getElementById("video-frame");
+const titleEl = document.getElementById("video-title");
+const summEl = document.getElementById("video-summary");
+const pdfLink = document.getElementById("pdf-link");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const finishBtn = document.getElementById("finish-btn");
+const counter = document.getElementById("counter");
 const langBtns = document.querySelectorAll(".lang-toggle button");
+const finalPage = document.getElementById("final-page");
+const darkModeToggle = document.getElementById("dark-mode-toggle");
 
 /* ----------  RENDERING  ---------- */
 function currentList() { return courses[currentLang]; }
 
 function loadVideo(i) {
   const vid = currentList()[i];
+  const isFirstSlide = i === 0;
+  const isLastSlide = i === currentList().length - 1;
 
-  frame.src          = vid.url + "?rel=0";
+  frame.src = vid.url + "?rel=0";
   titleEl.textContent = vid.title;
-  summEl.textContent  = vid.summary || " ";
+  summEl.textContent = vid.summary || " ";
 
   if (vid.pdf) {
     pdfLink.href = vid.pdf;
-    pdfLink.target = "_blank";                 // ✅ open in new tab
-    pdfLink.rel = "noopener noreferrer";       // ✅ security best practice
     pdfLink.style.display = "inline-block";    // show link
   } else {
     pdfLink.style.display = "none";            // hide if no PDF
   }
 
   counter.textContent = `${i + 1} / ${currentList().length}`;
-  prevBtn.disabled = i === 0;
-  nextBtn.disabled = i === currentList().length - 1;
+  
+  // Handle prev button visibility
+  prevBtn.disabled = isFirstSlide;
+  prevBtn.style.display = isFirstSlide ? "none" : "inline-block";
+  
+  // Handle next/finish button visibility
+  nextBtn.disabled = isLastSlide;
+  nextBtn.style.display = isLastSlide ? "none" : "inline-block";
+  finishBtn.style.display = isLastSlide ? "inline-block" : "none";
 }
 
 /* ----------  NAVIGATION  ---------- */
 function next() {
   if (index < currentList().length - 1) {
-    index++; loadVideo(index); window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}
-function prev() {
-  if (index > 0) {
-    index--; loadVideo(index); window.scrollTo({ top: 0, behavior: "smooth" });
+    index++; 
+    loadVideo(index); 
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
+function prev() {
+  if (index > 0) {
+    index--; 
+    loadVideo(index); 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+function finish() {
+  finalPage.classList.remove("hidden");
+}
+
+function closeFinalPage() {
+  finalPage.classList.add("hidden");
+}
+
+/* ----------  DARK MODE TOGGLE  ---------- */
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  
+  const icon = darkModeToggle.querySelector("i");
+  if (document.body.classList.contains("dark-mode")) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+  
+  // Save preference
+  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+}
+
 /* ----------  LANGUAGE SWITCH  ---------- */
-langBtns.forEach(btn=>{
-  btn.addEventListener("click", ()=> {
+langBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
     const lang = btn.dataset.lang;
     if (lang !== currentLang) {
       currentLang = lang;
       index = 0;
-      langBtns.forEach(b=>b.classList.toggle("active", b===btn));
+      langBtns.forEach(b => b.classList.toggle("active", b === btn));
       loadVideo(index);
       document.documentElement.lang = lang; // <html lang="">
     }
@@ -105,4 +145,20 @@ langBtns.forEach(btn=>{
 /* ----------  INIT  ---------- */
 prevBtn.addEventListener("click", prev);
 nextBtn.addEventListener("click", next);
+finishBtn.addEventListener("click", finish);
+darkModeToggle.addEventListener("click", toggleDarkMode);
+
+// Final page - clicking outside content closes it
+finalPage.addEventListener("click", (e) => {
+  if (e.target === finalPage) {
+    closeFinalPage();
+  }
+});
+
+// Check for dark mode preference
+if (localStorage.getItem("darkMode") === "true") {
+  toggleDarkMode();
+}
+
+// Initial load
 loadVideo(index);
