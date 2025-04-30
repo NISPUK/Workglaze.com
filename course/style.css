@@ -266,3 +266,15 @@ iframe {
     font-size: 0.85rem;
   }
 }
+
+/* …everything you already had … */
+
+/* Hide nav buttons instead of disabling them */
+.nav-btn[hidden]        { display:none; }
+
+/* Finish button colour */
+.finish                 { background:var(--secondary); color:#fff; }
+
+/* Congratulations screen */
+.complete-screen        { text-align:center; padding:4rem 1.5rem; }
+
