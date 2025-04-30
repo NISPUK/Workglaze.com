@@ -35,7 +35,7 @@ const courses = {
     { title: "12 - Bilder generieren mit Sora",   url: placeholder, summary: "", pdf: "" },
     { title: "13 - Der KI-Wahn",                  url: placeholder, summary: "", pdf: "" },
     { title: "14 - Prompt-Engineering-Techniken", url: placeholder, summary: "",
-      pdf: "../img/Workglaze Prompt Engineering Guide.pdf" }
+      pdf: "https://drive.google.com/file/d/1D8lGa22Y_ndbxv0ifRIe741PUjk3Ttge/view?usp=sharing" }
   ]
 };
 
