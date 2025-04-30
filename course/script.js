@@ -66,37 +66,29 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const counter = document.getElementById("counter");
 const langBtns = document.querySelectorAll(".lang-toggle button");
-const progressBar = document.getElementById("progress-bar");
 
 /* ----------  RENDERING  ---------- */
 function currentList() { 
   return courses[currentLang]; 
 }
 
-function updateProgressBar() {
-  const total = currentList().length;
-  const completed = progressData[currentLang].filter(Boolean).length;
-  const percentage = (completed / total) * 100;
-  
-  progressBar.style.setProperty('--progress', `${percentage}%`);
-  progressBar.setAttribute('aria-valuenow', percentage);
-  progressBar.querySelector('::before').style.width = `${percentage}%`;
-}
+// Progress bar functionality removed
 
 function loadVideo(i) {
   const vid = currentList()[i];
+  const isLastVideo = i === currentList().length - 1;
 
   // Mark current video as viewed/in progress
   progressData[currentLang][i] = true;
   saveProgress();
-  updateProgressBar();
   
   // Update UI
   frame.src = vid.url + "?rel=0";
   titleEl.textContent = vid.title;
   summEl.textContent = vid.summary || " ";
 
-  if (vid.pdf) {
+  // Only show PDF link on the last video
+  if (vid.pdf && isLastVideo) {
     pdfLink.href = vid.pdf;
     pdfLink.target = "_blank";
     pdfLink.rel = "noopener noreferrer";
@@ -108,10 +100,6 @@ function loadVideo(i) {
   counter.textContent = `${i + 1} / ${currentList().length}`;
   prevBtn.disabled = i === 0;
   nextBtn.disabled = i === currentList().length - 1;
-  
-  // Set progress bar width via CSS custom property
-  const progressPercentage = ((i + 1) / currentList().length) * 100;
-  progressBar.style.setProperty('--progress', `${progressPercentage}%`);
 }
 
 /* ----------  NAVIGATION  ---------- */
@@ -162,11 +150,5 @@ langBtns.forEach(btn => {
 prevBtn.addEventListener("click", prev);
 nextBtn.addEventListener("click", next);
 
-// Style the progress bar width through CSS custom property
-document.documentElement.style.setProperty('--progress-bar-before-width', '0%');
-
 // Initialize
 loadVideo(index);
-
-// Update progress bar on load
-updateProgressBar();
