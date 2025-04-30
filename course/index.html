@@ -1,50 +1,89 @@
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>LLM & Prompting – Course Player</title>
-
-  <!-- Font -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+  <!-- Font Awesome (still used elsewhere) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-left">
+      <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png" alt="Workglaze Logo" class="logo-img">
+      <span class="logo-text">Workglaze</span>
+    </div>
+
+    <div class="header-right">
+      <!-- Contact-me button -->
+      <a href="mailto:kim@workglaze.com?cc=carlo@workglaze.com" class="button contact-button">
+        Contact&nbsp;me
+      </a>
+
+      <!-- LinkedIn icon (now strictly following guidelines) -->
+    <a href="https://www.linkedin.com/in/carlonicolussi/"
+   target="_blank"
+   rel="noopener"
+   class="icon-button"
+   aria-label="LinkedIn">
+  <img
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+    alt=""
+    class="icon-size"
+  />
+</a>
+
+      <!-- Language switcher -->
+      <nav class="lang-toggle" aria-label="Language switch">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="de">DE</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT (unchanged) -->
   <main class="player">
-
-    <!-- ── LANGUAGE TOGGLE (new icon-button style) ────────── -->
-    <nav class="lang-toggle" aria-label="Language switch">
-      <button data-lang="en" class="icon-button active" aria-label="English">EN</button>
-      <button data-lang="de" class="icon-button"        aria-label="Deutsch">DE</button>
-    </nav>
-
-    <!-- ── VIDEO ──────────────────────────────────────────── -->
     <div class="video-wrapper">
       <iframe id="video-frame" title="Course video"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen loading="lazy"></iframe>
     </div>
 
-    <!-- ── INFO / ASSETS ──────────────────────────────────── -->
     <section class="info">
       <h1 id="video-title"></h1>
-      <p  id="video-summary"></p>
-
-      <!-- appears only on slide 14 -->
-      <a id="pdf-link" class="pdf-link" target="_blank" rel="noopener" hidden></a>
+      <p id="video-summary"></p>
+      <a id="pdf-link" class="button pdf-link" target="_blank" rel="noopener noreferrer">Download PDF</a>
     </section>
 
-    <!-- ── NAVIGATION ─────────────────────────────────────── -->
     <nav class="nav">
-      <button id="prev-btn" aria-label="Previous video"></button>
-      <span   id="counter"></span>
-      <button id="next-btn" aria-label="Next video"></button>
+      <div class="nav-buttons">
+        <button id="prev-btn"   class="button">Previous</button>
+        <span   id="counter"></span>
+        <button id="next-btn"   class="button">Next</button>
+        <button id="finish-btn" class="button">Finish</button>
+      </div>
     </nav>
-
   </main>
+
+  <!-- Final Page (unchanged) -->
+  <div id="final-page" class="final-page hidden">
+    <div class="final-content">
+      <h1>Thanks for watching!</h1>
+      <p>Send me an email if you have any questions or add me on LinkedIn.</p>
+      <div class="final-buttons">
+        <a href="mailto:kim@workglaze.com?cc=carlo@workglaze.com" class="button">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://www.linkedin.com/in/carlonicolussi/" target="_blank" rel="noopener" class="button">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Script -->
   <script src="script.js" defer></script>
