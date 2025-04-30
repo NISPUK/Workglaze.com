@@ -1,4 +1,4 @@
-/* ----------  COURSE DATA  ---------- */
+/* ----------  COURSE DATAla  ---------- */
 const placeholder = "https://www.youtube.com/embed/BvCOZrqGyNU";
 
 const courses = {
