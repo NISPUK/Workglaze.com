@@ -11,39 +11,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-left">
-      <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png" alt="Workglaze Logo" class="logo-img">
-      <span class="logo-text">Workglaze</span>
-    </div>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png"
+         alt="Workglaze Logo"
+         class="logo-img">
+    <span class="logo-text">Workglaze</span>
+  </div>
 
-    <div class="header-right">
-      <!-- Contact-me button -->
-      <a href="mailto:kim@workglaze.com?cc=carlo@workglaze.com" class="button contact-button">
-        Contact&nbsp;me
-      </a>
-
-      <!-- LinkedIn icon (now strictly following guidelines) -->
+  <!-- ⬇️  removed the “Contact me” anchor -->
+  <div class="header-right">
+    <!-- LinkedIn icon -->
     <a href="https://www.linkedin.com/in/carlonicolussi/"
-   target="_blank"
-   rel="noopener"
-   class="icon-button"
-   aria-label="LinkedIn">
-  <img
-    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-    alt=""
-    class="icon-size"
-  />
-</a>
+       target="_blank"
+       rel="noopener"
+       class="icon-button"
+       aria-label="LinkedIn">
+      <img
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+        alt=""
+        class="icon-size" />
+    </a>
 
-      <!-- Language switcher -->
-      <nav class="lang-toggle" aria-label="Language switch">
-        <button data-lang="en" class="active">EN</button>
-        <button data-lang="de">DE</button>
-      </nav>
-    </div>
-  </header>
+    <!-- Language switcher -->
+    <nav class="lang-toggle" aria-label="Language switch">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="de">DE</button>
+    </nav>
+  </div>
+</header>
 
   <!-- MAIN CONTENT (unchanged) -->
   <main class="player">
@@ -69,21 +66,23 @@
     </nav>
   </main>
 
-  <!-- Final Page (unchanged) -->
-  <div id="final-page" class="final-page hidden">
-    <div class="final-content">
-      <h1>Thanks for watching!</h1>
-      <p>Send me an email if you have any questions or add me on LinkedIn.</p>
-      <div class="final-buttons">
-        <a href="mailto:kim@workglaze.com?cc=carlo@workglaze.com" class="button">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-        <a href="https://www.linkedin.com/in/carlonicolussi/" target="_blank" rel="noopener" class="button">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      </div>
+<!-- FINAL PAGE -->
+<div id="final-page" class="final-page hidden">
+  <div class="final-content">
+    <h1>Thanks for watching!</h1>
+    <p>Send me an email if you have any questions or add me on LinkedIn.</p>
+
+    <!-- ⬇️  removed the Email button, kept LinkedIn -->
+    <div class="final-buttons">
+      <a href="https://www.linkedin.com/in/carlonicolussi/"
+         target="_blank"
+         rel="noopener"
+         class="button">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
     </div>
   </div>
+</div>
 
   <!-- Script -->
   <script src="script.js" defer></script>
