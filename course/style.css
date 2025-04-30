@@ -126,26 +126,8 @@ body {
 
 .progress-container {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.progress-bar {
-  flex: 1;
-  height: 6px;
-  background: var(--light-gray);
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-bar::before {
-  content: '';
-  position: absolute;
-  height: 100%;
-  background: var(--secondary);
-  border-radius: 3px;
-  transition: width 0.3s ease;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
 }
 
 .counter {
@@ -159,7 +141,11 @@ body {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  background: #000;
+  background: #f1f1f1;
+  margin-bottom: 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 iframe {
