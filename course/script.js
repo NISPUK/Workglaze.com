@@ -11,7 +11,7 @@ const courses = {
     { title: "6 - A Tool that Uses Tools",        url: "https://www.youtube.com/embed/jI5jNC_KPdg", summary: "", pdf: "" },
     { title: "7 - Talking to ChatGPT",            url: "https://www.youtube.com/embed/uR9mrVGZx7k", summary: "", pdf: "" },
     { title: "8 - The OpenAI App",                url: "https://www.youtube.com/embed/uuxU_jT2KSM", summary: "", pdf: "" },
-    { title: "9 - ChatGPT’s Memory",              url: "https://www.youtube.com/embed/9ay1lsZ1ndQ", summary: "", pdf: "" },
+    { title: "9 - ChatGPT's Memory",              url: "https://www.youtube.com/embed/9ay1lsZ1ndQ", summary: "", pdf: "" },
     { title: "10 - Explaining CustomGPTs",        url: "https://www.youtube.com/embed/Juu7ZgbxocY", summary: "", pdf: "" },
     { title: "11 - Explaining NotebookLM",        url: "https://www.youtube.com/embed/lfDQkDcEHts", summary: "", pdf: "" },
     { title: "12 - Generating Images with Sora",  url: "https://www.youtube.com/embed/DH5u_J1fEdg", summary: "", pdf: "" },
@@ -41,63 +41,119 @@ const courses = {
 
 /* ----------  STATE & DOM  ---------- */
 let currentLang = "en";
-let index       = 0;
+let index = 0;
+let progressData = {
+  en: Array(courses.en.length).fill(false),
+  de: Array(courses.de.length).fill(false)
+};
 
-const frame    = document.getElementById("video-frame");
-const titleEl  = document.getElementById("video-title");
-const summEl   = document.getElementById("video-summary");
-const pdfLink  = document.getElementById("pdf-link");
-const prevBtn  = document.getElementById("prev-btn");
-const nextBtn  = document.getElementById("next-btn");
-const counter  = document.getElementById("counter");
+// Try to load saved progress from localStorage
+try {
+  const savedProgress = localStorage.getItem('courseProgress');
+  if (savedProgress) {
+    progressData = JSON.parse(savedProgress);
+  }
+} catch (e) {
+  console.error('Error loading progress:', e);
+}
+
+// UI Elements
+const frame = document.getElementById("video-frame");
+const titleEl = document.getElementById("video-title");
+const summEl = document.getElementById("video-summary");
+const pdfLink = document.getElementById("pdf-link");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const counter = document.getElementById("counter");
 const langBtns = document.querySelectorAll(".lang-toggle button");
+const progressBar = document.getElementById("progress-bar");
 
 /* ----------  RENDERING  ---------- */
-function currentList() { return courses[currentLang]; }
+function currentList() { 
+  return courses[currentLang]; 
+}
+
+function updateProgressBar() {
+  const total = currentList().length;
+  const completed = progressData[currentLang].filter(Boolean).length;
+  const percentage = (completed / total) * 100;
+  
+  progressBar.style.setProperty('--progress', `${percentage}%`);
+  progressBar.setAttribute('aria-valuenow', percentage);
+  progressBar.querySelector('::before').style.width = `${percentage}%`;
+}
 
 function loadVideo(i) {
   const vid = currentList()[i];
 
-  frame.src          = vid.url + "?rel=0";
+  // Mark current video as viewed/in progress
+  progressData[currentLang][i] = true;
+  saveProgress();
+  updateProgressBar();
+  
+  // Update UI
+  frame.src = vid.url + "?rel=0";
   titleEl.textContent = vid.title;
-  summEl.textContent  = vid.summary || " ";
+  summEl.textContent = vid.summary || " ";
 
   if (vid.pdf) {
     pdfLink.href = vid.pdf;
-    pdfLink.target = "_blank";                 // ✅ open in new tab
-    pdfLink.rel = "noopener noreferrer";       // ✅ security best practice
-    pdfLink.style.display = "inline-block";    // show link
+    pdfLink.target = "_blank";
+    pdfLink.rel = "noopener noreferrer";
+    pdfLink.style.display = "inline-flex";
   } else {
-    pdfLink.style.display = "none";            // hide if no PDF
+    pdfLink.style.display = "none";
   }
 
   counter.textContent = `${i + 1} / ${currentList().length}`;
   prevBtn.disabled = i === 0;
   nextBtn.disabled = i === currentList().length - 1;
+  
+  // Set progress bar width via CSS custom property
+  const progressPercentage = ((i + 1) / currentList().length) * 100;
+  progressBar.style.setProperty('--progress', `${progressPercentage}%`);
 }
 
 /* ----------  NAVIGATION  ---------- */
 function next() {
   if (index < currentList().length - 1) {
-    index++; loadVideo(index); window.scrollTo({ top: 0, behavior: "smooth" });
+    index++;
+    loadVideo(index);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
+
 function prev() {
   if (index > 0) {
-    index--; loadVideo(index); window.scrollTo({ top: 0, behavior: "smooth" });
+    index--;
+    loadVideo(index);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+/* ----------  PROGRESS MANAGEMENT ---------- */
+function saveProgress() {
+  try {
+    localStorage.setItem('courseProgress', JSON.stringify(progressData));
+  } catch (e) {
+    console.error('Error saving progress:', e);
   }
 }
 
 /* ----------  LANGUAGE SWITCH  ---------- */
-langBtns.forEach(btn=>{
-  btn.addEventListener("click", ()=> {
+langBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
     const lang = btn.dataset.lang;
     if (lang !== currentLang) {
       currentLang = lang;
       index = 0;
-      langBtns.forEach(b=>b.classList.toggle("active", b===btn));
+      
+      // Set active button
+      langBtns.forEach(b => b.classList.toggle("active", b === btn));
+      
+      // Update UI for new language
       loadVideo(index);
-      document.documentElement.lang = lang; // <html lang="">
+      document.documentElement.lang = lang;
     }
   });
 });
@@ -105,4 +161,12 @@ langBtns.forEach(btn=>{
 /* ----------  INIT  ---------- */
 prevBtn.addEventListener("click", prev);
 nextBtn.addEventListener("click", next);
+
+// Style the progress bar width through CSS custom property
+document.documentElement.style.setProperty('--progress-bar-before-width', '0%');
+
+// Initialize
 loadVideo(index);
+
+// Update progress bar on load
+updateProgressBar();
