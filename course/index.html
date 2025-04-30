@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LLM & Prompting – Workglaze Course Player</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="logo">
-        <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png" alt="Workglaze Logo">
-        <span>Workglaze</span>
-      </div>
 
-      <!-- Language switcher -->
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#">
+        <img src="https://workglaze.com/img/Workglaze%20Logo%20Icon.png" alt="Workglaze">
+        <span>Workglaze</span>
+      </a>
+
       <nav class="lang-toggle" aria-label="Language switch">
         <button data-lang="en" class="active">EN</button>
         <button data-lang="de">DE</button>
@@ -28,69 +28,44 @@
     </div>
   </header>
 
-  <!-- ─── Player ─────────────────────────────────────────────── -->
+  <!-- ===== COURSE PLAYER ===== -->
   <main class="container">
-    <div id="player" class="course-player">
-
-      <div class="course-header">
-        <h1 id="video-title"></h1>
+    <article id="player" class="course-player">
+      <header class="course-header">
+        <h1 id="video-title" class="video-title"> </h1>
         <span id="counter" class="counter"></span>
-      </div>
+      </header>
 
       <div class="video-wrapper">
-        <iframe id="video-frame" title="Course video" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+        <iframe
+          id="video-frame"
+          title="Course video"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
       </div>
 
       <section class="content-wrap">
         <p id="video-summary"></p>
-
-        <!-- PDF (only slide 14 shows it) -->
-        <a id="pdf-link" class="pdf-link" download hidden>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="12" y1="18" x2="12" y2="12"/>
-            <line x1="9" y1="15" x2="15" y2="15"/>
-          </svg>
-          Download PDF
-        </a>
+        <a id="pdf-link" class="pdf-link" target="_blank" rel="noopener" hidden>Download PDF</a>
       </section>
 
-      <!-- Navigation -->
-      <nav class="course-nav">
-        <button id="prev-btn" class="nav-btn prev" aria-label="Previous video">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-          </svg>
-          Previous
-        </button>
-
-        <button id="next-btn" class="nav-btn next" aria-label="Next video">
-          Next
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </button>
-
-        <button id="finish-btn" class="nav-btn finish" hidden>           <!-- ← NEW -->
-          Finish&nbsp;🎉
-        </button>
+      <nav class="course-nav" aria-label="Lesson navigation">
+        <button id="prev-btn"  class="nav-btn prev"  disabled>Previous</button>
+        <button id="next-btn"  class="nav-btn next">Next</button>
+        <button id="finish-btn" class="nav-btn finish" hidden>Finish 🎉</button>
       </nav>
-    </div>
+    </article>
 
-    <!-- “Well done” screen (shown after Finish)  ← NEW -->
+    <!-- ===== COMPLETE SCREEN ===== -->
     <section id="complete-screen" class="complete-screen" hidden>
       <h2>Well done – you’ve finished the course!</h2>
       <p>You can close this tab or switch language to start again.</p>
     </section>
   </main>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
 </body>
 </html>
