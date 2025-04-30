@@ -14,11 +14,6 @@ body {
   align-items: center;
   min-height: 100vh;
   padding-bottom: 2rem;
-  transition: background-color 0.6s ease, color 0.6s ease;
-}
-body.dark-mode {
-  background: #121212;
-  color: #ddd;
 }
 
 /* ===== HEADER ===== */
@@ -32,11 +27,7 @@ body.dark-mode {
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 1000;
-  transition: background-color 0.6s ease;
   margin-bottom: 2rem;
-}
-body.dark-mode .site-header {
-  background: #1e1e1e;
 }
 .header-left,
 .header-right {
@@ -49,10 +40,6 @@ body.dark-mode .site-header {
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
-  transition: color 0.6s;
-}
-body.dark-mode .logo-text {
-  color: #ddd;
 }
 .logo-img {
   height: 40px;
@@ -68,18 +55,12 @@ body.dark-mode .logo-text {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s;
   cursor: pointer;
   text-decoration: none;
 }
-body.dark-mode .header-button {
-  color: #ddd;
-}
 .header-button:hover {
   background-color: rgba(0,0,0,0.08);
-}
-body.dark-mode .header-button:hover {
-  background-color: rgba(255,255,255,0.1);
 }
 
 /* ===== LAYOUT ===== */
@@ -90,11 +71,6 @@ body.dark-mode .header-button:hover {
   padding: 3rem 5%;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: background-color 0.6s ease;
-}
-body.dark-mode .player {
-  background: #262626;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== LANGUAGE BUTTONS ===== */
@@ -106,15 +82,11 @@ body.dark-mode .player {
   border: none;
   background: #ebebeb;
   padding: 0.4rem 0.8rem;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.15s;
   font-weight: 500;
-}
-body.dark-mode .site-header .lang-toggle button {
-  background: #333;
-  color: #ddd;
 }
 .site-header .lang-toggle button.active,
 .site-header .lang-toggle button:hover {
@@ -153,10 +125,6 @@ iframe {
   color: #666;
   line-height: 1.5;
   margin-bottom: 1.25rem;
-  transition: color 0.6s;
-}
-body.dark-mode #video-summary {
-  color: #aaa;
 }
 
 /* ===== BUTTONS ===== */
@@ -171,12 +139,10 @@ body.dark-mode #video-summary {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+  transition: background 0.15s;
 }
 .button:hover:not(:disabled) {
   background: #555;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .button.primary {
   background: #2196f3;
@@ -187,20 +153,6 @@ body.dark-mode #video-summary {
 .button:disabled {
   opacity: 0.35;
   cursor: default;
-  transform: none;
-  box-shadow: none;
-}
-body.dark-mode .button {
-  background: #444;
-}
-body.dark-mode .button:hover:not(:disabled) {
-  background: #555;
-}
-body.dark-mode .button.primary {
-  background: #1976d2;
-}
-body.dark-mode .button.primary:hover:not(:disabled) {
-  background: #1565c0;
 }
 
 /* ===== NAVIGATION ===== */
@@ -212,14 +164,15 @@ body.dark-mode .button.primary:hover:not(:disabled) {
   justify-content: center;
   align-items: center;
 }
+.nav button {
+  background: #333;
+  color: #fff;
+  min-width: 100px;
+}
 #counter { 
   font-size: 1rem; 
   color: #666;
   padding: 0 1rem;
-  transition: color 0.6s;
-}
-body.dark-mode #counter {
-  color: #aaa;
 }
 #finish-btn {
   display: none;
@@ -237,10 +190,6 @@ body.dark-mode #counter {
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  transition: background-color 0.6s ease;
-}
-body.dark-mode .final-page {
-  background: rgba(18, 18, 18, 0.97);
 }
 .final-content {
   background: #fff;
@@ -250,11 +199,6 @@ body.dark-mode .final-page {
   max-width: 600px;
   width: 90%;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.6s ease;
-}
-body.dark-mode .final-content {
-  background: #262626;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 .final-content h1 {
   margin-bottom: 1.5rem;
@@ -264,10 +208,6 @@ body.dark-mode .final-content {
   margin-bottom: 2rem;
   font-size: 1.1rem;
   color: #666;
-  transition: color 0.6s;
-}
-body.dark-mode .final-content p {
-  color: #aaa;
 }
 .final-buttons {
   display: flex;
