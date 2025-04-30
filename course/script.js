@@ -53,7 +53,6 @@ const finishBtn = document.getElementById("finish-btn");
 const counter = document.getElementById("counter");
 const langBtns = document.querySelectorAll(".lang-toggle button");
 const finalPage = document.getElementById("final-page");
-const darkModeToggle = document.getElementById("dark-mode-toggle");
 
 /* ----------  RENDERING  ---------- */
 function currentList() { return courses[currentLang]; }
@@ -111,22 +110,7 @@ function closeFinalPage() {
   finalPage.classList.add("hidden");
 }
 
-/* ----------  DARK MODE TOGGLE  ---------- */
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  
-  const icon = darkModeToggle.querySelector("i");
-  if (document.body.classList.contains("dark-mode")) {
-    icon.classList.remove("fa-moon");
-    icon.classList.add("fa-sun");
-  } else {
-    icon.classList.remove("fa-sun");
-    icon.classList.add("fa-moon");
-  }
-  
-  // Save preference
-  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-}
+/* No dark mode toggle */
 
 /* ----------  LANGUAGE SWITCH  ---------- */
 langBtns.forEach(btn => {
@@ -146,7 +130,6 @@ langBtns.forEach(btn => {
 prevBtn.addEventListener("click", prev);
 nextBtn.addEventListener("click", next);
 finishBtn.addEventListener("click", finish);
-darkModeToggle.addEventListener("click", toggleDarkMode);
 
 // Final page - clicking outside content closes it
 finalPage.addEventListener("click", (e) => {
@@ -154,11 +137,6 @@ finalPage.addEventListener("click", (e) => {
     closeFinalPage();
   }
 });
-
-// Check for dark mode preference
-if (localStorage.getItem("darkMode") === "true") {
-  toggleDarkMode();
-}
 
 // Initial load
 loadVideo(index);
