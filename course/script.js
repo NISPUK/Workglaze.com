@@ -64,9 +64,11 @@ function loadVideo(i) {
 
   if (vid.pdf) {
     pdfLink.href = vid.pdf;
-    pdfLink.style.display = "inline-block";
+    pdfLink.target = "_blank";                 // ✅ open in new tab
+    pdfLink.rel = "noopener noreferrer";       // ✅ security best practice
+    pdfLink.style.display = "inline-block";    // show link
   } else {
-    pdfLink.style.display = "none";
+    pdfLink.style.display = "none";            // hide if no PDF
   }
 
   counter.textContent = `${i + 1} / ${currentList().length}`;
