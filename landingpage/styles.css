@@ -24,7 +24,7 @@ main {
 }
 
 /*************************************
- * HERO-BEREICH
+ * HERO SECTION
  *************************************/
 .hero-section {
   padding: 4rem 5% 3rem; 
@@ -57,7 +57,9 @@ main {
   color: #666;
 }
 
-/* CTA BUTTON */
+/*************************************
+ * CTA BUTTON
+ *************************************/
 .cta-button {
   display: block;
   width: fit-content;
@@ -170,13 +172,18 @@ main {
 /*************************************
  * APPLY SECTION
  *************************************/
-.apply-section {
+.apply-wrapper {
   padding: 3rem 5%;
-  max-width: 1200px;
-  margin: 2rem auto;
+  background: #f2f2f2;
+}
+
+.apply-section {
   background: #ffffff;
+  max-width: 1200px;
+  margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-radius: 8px;
+  padding: 3rem 5%;
   text-align: center;
   transition: background-color 0.6s, box-shadow 0.6s;
 }
@@ -184,11 +191,6 @@ main {
 .apply-inner {
   max-width: 600px;
   margin: 0 auto;
-}
-
-.centered-apply {
-  margin: 0 auto;
-  text-align: center;
 }
 
 .apply-section h2 {
