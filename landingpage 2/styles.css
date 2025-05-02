@@ -139,6 +139,10 @@ main {
 .offerings-section {
     margin-bottom: 2.5rem;
 }
+/* NEU: Abstand für Lead Magnet Hinweis */
+.lead-magnet-hint {
+     margin-bottom: 2.5rem; /* Gleicher Abstand wie Sektionen */
+}
 main > *:last-child {
      margin-bottom: 0;
  }
@@ -175,6 +179,28 @@ main > *:last-child {
   margin: 0 auto 2.5rem;
   color: #6c757d;
 }
+
+/*************************************
+ * LEAD MAGNET HINT (Neu)
+ *************************************/
+.lead-magnet-hint {
+    text-align: center;
+    padding: 0 5%; /* Horizontalen Abstand beibehalten */
+}
+.lead-magnet-hint p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+}
+.lead-magnet-hint a {
+    color: #6c757d;
+    text-decoration: underline;
+    font-weight: 500;
+}
+.lead-magnet-hint a:hover {
+    color: #343a40;
+}
+
 
 /*************************************
  * CTA BUTTON
@@ -251,7 +277,6 @@ main > *:last-child {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-/* Styling für Emoji */
 .emoji-icon {
     font-size: 2.5rem;
     line-height: 1;
@@ -303,7 +328,7 @@ main > *:last-child {
 
 
 /*************************************
- * TABS SECTION (Styles für Inhalt & Logos)
+ * TABS SECTION
  *************************************/
  .tabs-section {
      /* Keine eigene Box-Styles */
@@ -370,13 +395,13 @@ main > *:last-child {
 .tab-panel.active {
     display: block;
 }
-.tab-panel h3 { /* Hauptüberschrift im Tab */
-    font-size: 1.5rem; /* Größer */
+.tab-panel h3 {
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
     color: #343a40;
 }
-.tab-panel .tab-subheading { /* Sub-Überschrift für Listen */
+.tab-panel .tab-subheading {
     font-size: 1.1rem;
     font-weight: 600;
     color: #495057;
@@ -387,7 +412,7 @@ main > *:last-child {
     color: #495057;
     margin-bottom: 1rem;
 }
-.tab-panel .tab-list { /* Styling für Listen in Tabs */
+.tab-panel .tab-list {
     list-style: disc;
     padding-left: 20px;
     margin-bottom: 1.5rem;
@@ -396,34 +421,31 @@ main > *:last-child {
     margin-bottom: 0.5rem;
     color: #495057;
 }
-
-/* Styling für Logos in Tabs */
 .tab-logos {
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e9ecef;
-    /* Flexbox für Logo-Anordnung */
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem; /* Abstand zwischen Logos */
-    align-items: center; /* Vertikal zentrieren */
+    gap: 1.5rem;
+    align-items: center;
 }
-.logo-label { /* Label für Logos */
-    width: 100%; /* Volle Breite für das Label */
+.logo-label {
+    width: 100%;
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #343a40;
     font-size: 0.9rem;
 }
-.tab-client-logo { /* Logos in Tabs - Größer */
-    display: block; /* Sicherstellen, dass es Block ist für max-Werte */
-    max-height: 55px; /* Maximalhöhe erhöht */
-    max-width: 180px; /* Maximale Breite erhöht */
-    width: auto; /* Automatische Breite beibehalten */
-    height: auto; /* Automatische Höhe */
-    object-fit: contain; /* Bild einpassen, nicht verzerren */
+.tab-client-logo {
+    display: block;
+    max-height: 55px;
+    max-width: 180px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     opacity: 0.9;
-    vertical-align: middle; /* Besser ausrichten, falls nicht Flexbox */
+    vertical-align: middle;
 }
 
 @keyframes fadeIn {
@@ -455,9 +477,6 @@ main > *:last-child {
 .benefit-item.item-3 { grid-column: 1 / span 2; }
 .benefit-item.item-4 { grid-column: 3 / span 2; }
 .benefit-item.item-5 { grid-column: 5 / span 2; }
-
-/* Entferne Placeholder Styles */
-/* .icon-placeholder { ... } */
 
  .benefit-item h3 {
     font-size: 1.2rem;
@@ -527,7 +546,7 @@ main > *:last-child {
   border-radius: 8px;
   padding: 3.5rem 5%;
   text-align: center;
-   margin-bottom: 0 !important; /* Wichtig, da im Wrapper */
+   margin-bottom: 0 !important;
 }
 .apply-inner {
   max-width: 650px;
@@ -682,7 +701,8 @@ main > *:last-child {
     .benefits-section,
     .objections-section,
     .apply-wrapper,
-    .offerings-section {
+    .offerings-section,
+    .lead-magnet-hint { /* Hinweis bekommt auch Margin */
         margin-bottom: 2rem;
     }
 
@@ -703,10 +723,10 @@ main > *:last-child {
         grid-template-columns: repeat(2, 1fr);
     }
      .tab-logos {
-        gap: 1rem; /* Weniger Gap für Logos */
+        gap: 1rem;
      }
      .tab-client-logo {
-         max-height: 50px; /* Etwas kleiner auf Tablet */
+         max-height: 50px;
          max-width: 160px;
      }
 }
@@ -721,7 +741,8 @@ main > *:last-child {
     .benefits-section,
     .objections-section,
     .apply-wrapper,
-    .offerings-section {
+    .offerings-section,
+    .lead-magnet-hint { /* Hinweis bekommt auch Margin */
         margin-bottom: 1.5rem;
     }
 
@@ -801,7 +822,7 @@ main > *:last-child {
         gap: 1rem;
      }
      .tab-client-logo {
-         max-height: 45px; /* Noch etwas kleiner auf Mobile */
+         max-height: 45px;
          max-width: 140px;
      }
 
