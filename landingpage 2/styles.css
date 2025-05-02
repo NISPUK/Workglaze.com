@@ -9,8 +9,8 @@
 
 html, body {
   font-family: 'Poppins', sans-serif;
-  background: #f8f9fa; /* Noch hellerer Haupt-Hintergrund */
-  color: #343a40; /* Etwas dunklerer Standardtext */
+  background: #f8f9fa;
+  color: #343a40;
   height: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -41,7 +41,7 @@ html, body {
 
 /* Zentrierter Container */
 .section-inner, .hero-inner, .foundation-why-inner, .how-it-works-grid, .comparison-inner, .benefits-grid, .objections-grid, .tabs-inner, .apply-inner, .offerings-grid-2x2 {
-    max-width: 1140px; /* Etwas schmaler */
+    max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -50,8 +50,8 @@ html, body {
 .section-heading {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1.5rem; /* Weniger Abstand unten */
-  color: #212529; /* Fast schwarz */
+  margin-bottom: 1.5rem;
+  color: #212529;
   text-align: center;
 }
 /* Sub-Überschrift unter Hauptüberschrift */
@@ -59,8 +59,8 @@ html, body {
   font-size: 1.1rem;
   font-weight: 300;
   max-width: 700px;
-  margin: -0.5rem auto 2.5rem; /* Angepasster Abstand */
-  color: #6c757d; /* Grauton */
+  margin: -0.5rem auto 2.5rem;
+  color: #6c757d;
   text-align: center;
 }
 
@@ -80,18 +80,18 @@ html, body {
 
 /* Inline Link Style für Objections etc. */
 .inline-link {
-    color: #343a40; /* Dunkel */
+    color: #343a40;
     font-weight: 500;
     text-decoration: underline;
     transition: color 0.2s ease;
 }
 .inline-link:hover {
-    color: #000; /* Schwarz */
+    color: #000;
 }
 
 
 /*************************************
- * LANGUAGE SWITCHER (Keine Änderung)
+ * LANGUAGE SWITCHER
  *************************************/
 .language-switcher {
     position: fixed;
@@ -126,7 +126,7 @@ main {
 }
 
 /*************************************
- * *** NEU: ABSTAND ZWISCHEN SEKTIONEN ***
+ * ABSTAND ZWISCHEN SEKTIONEN
  *************************************/
 .hero-section,
 .foundation-why-section,
@@ -135,12 +135,11 @@ main {
 .tabs-section,
 .benefits-section,
 .objections-section,
-.apply-wrapper, /* Wrapper um Apply Section */
+.apply-wrapper,
 .offerings-section {
-    margin-bottom: 2.5rem; /* Vertikaler Abstand zwischen den Sektionen */
+    margin-bottom: 2.5rem;
 }
-/* Sicherstellen, dass die letzte Sektion vor dem Footer keinen extra Abstand hat, falls der Footer margin-top hat */
-main > *:last-child { /* Wählt das letzte Kind von main aus */
+main > *:last-child {
      margin-bottom: 0;
  }
 
@@ -150,12 +149,11 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  *************************************/
 .hero-section {
   padding: 5rem 5% 4rem;
-  max-width: 1140px; /* Angepasst an neue max-width */
-  margin-left: auto; /* Zentrieren */
-  margin-right: auto; /* Zentrieren */
-  /* margin-bottom hinzugefügt oben */
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
   background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtilerer Schatten */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 8px;
   text-align: center;
 }
@@ -186,7 +184,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
   width: auto;
   margin: 0 auto;
   padding: 1rem 2.5rem;
-  background: #343a40; /* Dunkler Button */
+  background: #343a40;
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
@@ -197,20 +195,17 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
   cursor: pointer;
 }
 .cta-button:hover {
-  background: #000; /* Schwarz */
+  background: #000;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-/* Restliche Styles bleiben wie in der vorherigen Version... */
 
 /*************************************
  * WHY FOUNDATION SECTION
  *************************************/
 .foundation-why-section {
-    /* margin-bottom hinzugefügt oben */
     background: #ffffff;
-    border-radius: 8px; /* Rundung für die Box selbst */
+    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 .foundation-why-inner .sub-heading {
@@ -219,7 +214,6 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     margin-bottom: 1rem;
     color: #343a40;
 }
-
 .foundation-why-inner .text-column p {
     margin-bottom: 1rem;
     color: #495057;
@@ -243,9 +237,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  * HOW IT WORKS SECTION
  *************************************/
  .how-it-works-section {
-     /* margin-bottom hinzugefügt oben */
-     /* Hintergrund wird über .light-bg gesteuert */
-     /* Keine eigene Rundung/Schatten, da die Items das haben */
+     /* Keine eigene Box-Styles */
  }
 .how-it-works-item {
     background: #ffffff;
@@ -259,6 +251,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
+/* Styling für Emoji */
 .emoji-icon {
     font-size: 2.5rem;
     line-height: 1;
@@ -279,8 +272,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  * COMPARISON SECTION
  *************************************/
  .comparison-section {
-     /* margin-bottom hinzugefügt oben */
-     background: #ffffff; /* Eigener Hintergrund */
+     background: #ffffff;
      border-radius: 8px;
      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
  }
@@ -288,12 +280,11 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     border: 1px solid #dee2e6;
     padding: 2rem;
     border-radius: 8px;
-    /* Remove background if section has own background */
-     background: #ffffff;
+    background: #ffffff;
 }
 .comparison-column.highlight-column {
     border-color: #343a40;
-    background: #f8f9fa; /* Leichter Kontrast zum Sektionshintergrund */
+    background: #f8f9fa;
 }
 .comparison-column h3 {
     font-size: 1.4rem;
@@ -312,11 +303,10 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
 
 
 /*************************************
- * TABS SECTION
+ * TABS SECTION (Styles für Inhalt & Logos)
  *************************************/
  .tabs-section {
-     /* margin-bottom hinzugefügt oben */
-     /* Hintergrund wird über .light-bg gesteuert */
+     /* Keine eigene Box-Styles */
  }
 .tabs-inner {
     max-width: 900px;
@@ -366,13 +356,12 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     transform: scaleX(1);
 }
 .tab-content-panels {
-   /* Kein extra Styling nötig */
+   /* Kein extra Styling */
 }
 .tab-panel {
     display: none;
     padding: 2.5rem;
-    /* Panel Hintergrund an Section anpassen falls light-bg */
-    background: #ffffff; /* Explizit weiß für Panel */
+    background: #ffffff;
     border: 1px solid #dee2e6;
     border-top: none;
     border-radius: 0 0 8px 8px;
@@ -381,34 +370,62 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
 .tab-panel.active {
     display: block;
 }
-.tab-panel h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+.tab-panel h3 { /* Hauptüberschrift im Tab */
+    font-size: 1.5rem; /* Größer */
+    font-weight: 600;
+    margin-bottom: 1.2rem;
     color: #343a40;
+}
+.tab-panel .tab-subheading { /* Sub-Überschrift für Listen */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
 }
 .tab-panel p {
     color: #495057;
     margin-bottom: 1rem;
 }
-.tab-logos {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
+.tab-panel .tab-list { /* Styling für Listen in Tabs */
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
 }
-.tab-logos p {
+.tab-panel .tab-list li {
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+/* Styling für Logos in Tabs */
+.tab-logos {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+    /* Flexbox für Logo-Anordnung */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Abstand zwischen Logos */
+    align-items: center; /* Vertikal zentrieren */
+}
+.logo-label { /* Label für Logos */
+    width: 100%; /* Volle Breite für das Label */
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #343a40;
     font-size: 0.9rem;
 }
-.client-logo-small {
-    max-height: 35px;
-    max-width: 120px;
-    width: auto;
+.tab-client-logo { /* Logos in Tabs - Größer */
+    display: block; /* Sicherstellen, dass es Block ist für max-Werte */
+    max-height: 55px; /* Maximalhöhe erhöht */
+    max-width: 180px; /* Maximale Breite erhöht */
+    width: auto; /* Automatische Breite beibehalten */
+    height: auto; /* Automatische Höhe */
+    object-fit: contain; /* Bild einpassen, nicht verzerren */
     opacity: 0.9;
-    margin: 0.5rem 0.8rem 0.5rem 0;
-    vertical-align: middle;
+    vertical-align: middle; /* Besser ausrichten, falls nicht Flexbox */
 }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -418,8 +435,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  * BENEFITS SECTION
  *************************************/
 .benefits-section {
-     /* margin-bottom hinzugefügt oben */
-    background: #ffffff; /* Eigener Hintergrund */
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -440,18 +456,9 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
 .benefit-item.item-4 { grid-column: 3 / span 2; }
 .benefit-item.item-5 { grid-column: 5 / span 2; }
 
-.icon-placeholder {
-    width: 45px;
-    height: 45px;
-    background: #dee2e6;
-    border-radius: 50%;
-    margin: 0 auto 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 1.5rem;
-}
+/* Entferne Placeholder Styles */
+/* .icon-placeholder { ... } */
+
  .benefit-item h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -466,8 +473,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  * OBJECTIONS SECTION
  *************************************/
  .objections-section {
-     /* margin-bottom hinzugefügt oben */
-     /* Hintergrund wird über .light-bg gesteuert */
+     /* Keine eigene Box-Styles */
  }
 .objections-grid {
     display: grid;
@@ -513,8 +519,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  *************************************/
 .apply-wrapper {
   background: #f8f9fa;
-  /* margin-bottom hinzugefügt oben */
-  border-radius: 8px; /* Rundung für Wrapper */
+  border-radius: 8px;
 }
 .apply-section {
   background: #ffffff;
@@ -522,8 +527,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
   border-radius: 8px;
   padding: 3.5rem 5%;
   text-align: center;
-   /* Reset margin, da der Wrapper den Abstand hat */
-   margin-bottom: 0 !important;
+   margin-bottom: 0 !important; /* Wichtig, da im Wrapper */
 }
 .apply-inner {
   max-width: 650px;
@@ -542,7 +546,6 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
  * OFFERINGS SECTION
  *************************************/
 .offerings-section {
-  /* margin-bottom hinzugefügt oben */
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 8px;
@@ -623,8 +626,6 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
   padding: 1.5rem 5%;
   background: #f1f3f5;
   color: #6c757d;
-  /* Footer braucht keinen margin-bottom mehr, da letztes Element */
-  /* margin-top: 3rem; */ /* Wird indirekt durch margin-bottom der letzten Sektion erzeugt */
   border-top: 1px solid #dee2e6;
 }
 
@@ -670,10 +671,9 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
 
 
 /*************************************
- * RESPONSIVE DESIGN (Anpassungen für Margin)
+ * RESPONSIVE DESIGN
  *************************************/
 @media (max-width: 1024px) {
-    /* Behalte 2.5rem margin-bottom bei, oder reduziere leicht */
     .hero-section,
     .foundation-why-section,
     .how-it-works-section,
@@ -683,7 +683,7 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     .objections-section,
     .apply-wrapper,
     .offerings-section {
-        margin-bottom: 2rem; /* Leicht reduziert für Tablet */
+        margin-bottom: 2rem;
     }
 
     .three-column-grid {
@@ -702,11 +702,17 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     .offerings-grid-2x2 {
         grid-template-columns: repeat(2, 1fr);
     }
+     .tab-logos {
+        gap: 1rem; /* Weniger Gap für Logos */
+     }
+     .tab-client-logo {
+         max-height: 50px; /* Etwas kleiner auf Tablet */
+         max-width: 160px;
+     }
 }
 
 
 @media (max-width: 768px) {
-    /* Reduziere margin-bottom auf Mobile weiter */
     .hero-section,
     .foundation-why-section,
     .how-it-works-section,
@@ -716,11 +722,11 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     .objections-section,
     .apply-wrapper,
     .offerings-section {
-        margin-bottom: 1.5rem; /* Reduziert für Mobile */
+        margin-bottom: 1.5rem;
     }
 
   .section-padding {
-      padding: 2.5rem 5%; /* Weniger Padding auf Mobile */
+      padding: 2.5rem 5%;
   }
   .section-heading {
     font-size: 1.6rem;
@@ -788,6 +794,17 @@ main > *:last-child { /* Wählt das letzte Kind von main aus */
     .tab-panel h3 {
         font-size: 1.2rem;
     }
+    .tab-panel .tab-subheading {
+        font-size: 1rem;
+    }
+     .tab-logos {
+        gap: 1rem;
+     }
+     .tab-client-logo {
+         max-height: 45px; /* Noch etwas kleiner auf Mobile */
+         max-width: 140px;
+     }
+
 
     .benefits-grid {
         grid-template-columns: 1fr;
