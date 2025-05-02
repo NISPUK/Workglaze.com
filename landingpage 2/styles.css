@@ -136,12 +136,9 @@ main {
 .benefits-section,
 .objections-section,
 .apply-wrapper,
-.offerings-section {
+.offerings-section,
+.lead-magnet-hint { /* Hinweis bekommt auch Margin */
     margin-bottom: 2.5rem;
-}
-/* NEU: Abstand für Lead Magnet Hinweis */
-.lead-magnet-hint {
-     margin-bottom: 2.5rem; /* Gleicher Abstand wie Sektionen */
 }
 main > *:last-child {
      margin-bottom: 0;
@@ -181,25 +178,19 @@ main > *:last-child {
 }
 
 /*************************************
- * LEAD MAGNET HINT (Neu)
+ * LEAD MAGNET HINT (Link entfernt, kursiv)
  *************************************/
 .lead-magnet-hint {
     text-align: center;
-    padding: 0 5%; /* Horizontalen Abstand beibehalten */
+    padding: 0 5%;
 }
 .lead-magnet-hint p {
     font-size: 0.9rem;
     color: #6c757d;
-    font-style: italic;
+    font-style: italic; /* Kursiv */
 }
-.lead-magnet-hint a {
-    color: #6c757d;
-    text-decoration: underline;
-    font-weight: 500;
-}
-.lead-magnet-hint a:hover {
-    color: #343a40;
-}
+/* Entferne Styling für Link, da Link entfernt wurde */
+/* .lead-magnet-hint a { ... } */
 
 
 /*************************************
@@ -328,7 +319,7 @@ main > *:last-child {
 
 
 /*************************************
- * TABS SECTION
+ * TABS SECTION (Logo Größe angepasst)
  *************************************/
  .tabs-section {
      /* Keine eigene Box-Styles */
@@ -428,7 +419,7 @@ main > *:last-child {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    align-items: center;
+    align-items: center; /* Wichtig für unterschiedliche Höhen */
 }
 .logo-label {
     width: 100%;
@@ -438,12 +429,12 @@ main > *:last-child {
     font-size: 0.9rem;
 }
 .tab-client-logo {
-    display: block;
-    max-height: 55px;
-    max-width: 180px;
+    display: inline-block; /* Inline-Block für besseres Flow */
+    max-height: 65px; /* Maximalhöhe erhöht */
+    max-width: 200px; /* Maximale Breite leicht erhöht */
     width: auto;
     height: auto;
-    object-fit: contain;
+    object-fit: contain; /* Wichtig! */
     opacity: 0.9;
     vertical-align: middle;
 }
@@ -534,7 +525,7 @@ main > *:last-child {
 
 
 /*************************************
- * APPLY SECTION
+ * APPLY SECTION (Padding entfernt)
  *************************************/
 .apply-wrapper {
   background: #f8f9fa;
@@ -544,13 +535,16 @@ main > *:last-child {
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 8px;
-  padding: 3.5rem 5%;
+  /* padding entfernt, wird von .apply-wrapper .section-padding übernommen */
+  /* padding: 3.5rem 5%; */
   text-align: center;
    margin-bottom: 0 !important;
 }
 .apply-inner {
   max-width: 650px;
   margin: 0 auto;
+  /* Innenabstand wieder hier hinzufügen, wenn der Wrapper das Padding hat */
+   padding: 3.5rem 0; /* Nur vertikales Padding, da horizontal vom Wrapper */
 }
 .apply-section h2 {
   font-size: 1.8rem;
@@ -639,7 +633,7 @@ main > *:last-child {
 }
 
 /*************************************
- * FOOTER
+ * FOOTER (Mit Logo)
  *************************************/
 .site-footer {
   padding: 1.5rem 5%;
@@ -660,9 +654,17 @@ main > *:last-child {
 }
 
 .footer-left {
-   /* Optional */
+   /* Flexbox für Logo + Name (optional) */
+   display: flex;
+   align-items: center;
+   gap: 0.8rem; /* Abstand zwischen Logo und Name */
 }
-.footer-company {
+.footer-logo {
+    max-height: 25px; /* Höhe für Footer-Logo */
+    width: auto;
+    vertical-align: middle; /* Falls nicht Flexbox */
+}
+.footer-company { /* Optional: Name neben Logo */
   font-size: 1rem;
   font-weight: 600;
   color: #495057;
@@ -702,7 +704,7 @@ main > *:last-child {
     .objections-section,
     .apply-wrapper,
     .offerings-section,
-    .lead-magnet-hint { /* Hinweis bekommt auch Margin */
+    .lead-magnet-hint {
         margin-bottom: 2rem;
     }
 
@@ -729,6 +731,10 @@ main > *:last-child {
          max-height: 50px;
          max-width: 160px;
      }
+     .apply-inner {
+         padding: 3rem 0; /* Padding anpassen */
+     }
+
 }
 
 
@@ -742,7 +748,7 @@ main > *:last-child {
     .objections-section,
     .apply-wrapper,
     .offerings-section,
-    .lead-magnet-hint { /* Hinweis bekommt auch Margin */
+    .lead-magnet-hint {
         margin-bottom: 1.5rem;
     }
 
@@ -850,8 +856,11 @@ main > *:last-child {
     font-size: 1.5rem;
   }
   .apply-section {
-      padding: 2.5rem 5%;
+      /* Kein Padding mehr hier */
   }
+   .apply-inner {
+         padding: 2.5rem 0; /* Padding anpassen */
+     }
 
   .offerings-grid-2x2 {
     grid-template-columns: 1fr;
@@ -864,7 +873,7 @@ main > *:last-child {
     gap: 1rem;
     font-size: 0.8rem;
   }
-   .footer-left { order: 2; }
+   .footer-left { order: 2; justify-content: center;} /* Zentrieren auf Mobile */
    .legal-links { order: 1; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem;}
    .footer-bottom { order: 3; margin-top: 0.5rem; }
 
