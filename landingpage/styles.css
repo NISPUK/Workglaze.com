@@ -173,14 +173,15 @@ main {
  * APPLY SECTION
  *************************************/
 .apply-wrapper {
-  padding: 3rem 5%;
   background: #f2f2f2;
+  padding-top: 0;
+  padding-bottom: 3rem;
 }
 
 .apply-section {
   background: #ffffff;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-radius: 8px;
   padding: 3rem 5%;
