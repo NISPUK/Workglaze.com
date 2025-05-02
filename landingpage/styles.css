@@ -17,15 +17,6 @@ html, body {
 }
 
 /*************************************
- * DUNKELMODUS
- *************************************/
-body.dark-mode {
-  background: #121212;
-  color: #ddd;
-  transition: background-color 0.8s ease, color 0.8s ease;
-}
-
-/*************************************
  * MAIN CONTENT
  *************************************/
 main {
@@ -46,11 +37,6 @@ main {
   transition: background-color 0.6s, box-shadow 0.6s;
 }
 
-body.dark-mode .hero-section {
-  background: #1e1e1e;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
 .hero-inner {
   max-width: 800px;
   margin: 0 auto;
@@ -62,9 +48,6 @@ body.dark-mode .hero-section {
   margin-bottom: 1rem;
   color: #222;
 }
-body.dark-mode .hero-title {
-  color: #eee;
-}
 
 .hero-subtitle {
   font-size: 1.2rem;
@@ -72,9 +55,6 @@ body.dark-mode .hero-title {
   max-width: 600px;
   margin: 0 auto 2rem;
   color: #666;
-}
-body.dark-mode .hero-subtitle {
-  color: #ccc;
 }
 
 /* VIDEO-CONTAINER */
@@ -88,11 +68,6 @@ body.dark-mode .hero-subtitle {
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   margin-bottom: 2rem;
-}
-
-body.dark-mode .video-container {
-  background: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .video-thumbnail {
@@ -155,13 +130,6 @@ body.dark-mode .video-container {
   background: #555;
   transform: translateY(-2px);
 }
-body.dark-mode .cta-button {
-  background: #ddd;
-  color: #111;
-}
-body.dark-mode .cta-button:hover {
-  background: #bbb;
-}
 
 /*************************************
  * OFFERINGS SECTION
@@ -177,20 +145,11 @@ body.dark-mode .cta-button:hover {
   transition: background-color 0.6s, box-shadow 0.6s;
 }
 
-body.dark-mode .offerings-section {
-  background: #1e1e1e;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
 .section-heading {
   font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 2rem;
   color: #333;
-}
-
-body.dark-mode .section-heading {
-  color: #ddd;
 }
 
 .offerings-grid {
@@ -216,15 +175,6 @@ body.dark-mode .section-heading {
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-body.dark-mode .offering-card {
-  background: #2a2a2a;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-body.dark-mode .offering-card:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-}
-
 .offering-image {
   margin-bottom: 1rem;
   border-radius: 4px;
@@ -248,19 +198,11 @@ body.dark-mode .offering-card:hover {
   font-weight: 600;
 }
 
-body.dark-mode .offering-card h3 {
-  color: #eee;
-}
-
 .offering-card p {
   font-size: 0.95rem;
   color: #666;
   margin-bottom: 1.5rem;
   flex-grow: 1;
-}
-
-body.dark-mode .offering-card p {
-  color: #bbb;
 }
 
 .price-tag {
@@ -292,15 +234,6 @@ body.dark-mode .offering-card p {
   transform: translateY(-2px);
 }
 
-body.dark-mode .resource-button {
-  background: #222;
-  color: #fff;
-}
-
-body.dark-mode .resource-button:hover {
-  background: #444;
-}
-
 /*************************************
  * APPLY SECTION
  *************************************/
@@ -330,15 +263,6 @@ body.dark-mode .resource-button:hover {
   color: #666;
 }
 
-body.dark-mode .apply-section {
-  background: #2a2a2a;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-body.dark-mode .apply-section p {
-  color: #bbb;
-}
-
 /*************************************
  * FUßZEILE
  *************************************/
@@ -348,11 +272,6 @@ body.dark-mode .apply-section p {
   box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
   margin-top: 2rem;
   transition: background-color 0.6s, box-shadow 0.6s;
-}
-
-body.dark-mode .site-footer {
-  background: #1e1e1e;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
 }
 
 .footer-content {
@@ -369,18 +288,11 @@ body.dark-mode .site-footer {
   font-size: 1.2rem;
   font-weight: 600;
   color: #333;
-  transition: color 0.6s;
-}
-body.dark-mode .footer-company {
-  color: #ddd;
 }
 
 .footer-tagline {
   font-size: 0.9rem;
   color: #666;
-}
-body.dark-mode .footer-tagline {
-  color: #aaa;
 }
 
 .legal-links {
@@ -395,9 +307,6 @@ body.dark-mode .footer-tagline {
 }
 .legal-links a:hover {
   text-decoration: underline;
-}
-body.dark-mode .legal-links a {
-  color: #aaa;
 }
 
 /*************************************
@@ -428,56 +337,10 @@ body.dark-mode .legal-links a {
   background: #ebebeb;
 }
 
-body.dark-mode .icon-button {
-  background: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-body.dark-mode .icon-button:hover {
-  background: #444;
-}
-
 .icon-size {
   width: 24px;
   height: 24px;
   transition: fill 0.6s;
-}
-
-/* Sonne/Mond-Icons */
-.dark-mode-toggle svg {
-  fill: #333;
-  stroke: #333;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-body.dark-mode .dark-mode-toggle svg {
-  fill: #FFD700;
-  stroke: #FFD700;
-}
-
-.dark-mode-toggle {
-  position: relative;
-}
-
-.dark-mode-toggle::before {
-  content: '';
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-body.dark-mode .dark-mode-toggle::before {
-  background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
-  opacity: 1;
-}
-
-.dark-mode-toggle.moon-mode::before {
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-  opacity: 1;
 }
 
 /*************************************
