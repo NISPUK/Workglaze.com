@@ -1,0 +1,857 @@
+/*************************************
+ * BASIS-RESET & GRUNDEINSTELLUNGEN
+ *************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background: #f2f2f2; /* Haupt-Hintergrund */
+  color: #333; /* Standard Textfarbe */
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Für sanftes Scrollen bei internen Links */
+  line-height: 1.6;
+}
+
+/*************************************
+ * HILFSKLASSEN
+ *************************************/
+.visually-hidden { /* Für Screenreader sichtbare, aber visuell versteckte Texte */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.light-bg {
+    background-color: #ffffff; /* Weißer Hintergrund für Abwechslung */
+}
+
+.section-padding {
+    padding: 4rem 5%; /* Einheitlicher vertikaler & horizontaler Innenabstand */
+}
+
+/* Zentrierter Container für Sektionsinhalte */
+.section-inner, .hero-inner, .logo-bar-inner, .foundation-why-inner, .how-it-works-grid, .comparison-inner, .benefits-grid, .objections-inner, .tabs-inner, .apply-inner {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Standard Sektionsüberschrift */
+.section-heading {
+  font-size: 2rem; /* Etwas größer für neue Sektionen */
+  font-weight: 600; /* Fetter */
+  margin-bottom: 2rem;
+  color: #222; /* Dunkler für mehr Kontrast */
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: -1rem auto 2rem; /* Abstand anpassen */
+  color: #666;
+  text-align: center;
+}
+
+/* Layout Hilfsklassen */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.three-column-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/*************************************
+ * LANGUAGE SWITCHER (Neu)
+ *************************************/
+.language-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+}
+
+.language-switcher a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 0 0.3rem;
+    transition: color 0.2s ease;
+}
+
+.language-switcher a:hover,
+.language-switcher a.active {
+    color: #000;
+}
+
+/*************************************
+ * MAIN CONTENT
+ *************************************/
+main {
+  position: relative;
+  padding-top: 3rem; /* Platz für den fixed language switcher */
+}
+
+/*************************************
+ * HERO SECTION (Stile bleiben weitgehend)
+ *************************************/
+.hero-section {
+  padding: 5rem 5% 4rem; /* Mehr Padding oben */
+  /* max-width bleibt hier bestehen, da es spezifisch ist */
+  max-width: 1200px;
+  margin: 0 auto; /* Kein oberer Margin mehr */
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+
+.hero-inner {
+  max-width: 800px; /* Max-Breite für Text beibehalten */
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 2.8rem; /* Etwas größer */
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #222;
+  line-height: 1.3; /* Angepasst für längere Titel */
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 650px; /* Etwas breiter */
+  margin: 0 auto 2.5rem; /* Mehr Abstand zum Button */
+  color: #666;
+}
+
+/*************************************
+ * CTA BUTTON (Stile bleiben weitgehend)
+ *************************************/
+.cta-button {
+  display: inline-block; /* War block, inline-block ist flexibler */
+  width: auto; /* fit-content ist gut, auto passt auch */
+  margin: 0 auto;
+  padding: 1rem 2.5rem; /* Etwas mehr Padding */
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem; /* Sicherstellen, dass es groß genug ist */
+  transition: all 0.2s ease;
+  border: none; /* Falls es mal ein Button-Tag wird */
+  cursor: pointer;
+}
+.cta-button:hover {
+  background: #111; /* Dunklerer Hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/*************************************
+ * LOGO BAR SECTION (Neu)
+ *************************************/
+.logo-bar-section {
+    background: #fafafa; /* Leicht anderer Hintergrund */
+    padding: 2rem 5%; /* Weniger vertikales Padding */
+}
+
+.logo-bar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem; /* Größerer Abstand */
+}
+
+.client-logo {
+    max-height: 45px; /* Einheitliche Höhe */
+    max-width: 150px; /* Maximale Breite */
+    width: auto;
+    opacity: 0.7; /* Etwas dezenter */
+    filter: grayscale(50%); /* Leichter Graustufenfilter */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.client-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Kleinere Logos für Tabs */
+.client-logo-small {
+    max-height: 35px;
+    max-width: 120px;
+    width: auto;
+    opacity: 0.8;
+    margin: 0.5rem;
+}
+
+
+/*************************************
+ * WHY FOUNDATION SECTION (Neu)
+ *************************************/
+.foundation-why-section {
+    background: #ffffff;
+}
+
+.foundation-why-inner .text-column p {
+    margin-bottom: 1rem;
+    color: #555; /* Etwas hellerer Text */
+}
+.foundation-why-inner .text-column p:last-child {
+    margin-bottom: 0;
+}
+
+.placeholder-graphic {
+    width: 100%;
+    height: 250px; /* Beispielhöhe */
+    background: #e0e0e0; /* Platzhalterfarbe */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-style: italic;
+}
+
+/*************************************
+ * HOW IT WORKS SECTION (Neu)
+ *************************************/
+.how-it-works-section {
+    /* background: #fafafa; */ /* Wird über light-bg Klasse gesteuert */
+}
+
+.how-it-works-item {
+    background: #ffffff; /* Weißer Hintergrund für Karten auf grauem BG */
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-it-works-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+
+.how-it-works-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.how-it-works-item p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.placeholder-icon {
+    width: 50px;
+    height: 50px;
+    background: #ddd; /* Placeholder Icon Farbe */
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1.5rem; /* Für eventuelle Text-Icons */
+}
+
+/*************************************
+ * COMPARISON SECTION (Neu)
+ *************************************/
+.comparison-column {
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.comparison-column.highlight-column {
+    border-color: #333; /* Highlight-Rand */
+    background: #f9f9f9; /* Leichter Hintergrund für Highlight */
+}
+
+.comparison-column h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.comparison-column ul {
+    list-style: none; /* Keine Standard-Aufzählungszeichen */
+    padding-left: 0;
+}
+
+.comparison-column li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.8rem; /* Platz für eigenes Icon */
+    position: relative;
+    color: #555;
+}
+/* Eigene List Icons */
+.comparison-column li::before {
+    content: '❌'; /* Standard: Kreuz */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1rem;
+}
+.comparison-column.highlight-column li::before {
+    content: '✅'; /* Highlight: Haken */
+}
+
+/*************************************
+ * BENEFITS SECTION (Neu)
+ *************************************/
+ .benefits-grid {
+    display: grid;
+    /* 3 Spalten auf Desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    /* Mittlere Reihe (4. und 5. Item) mittig ausrichten */
+    /* Dies erfordert einen Wrapper oder JavaScript oder eine andere Grid-Technik. */
+    /* Einfacher Ansatz: Wir lassen die letzte Reihe linksbündig. */
+    /* Alternativ: Wenn wir wissen, dass es immer 5 sind: */
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Flexibler */
+ }
+
+ .benefit-item {
+    text-align: center;
+    padding: 1.5rem;
+    /* Kein extra Hintergrund hier, da Sektion oft light-bg hat */
+ }
+
+ .benefit-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+ }
+
+ .benefit-item p {
+    font-size: 0.95rem;
+    color: #666;
+ }
+
+ /* Media Query, um die letzte Reihe (4, 5) auf Desktops zu zentrieren, falls nötig */
+ /* Besser: Flexbox-Wrapper um die Items oder einfach linksbündig lassen. */
+
+
+/*************************************
+ * OBJECTIONS SECTION (Neu)
+ *************************************/
+ .objections-inner {
+    max-width: 800px; /* Schmaler für bessere Lesbarkeit */
+ }
+
+ .objection-item {
+    background: #ffffff;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden; /* Wichtig für Animation */
+ }
+
+ .objection-question {
+    display: block;
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    position: relative; /* Für Pfeil */
+    transition: background-color 0.2s ease;
+ }
+
+ .objection-question:hover {
+    background-color: #f9f9f9;
+ }
+
+  /* Pfeil-Indikator */
+ .objection-question::after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+ }
+
+ .objection-item.active .objection-question::after {
+    transform: translateY(-50%) rotate(45deg);
+ }
+
+ .objection-answer {
+    padding: 0 1.5rem; /* Padding nur links/rechts initial */
+    max-height: 0; /* Initial versteckt */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Flüssige Animation */
+    color: #555;
+    font-size: 0.95rem;
+    border-top: 1px solid #eee; /* Leichte Trennlinie */
+ }
+  .objection-answer p {
+    margin-bottom: 1rem;
+ }
+  .objection-answer p:last-child {
+    margin-bottom: 0;
+ }
+  .objection-answer a {
+      color: #333;
+      font-weight: 500;
+      text-decoration: underline;
+  }
+   .objection-answer a:hover {
+      color: #000;
+   }
+
+ .objection-item.active .objection-answer {
+    padding: 1.5rem; /* Volles Padding wenn aktiv */
+    max-height: 500px; /* Genug Höhe für Inhalt, anpassbar */
+ }
+
+
+/*************************************
+ * TABS SECTION (Neu)
+ *************************************/
+.tabs-inner {
+    max-width: 900px; /* Etwas breiter für Tabs */
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem -1px; /* Negativer Margin hebt Button über die Border */
+    border: 1px solid transparent;
+    border-bottom: none; /* Keine untere Border standardmäßig */
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    border-radius: 6px 6px 0 0; /* Oben abgerundet */
+    transition: all 0.3s ease;
+    position: relative; /* Für die aktive Linie */
+}
+
+.tab-button:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.tab-button.active {
+    color: #000;
+    border-color: #ddd; /* Rahmen sichtbar machen */
+    border-bottom: 1px solid #ffffff; /* Verdeckt die Hauptlinie */
+    background-color: #ffffff; /* Hintergrund der aktiven Sektion */
+}
+
+
+.tab-content-panels {
+    /* Kein extra Styling nötig, Panels steuern sich selbst */
+}
+
+.tab-panel {
+    display: none; /* Standardmäßig versteckt */
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none; /* Obere Border kommt vom Tab-Button Bereich */
+    border-radius: 0 0 8px 8px; /* Unten abrunden */
+    animation: fadeIn 0.5s ease; /* Leichte Einblendung */
+}
+
+.tab-panel.active {
+    display: block; /* Aktiv anzeigen */
+}
+
+.tab-panel h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.tab-panel p {
+    color: #555;
+    margin-bottom: 1rem;
+}
+.tab-panel i { /* Für Platzhaltertexte */
+    color: #888;
+}
+.tab-logos {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+.tab-logos p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/*************************************
+ * APPLY SECTION (ID bleibt, leichte Anpassungen)
+ *************************************/
+.apply-wrapper {
+  background: #f2f2f2;
+  /* padding: 0 5%; */ /* Wird jetzt durch .section-padding gesteuert */
+}
+
+.apply-section {
+  background: #ffffff;
+  /* max-width: 1200px; */ /* Wird durch .section-inner gesteuert */
+  /* margin: 2rem auto 0; */ /* Wird durch .section-padding gesteuert */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 3rem 5%;
+  text-align: center;
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+
+.apply-inner {
+  max-width: 650px; /* Etwas breiter */
+  margin: 0 auto;
+}
+
+.apply-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.apply-section p {
+  margin-bottom: 2rem; /* Mehr Abstand zum Button */
+  color: #666;
+}
+
+/*************************************
+ * OFFERINGS SECTION (Angepasst für Ressourcen)
+ *************************************/
+.offerings-section {
+  /* padding: 3rem 5%; */ /* Wird durch .section-padding gesteuert */
+  /* max-width: 1200px; */ /* Wird durch .section-inner gesteuert */
+  /* margin: 2rem auto; */ /* Wird durch .section-padding gesteuert */
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+
+.offerings-grid {
+  display: grid;
+  /* Wichtig: Layout anpassen, falls nötig. 2 Spalten ist gut. */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexibler */
+  /* grid-template-columns: repeat(2, 1fr); */
+  gap: 2rem;
+  margin-top: 2rem; /* Abstand zum Subtitle */
+  /* .section-inner als Wrapper verwenden */
+   max-width: 1200px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.offering-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.offering-image {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9; /* Seitenverhältnis für Bilder */
+}
+
+.offering-image img {
+  width: 100%;
+  height: 100%; /* Höhe an Container anpassen */
+  object-fit: cover; /* Bild zuschneiden, nicht verzerren */
+  transition: transform 0.4s ease;
+}
+
+.offering-card:hover .offering-image img {
+  transform: scale(1.05); /* Leichter Zoom-Effekt */
+}
+
+.offering-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.offering-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Sorgt dafür, dass Text den Platz füllt */
+}
+
+.resource-button {
+  display: inline-block; /* War schon so */
+  padding: 0.7rem 1.2rem;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-top: auto; /* Button am unteren Rand ausrichten */
+}
+
+.resource-button:hover {
+  background: #555;
+  transform: translateY(-2px);
+}
+
+/*************************************
+ * FOOTER (Impressum Link hinzugefügt)
+ *************************************/
+.site-footer {
+  padding: 2.5rem 5%; /* Etwas mehr Padding */
+  background: #333; /* Dunkler Footer */
+  color: #f2f2f2; /* Heller Text */
+  /* box-shadow: 0 -2px 8px rgba(0,0,0,0.05); */ /* Schatten bei dunklem BG weniger nötig */
+  margin-top: 3rem; /* Mehr Abstand */
+  transition: background-color 0.6s;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Weniger Gap */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-company {
+  font-size: 1.3rem; /* Größer */
+  font-weight: 600;
+  color: #ffffff; /* Weiß */
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: #bbb; /* Helleres Grau */
+}
+
+.legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.legal-links a {
+  font-size: 0.9rem;
+  color: #bbb; /* Helleres Grau */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.legal-links a:hover {
+  color: #ffffff; /* Weiß im Hover */
+  text-decoration: underline;
+}
+
+/*************************************
+ * RESPONSIVE DESIGN
+ *************************************/
+@media (max-width: 1024px) {
+    .two-column-layout {
+        grid-template-columns: 1fr; /* Spalten untereinander */
+        gap: 2rem;
+    }
+    .three-column-grid {
+        grid-template-columns: 1fr 1fr; /* 2 Spalten auf Tablets */
+    }
+     .benefits-grid {
+        grid-template-columns: 1fr 1fr; /* 2 Spalten auf Tablets */
+    }
+     /* Letztes Item im 3er Grid zentrieren oder volle Breite? */
+     .how-it-works-grid .how-it-works-item:last-child {
+        grid-column: span 2; /* Nimmt volle Breite ein */
+     }
+     /* Letztes Item im Benefits Grid zentrieren oder volle Breite? */
+      .benefits-grid .benefit-item:last-child {
+        grid-column: span 2; /* Nimmt volle Breite ein */
+     }
+
+    .comparison-column {
+        padding: 1.5rem;
+    }
+
+    .offerings-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.8rem; /* Kleinere Überschriften */
+  }
+   .section-subtitle {
+    font-size: 1rem;
+   }
+
+  .hero-title {
+    font-size: 2rem; /* Angepasst */
+  }
+  .hero-subtitle {
+    font-size: 1.1rem; /* Angepasst */
+  }
+
+  .logo-bar-inner {
+      gap: 1.5rem 2rem; /* Kleinere Abstände */
+  }
+  .client-logo {
+      max-height: 35px;
+  }
+
+  .foundation-why-inner .graphic-column {
+      order: -1; /* Bild nach oben auf Mobilgeräten */
+      margin-bottom: 1.5rem;
+  }
+  .placeholder-graphic {
+      height: 200px;
+  }
+
+  .three-column-grid {
+    grid-template-columns: 1fr; /* 1 Spalte auf Mobile */
+    gap: 1.5rem;
+  }
+   /* Klassen für volle Breite entfernen */
+   .how-it-works-grid .how-it-works-item:last-child,
+   .benefits-grid .benefit-item:last-child {
+      grid-column: auto;
+   }
+
+   .benefits-grid {
+      grid-template-columns: 1fr; /* 1 Spalte auf Mobile */
+      gap: 1.5rem;
+   }
+
+
+  .comparison-inner {
+      gap: 1.5rem;
+  }
+  .comparison-column {
+      padding: 1.2rem;
+  }
+
+  .objection-question {
+      font-size: 1rem;
+      padding: 1rem 1.2rem;
+  }
+   .objection-question::after {
+      right: 1.2rem;
+   }
+   .objection-answer {
+       padding: 0 1.2rem;
+   }
+    .objection-item.active .objection-answer {
+       padding: 1.2rem;
+   }
+
+  .tab-buttons {
+      flex-direction: column; /* Tabs untereinander? Oder scrollbar? */
+      /* Besser: Scrollbar machen oder Buttons kleiner */
+      overflow-x: auto; /* Horizontales Scrollen erlauben */
+      justify-content: flex-start; /* Links starten */
+      white-space: nowrap; /* Umbruch verhindern */
+      padding-bottom: 0.5rem; /* Platz für Scrollbar */
+       -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+   .tab-button {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      white-space: normal; /* Erlaube Umbruch im Button falls nötig */
+      text-align: center;
+      flex-shrink: 0; /* Verhindert Schrumpfen der Buttons */
+   }
+
+  .apply-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .offerings-grid {
+    grid-template-columns: 1fr; /* 1 Spalte auf Mobile */
+    gap: 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .legal-links {
+    justify-content: center;
+    flex-wrap: wrap; /* Links umbrechen lassen */
+    gap: 1rem 1.5rem;
+  }
+
+  .language-switcher {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+      top: 0.5rem;
+      right: 0.8rem;
+  }
+}
