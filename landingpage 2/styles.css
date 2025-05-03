@@ -122,7 +122,7 @@ html, body {
  *************************************/
 main {
   position: relative;
-  padding-top: 3rem;
+  padding-top: 3rem; /* Reduced padding-top for potentially fixed header space if added later */
 }
 
 /*************************************
@@ -238,17 +238,8 @@ main > *:last-child {
 .foundation-why-inner .text-column p:last-child {
     margin-bottom: 0;
 }
-.placeholder-graphic {
-    width: 100%;
-    height: 250px;
-    background: #e9ecef;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #adb5bd;
-    font-style: italic;
-}
+/* .placeholder-graphic class removed as actual image is used */
+
 
 /*************************************
  * HOW IT WORKS SECTION
@@ -268,7 +259,7 @@ main > *:last-child {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.emoji-icon {
+.emoji-icon { /* Applies to emojis in this section */
     font-size: 2.5rem;
     line-height: 1;
     display: block;
@@ -362,7 +353,7 @@ main > *:last-child {
     color: #343a40;
 }
 .tab-button:hover::after {
-     transform: scaleX(0.5);
+    transform: scaleX(0.5);
 }
 .tab-button.active {
     color: #343a40;
@@ -463,6 +454,7 @@ main > *:last-child {
     background: #f8f9fa;
     border-radius: 8px;
 }
+/* Specific grid placements */
 .benefit-item.item-1 { grid-column: 1 / span 3; }
 .benefit-item.item-2 { grid-column: 4 / span 3; }
 .benefit-item.item-3 { grid-column: 1 / span 2; }
@@ -528,23 +520,23 @@ main > *:last-child {
  * APPLY SECTION (Padding entfernt)
  *************************************/
 .apply-wrapper {
-  background: #f8f9fa;
+  background: #f8f9fa; /* Using light background for wrapper */
   border-radius: 8px;
+  /* apply-wrapper now handles the section padding */
 }
 .apply-section {
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 8px;
-  /* padding entfernt, wird von .apply-wrapper .section-padding übernommen */
-  /* padding: 3.5rem 5%; */
+  /* padding removed, handled by .apply-wrapper .section-padding */
   text-align: center;
-   margin-bottom: 0 !important;
+  margin-bottom: 0 !important; /* Ensure no extra margin from general rules */
 }
 .apply-inner {
   max-width: 650px;
   margin: 0 auto;
-  /* Innenabstand wieder hier hinzufügen, wenn der Wrapper das Padding hat */
-   padding: 3.5rem 0; /* Nur vertikales Padding, da horizontal vom Wrapper */
+  /* Internal padding for content within the centered container */
+  padding: 3.5rem 0; /* Vertical padding only */
 }
 .apply-section h2 {
   font-size: 1.8rem;
@@ -556,28 +548,26 @@ main > *:last-child {
 }
 
 /*************************************
- * OFFERINGS SECTION
+ * OFFERINGS SECTION -- UPDATED --
  *************************************/
 .offerings-section {
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 8px;
-  text-align: center;
+  /* Removed text-align: center; Let cards handle alignment */
 }
 .offerings-grid-2x2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
-  max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 2rem; /* Keep space below subtitle */
+  /* Removed max-width and margins, handled by .section-padding on parent */
 }
 .offering-card {
-  background: #f8f9fa;
+  background: #f8f9fa; /* Card background */
   border-radius: 8px;
-  padding: 1.5rem;
-  text-align: left;
+  padding: 2rem; /* Increased padding */
+  text-align: left; /* Default text align */
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
@@ -587,35 +577,36 @@ main > *:last-child {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.offering-image {
-  margin-bottom: 1rem;
-  border-radius: 4px;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
+
+/* --- NEW EMOJI STYLES --- */
+.offering-emojis {
+  font-size: 4.5em;   /* Make emojis much larger (adjust value as needed) */
+  display: block;     /* Make the div take its own line */
+  text-align: center; /* Center the emojis horizontally */
+  margin-top: 15px;   /* Add some space above the emojis */
+  margin-bottom: 25px;/* Add significant space below emojis, above the heading */
+  line-height: 1.1;   /* Adjust vertical spacing of emojis if needed */
 }
-.offering-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.offering-card:hover .offering-image img {
-  transform: scale(1.05);
-}
+/* --- END NEW EMOJI STYLES --- */
+
+/* Removed obsolete .offering-image styles */
+
 .offering-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: #343a40;
   font-weight: 600;
+  /* text-align: center; */ /* Uncomment if needed */
 }
 .offering-card p {
   font-size: 0.95rem;
   color: #6c757d;
   margin-bottom: 1.5rem;
-  flex-grow: 1;
+  flex-grow: 1; /* Keep pushing button down */
+  /* text-align: center; */ /* Uncomment if needed */
 }
 .resource-button {
-  display: inline-block;
+  display: inline-block; /* Allows centering if text-align:center used on card */
   padding: 0.7rem 1.2rem;
   background: #343a40;
   color: #fff;
@@ -625,7 +616,9 @@ main > *:last-child {
   font-size: 0.9rem;
   transition: all 0.2s ease;
   text-align: center;
-  margin-top: auto;
+  margin-top: auto; /* Keep pushing button down */
+  width: fit-content; /* Adjust width if centered */
+  align-self: center; /* Center button if card text isn't centered */
 }
 .resource-button:hover {
   background: #000;
@@ -695,6 +688,7 @@ main > *:last-child {
  * RESPONSIVE DESIGN
  *************************************/
 @media (max-width: 1024px) {
+    /* General spacing adjustments */
     .hero-section,
     .foundation-why-section,
     .how-it-works-section,
@@ -708,37 +702,44 @@ main > *:last-child {
         margin-bottom: 2rem;
     }
 
+    /* Grid adjustments */
     .three-column-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* 2 columns */
     }
     .how-it-works-grid .how-it-works-item:last-child {
-        grid-column: span 2;
+        grid-column: span 2; /* Last item spans full width */
     }
     .benefits-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: none;
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+        grid-template-areas: none; /* Remove complex areas */
     }
     .benefit-item {
-        grid-column: auto / span 1 !important;
+        grid-column: auto / span 1 !important; /* Each takes 1 column */
     }
     .offerings-grid-2x2 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Still 2 columns */
     }
+
+    /* Specific element adjustments */
      .tab-logos {
-        gap: 1rem;
+       gap: 1rem;
      }
      .tab-client-logo {
          max-height: 50px;
          max-width: 160px;
      }
      .apply-inner {
-         padding: 3rem 0; /* Padding anpassen */
+         padding: 3rem 0; /* Adjust padding */
+     }
+     .offering-card {
+         padding: 1.5rem; /* Adjust card padding */
      }
 
 }
 
 
 @media (max-width: 768px) {
+    /* General spacing and typography adjustments */
     .hero-section,
     .foundation-why-section,
     .how-it-works-section,
@@ -758,9 +759,9 @@ main > *:last-child {
   .section-heading {
     font-size: 1.6rem;
   }
-   .section-subtitle {
-    font-size: 1rem;
-   }
+    .section-subtitle {
+     font-size: 1rem;
+    }
 
   .hero-title {
     font-size: 1.8rem;
@@ -769,51 +770,62 @@ main > *:last-child {
     font-size: 1rem;
   }
 
+  /* Layout adjustments to single column */
   .two-column-layout {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Single column */
       gap: 1.5rem;
   }
-
-  .foundation-why-inner .graphic-column {
-      order: -1;
-      margin-bottom: 1.5rem;
+  .three-column-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 1.5rem;
   }
-  .placeholder-graphic {
-      height: 180px;
+  .benefits-grid {
+      grid-template-columns: 1fr; /* Single column */
+      gap: 1.5rem;
+  }
+  .objections-grid {
+      grid-template-columns: 1fr; /* Single column */
+      gap: 1.5rem;
+  }
+  .offerings-grid-2x2 {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 1.5rem;
+  }
+
+  /* Specific element adjustments for mobile */
+  .foundation-why-inner .graphic-column {
+      order: -1; /* Image appears first */
+      margin-bottom: 1.5rem;
   }
   .foundation-why-inner .sub-heading {
       font-size: 1.2rem;
   }
 
-  .three-column-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-   .how-it-works-grid .how-it-works-item:last-child {
-      grid-column: auto;
+  .how-it-works-grid .how-it-works-item:last-child {
+      grid-column: auto; /* Reset span from tablet */
    }
 
    .comparison-inner {
-      gap: 1.5rem;
+       gap: 1.5rem;
    }
    .comparison-column {
-      padding: 1.2rem;
+       padding: 1.2rem;
    }
     .comparison-column h3 {
         font-size: 1.2rem;
     }
 
    .tab-buttons {
-        padding-bottom: 0.5rem;
-        overflow-x: auto;
-        justify-content: flex-start;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
+       padding-bottom: 0.5rem;
+       overflow-x: auto; /* Allow horizontal scroll */
+       justify-content: flex-start; /* Align tabs left */
+       white-space: nowrap; /* Prevent wrapping */
+       -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
    }
    .tab-button {
-      padding: 0.6rem 1rem;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+       padding: 0.6rem 1rem;
+       font-size: 0.9rem;
+       flex-shrink: 0; /* Prevent shrinking */
    }
    .tab-panel {
        padding: 1.5rem;
@@ -825,7 +837,7 @@ main > *:last-child {
         font-size: 1rem;
     }
      .tab-logos {
-        gap: 1rem;
+       gap: 1rem;
      }
      .tab-client-logo {
          max-height: 45px;
@@ -833,18 +845,10 @@ main > *:last-child {
      }
 
 
-    .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-     .benefit-item {
+    .benefit-item {
         padding: 1.2rem;
-     }
-
-    .objections-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
+
     .objection-card {
         padding: 1.5rem;
     }
@@ -855,25 +859,28 @@ main > *:last-child {
   .apply-section h2 {
     font-size: 1.5rem;
   }
-  .apply-section {
-      /* Kein Padding mehr hier */
-  }
-   .apply-inner {
-         padding: 2.5rem 0; /* Padding anpassen */
-     }
-
-  .offerings-grid-2x2 {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .apply-inner {
+      padding: 2.5rem 0; /* Adjust padding */
   }
 
+  /* --- RESPONSIVE EMOJI SIZE --- */
+  .offering-emojis {
+      font-size: 3.5em; /* Slightly smaller on mobile */
+      margin-top: 10px;
+      margin-bottom: 20px;
+  }
+  .offering-card {
+      padding: 1.5rem; /* Reduce padding on mobile */
+  }
+
+  /* Footer adjustments */
   .footer-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack elements vertically */
     text-align: center;
     gap: 1rem;
     font-size: 0.8rem;
   }
-   .footer-left { order: 2; justify-content: center;} /* Zentrieren auf Mobile */
+   .footer-left { order: 2; justify-content: center;} /* Center logo */
    .legal-links { order: 1; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem;}
    .footer-bottom { order: 3; margin-top: 0.5rem; }
 
