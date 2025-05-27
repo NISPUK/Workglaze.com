@@ -1,1 +1,670 @@
+/*************************************
+ * BASE RESET & TRANSITIONS
+ *************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  height: 100%;
+  overflow-x: hidden;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/*************************************
+ * DARK MODE
+ *************************************/
+body.dark-mode {
+  background: #121212;
+  color: #ddd;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/*************************************
+ * CONTENT PAGES (Legal Pages)
+ *************************************/
+.content-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 3rem 5%;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+
+.content-section h1, 
+.content-section h2, 
+.content-section h3 {
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content-section p, 
+.content-section ul, 
+.content-section ol {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.content-section ul {
+  padding-left: 1.5rem;
+}
+
+.content-section li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.content-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #333;
+}
+
+.content-section a {
+  color: #333;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.content-section a:hover {
+  color: #555;
+}
+
+/* Dark mode overrides */
+body.dark-mode .content-section {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  color: #ddd;
+}
+
+body.dark-mode .content-section h1,
+body.dark-mode .content-section h2,
+body.dark-mode .content-section h3 {
+  color: #eee;
+}
+
+body.dark-mode .content-section a {
+  color: #aaa;
+}
+
+body.dark-mode .content-section a:hover {
+  color: #ddd;
+}
+
+body.dark-mode .content-section li::before {
+  color: #ddd;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background: #f2f2f2; /* Slight off-white for contrast */
+  color: #333;
+  height: 100%;
+  overflow-x: hidden;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/*************************************
+ * DARK MODE
+ *************************************/
+body.dark-mode {
+  background: #121212;
+  color: #ddd;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/*************************************
+ * HEADER
+ *************************************/
+.site-header {
+  position: relative; /* Changed from fixed to relative */
+  width: 100%;
+  padding: 1rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: background-color 0.6s ease;
+}
+body.dark-mode .site-header {
+  background: #1e1e1e;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.header-left { gap: 1rem; }
+.header-center { flex: 1; justify-content: center; }
+.header-right { gap: 1rem; }
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.6s;
+}
+body.dark-mode .logo-text {
+  color: #ddd;
+}
+
+.logo-img {
+  max-height: 50px; /* Set appropriate size for your logo */
+  width: auto;
+}
+
+/*************************************
+ * ICON BUTTONS
+ *************************************/
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #f7f7f7;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.icon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  background: #ebebeb;
+}
+body.dark-mode .icon-button {
+  background: #333;
+}
+body.dark-mode .icon-button:hover {
+  background: #444;
+}
+
+.icon-size {
+  width: 24px;
+  height: 24px;
+  transition: fill 0.6s;
+}
+
+/* Sun/Moon Icons */
+.dark-mode-toggle svg {
+  fill: #333; /* Black fill for moon icon */
+  stroke: #333;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.dark-mode .dark-mode-toggle svg {
+  fill: #FFD700;
+  stroke: #FFD700;
+}
+
+.dark-mode-toggle {
+  position: relative;
+}
+
+.dark-mode-toggle::before {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle::before {
+  background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+  opacity: 1;
+}
+
+.dark-mode-toggle.moon-mode::before {
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  opacity: 1;
+}
+
+/************************************* 
+ * GERMAN FLAG BUTTON (LARGER SIZE) 
+ *************************************/
+.flag-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  transition: all 0.2s ease;
+}
+
+.flag-icon {
+  width: 42px;  /* Increased from 34px to 36px */
+  height: 42px; /* Increased from 34px to 36px */
+  margin: 0 -2px;
+  transform: scale(1.05);  /* Increased from 0.95 to 1 - no scaling down */
+}
+
+.flag-icon rect {
+  rx: 0 !important;
+  ry: 0 !important;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .flag-button {
+  background: #333;
+}
+
+body.dark-mode .flag-button:hover {
+  background: #444;
+}
+
+/* Maintain consistent hover effects */
+.flag-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+/*************************************
+ * MAIN CONTENT
+ *************************************/
+main {
+  position: relative;
+  /* Removed margin-top as header is no longer fixed */
+}
+
+/*************************************
+ * HERO SECTION
+ *************************************/
+/* Double spacing (4rem) between header and first section */
+.hero-section {
+  padding: 3rem 5% 3rem; 
+  max-width: 1200px;
+  margin: 2rem auto 0; /* Doubled from 2rem to 4rem */
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+body.dark-mode .hero-section {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #222;
+}
+body.dark-mode .hero-title {
+  color: #eee;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #666;
+}
+body.dark-mode .hero-subtitle {
+  color: #ccc;
+}
+
+/* VIDEO CONTAINER: NO bottom margin => space remains consistent */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7f7f7;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 0; 
+}
+body.dark-mode .video-container {
+  background: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* THUMBNAIL & RED PLAY ICON */
+.video-thumbnail {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Red play button in the center of the thumbnail */
+.thumbnail-overlay::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url("data:image/svg+xml,%3Csvg width='68' height='48' viewBox='0 0 68 48' xmlns='https://www.w3.org/2000/svg'%3E%3Cpath d='M66.52%207.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13%2034%200%2034%200S12.21.13%206.9%201.55C3.97%202.33%202.27%204.81%201.48%207.74.06%2013.05%200%2024%200%2024s.06%2010.95%201.48%2016.26c.78%202.93%202.49%205.41%205.42%206.19C12.21%2047.87%2034%2048%2034%2048s21.79-.13%2027.1-1.55c2.93-.78%204.64-3.26%205.42-6.19C67.94%2034.95%2068%2024%2068%2024s-.06-10.95-1.48-16.26z' fill='%23f00'/%3E%3Cpath d='M45%2024L27%2014v20l18-10z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: contain;
+  pointer-events: none; 
+}
+
+/* The real iframe, starts blank until clicked */
+#demoVideo {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 1;
+}
+
+/* CTA BUTTON: consistent spacing */
+.cta-button {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0 auto;
+  padding: 1rem 2rem;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.cta-button:hover {
+  background: #555;
+  transform: translateY(-2px);
+}
+body.dark-mode .cta-button {
+  background: #ddd;
+  color: #111;
+}
+body.dark-mode .cta-button:hover {
+  background: #bbb;
+}
+
+/*************************************
+ * LOGOS SECTION
+ *************************************/
+.logos-section {
+  padding: 3rem 5%;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.6s, box-shadow 0.6s;
+  overflow: hidden; /* Contain the slider */
+}
+body.dark-mode .logos-section {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #333;
+}
+body.dark-mode .section-heading {
+  color: #ddd;
+}
+
+/* LOGO SLIDER (auto scroll) */
+.logos-slider {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-logos 30s linear infinite;
+  width: calc(250px * 10 + 2rem * 9); /* Adjusted width calculation */
+  
+  /* Position the track to start from the edge of the container */
+  position: relative;
+  left: 0; /* Start from the left edge */
+  padding-left: 0; /* No padding */
+  margin-left: 0; /* No margin */
+}
+
+.slide-track img {
+  width: 250px;
+  height: 120px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.3s;
+  flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+.slide-track img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5 - 2rem * 4)); /* Adjusted to match half the track */
+  }
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+  .logos-section {
+    padding: 3rem 0; /* Remove horizontal padding to extend logos to edge */
+  }
+  
+  .slide-track {
+    gap: 1.5rem;
+    width: calc(200px * 10 + 1.5rem * 9); /* Adjusted for mobile */
+  }
+  
+  .slide-track img {
+    width: 200px;
+    height: 100px;
+  }
+  
+  @keyframes scroll-logos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-200px * 5 - 1.5rem * 4)); /* Adjusted for mobile */
+    }
+  }
+}
+/*************************************
+ * FOOTER
+ *************************************/
+.site-footer {
+  padding: 2rem 5%;
+  background: #fafafa;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+  margin-top: 2rem; /* Consistent 2rem spacing */
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+body.dark-mode .site-footer {
+  background: #1e1e1e;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-company {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.6s;
+}
+body.dark-mode .footer-company {
+  color: #ddd;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: #666;
+}
+body.dark-mode .footer-tagline {
+  color: #aaa;
+}
+
+.legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.legal-links a {
+  font-size: 0.9rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.legal-links a:hover {
+  text-decoration: underline;
+}
+body.dark-mode .legal-links a {
+  color: #aaa;
+}
+
+/*************************************
+ * RESPONSIVE
+ *************************************/
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+  .icon-size {
+    width: 20px;
+    height: 20px;
+  }
+  .slide-track {
+    gap: 1.5rem;
+  }
+  .slide-track img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+/*************************************
+ * SNIPPETS FROM USER
+ *************************************/
+
+.logos-section {
+  /* Keep existing styles */
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.logos-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-track {
+  /* Adjust other properties as needed */
+  padding-left: 0;
+  padding-right: 0;
+  width: calc(250px * 10 + 2rem * 9);
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+/* Remove default bullet on UL, keep custom bullet */
+.content-section ul {
+  list-style: none;        /* no default bullet */
+  padding-left: 1.5rem;    /* space so custom bullet doesn’t overlap text */
+}
+
+.content-section ul li {
+  position: relative;
+  padding-left: 1rem;      /* indentation for text */
+  margin-bottom: 0.5rem;   /* space between list items */
+}
+
+.content-section ul li::before {
+  content: "•";            /* your custom bullet */
+  position: absolute;
+  left: 0;
+  color: #333;
+  font-size: 1.2rem;       /* adjust size if you want it even bigger */
+}
+
+/* Keep normal numbering for OL, no extra bullet */
+.content-section ol {
+  list-style: decimal;     /* or decimal inside, if you prefer */
+  padding-left: 2rem;
+}
+
+.content-section ol li::before {
+  content: none;           /* no custom bullet for numbered lists */
+}
