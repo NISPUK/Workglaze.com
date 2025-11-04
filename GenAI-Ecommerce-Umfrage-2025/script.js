@@ -492,12 +492,12 @@ class SurveyApp {
         </div>
       </div>
       <div class="intro-text">
-        <p>Hi, ich bin Carlo von ${CONFIG.COMPANY_NAME}. Wir sind ein kleines Team von drei Leuten in Deutschland. Unsere Mission: herausfinden, wie Unternehmen mit Gen-AI und Automatisierung messbare Ergebnisse erzielen. Fokus: deutscher E-Commerce. Dein Input hilft, die Lage besser zu verstehen und Deutschland/Europa bei Gen-AI voranzubringen.</p>
-        <p>Bitte nimm dir 5–10 Minuten für die Umfrage. Den Report bekommst du zugeschickt, sobald wir 100 Antworten haben.</p>
+        <p>Hi, ich bin Carlo von ${CONFIG.COMPANY_NAME}. <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen zeigen, wie Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen, mit Fokus auf den deutschen E-Commerce.</p>
+<p>Mit deiner Teilnahme hilfst du uns, ein klareres Bild der aktuellen Lage zu zeichnen und Gen-AI in Deutschland voranzubringen. Die Umfrage dauert nur 5 bis 10 Minuten. Vielen Dank im Voraus für deine Teilnahme. Den vollständigen Report erhältst du, sobald genug Antworten für eine belastbare Auswertung vorliegen.</p>
       </div>
       <div class="button-group">
         <button type="button" class="btn-primary" id="start-btn">
-          Jetzt die 5–10-minütige Umfrage starten
+          Umfrage starten
         </button>
       </div>
     `;
