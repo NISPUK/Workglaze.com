@@ -498,7 +498,7 @@ class SurveyApp {
   <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird.</p>
   <p>Die Umfrage dauert 5 bis 10 Minuten.</p>
   <p>Vielen Dank im Voraus für deine Teilnahme.</p>
-  <p>PS: Am Ende der Umfrage bitten wir dich noch um einen kleinen Gefallen.</p>
+  <p>PS: Am Ende der Umfrage würden wir dich noch um einen kleinen Gefallen bitten.</p>
 </div>
       <div class="button-group">
         <button type="button" class="btn-primary" id="start-btn">
