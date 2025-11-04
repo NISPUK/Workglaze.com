@@ -492,8 +492,8 @@ class SurveyApp {
         </div>
       </div>
       <div class="intro-text">
-        <p>Hi, ich bin Carlo von ${CONFIG.COMPANY_NAME}. <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
-<p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen. Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du auch selbst besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird. Die Umfrage dauert nur 5 bis 10 Minuten. Vielen Dank im Voraus für deine Teilnahme. PS: Am Ende werden wir dich nochmal fragen, die Umfrage mit 3 E-Commerce-CEOs in deinem Netzwerk zu teilen.</p>
+        <p>Hi, ich bin Carlo von ${CONFIG.COMPANY_NAME}.</p> <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
+<p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen.</p> <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du auch selbst besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird. Die Umfrage dauert nur 5 bis 10 Minuten.</p> <p>Vielen Dank im Voraus für deine Teilnahme. PS: Am Ende werden wir dich nochmal fragen, die Umfrage mit 3 E-Commerce-CEOs in deinem Netzwerk zu teilen.</p>
       </div>
       <div class="button-group">
         <button type="button" class="btn-primary" id="start-btn">
