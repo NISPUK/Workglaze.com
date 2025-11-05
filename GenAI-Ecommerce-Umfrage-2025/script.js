@@ -1,9 +1,5 @@
 const CONFIG = {
-  ENV: (new URLSearchParams(location.search).get('env') || 'prod'),
-  WEBHOOKS: {
-    test: 'https://automation.workglaze.com/webhook-test/08910fe2-2748-45e2-8abc-68ffb14c098e',
-    prod: 'https://automation.workglaze.com/webhook/08910fe2-2748-45e2-8abc-68ffb14c098e',
-  },
+  WEBHOOK_URL: 'https://automation.workglaze.com/webhook/08910fe2-2748-45e2-8abc-68ffb14c098e',
   HEADSHOT_URL: 'https://raw.githubusercontent.com/NISPUK/Workglaze.com/main/img/Carlo%20Headshot%20with%20Name.png',
   LINKEDIN_URL: 'https://www.linkedin.com/in/carlonicolussi/',
   COMPANY_NAME: 'Workglaze',
@@ -45,7 +41,6 @@ class SurveyApp {
     this.loadFromCache();
     this.setupEventListeners();
     this.render();
-    this.sendWebhook('step_view');
   }
 
   setupEventListeners() {
@@ -65,13 +60,13 @@ class SurveyApp {
 
     window.addEventListener('beforeunload', (e) => {
       if (this.hasStarted && this.getCurrentStep().id !== 'success') {
-        this.sendWebhook('abandon', {}, true);
+        // Removed webhook - only sending on final submit
       }
     });
 
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden' && this.hasStarted && this.getCurrentStep().id !== 'success') {
-        this.sendWebhook('abandon', {}, true);
+        // Removed webhook - only sending on final submit
       }
     });
   }
@@ -167,62 +162,30 @@ class SurveyApp {
       ts: new Date().toISOString(),
       step_id: step.id,
       progress: this.getProgress(),
-      answers_delta: answersDelta,
+      all_answers: { ...this.answers },
       meta: {
         user_agent: navigator.userAgent,
         referrer: document.referrer
       }
     };
 
-    if (event === 'step_submit' || event === 'final_submit') {
-      payload.all_answers = { ...this.answers };
-    }
-
-    const url = CONFIG.WEBHOOKS[CONFIG.ENV];
-
-    if (useBeacon && navigator.sendBeacon) {
-      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-      navigator.sendBeacon(url, blob);
-      return;
-    }
-
-    if (!this.isOnline) {
-      this.webhookQueue.push({ payload, retries: 0 });
-      return;
-    }
-
-    await this.sendWithRetry({ payload, retries: 0 });
-  }
-
-  async sendWithRetry(item, maxRetries = 5) {
+    console.log('📤 Sending webhook:', event, payload);
+    
     try {
-      const response = await fetch(CONFIG.WEBHOOKS[CONFIG.ENV], {
+      const response = await fetch(CONFIG.WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item.payload),
+        body: JSON.stringify(payload),
         keepalive: true
       });
 
-      if (!response.ok && item.retries < maxRetries) {
-        throw new Error(`HTTP ${response.status}`);
+      if (response.ok) {
+        console.log('✅ Webhook sent successfully:', event);
+      } else {
+        console.error('❌ Webhook failed with status:', response.status);
       }
     } catch (error) {
-      console.error('Webhook error:', error);
-      
-      if (item.retries < maxRetries) {
-        item.retries++;
-        const delay = Math.min(1000 * Math.pow(2, item.retries), 30000);
-        
-        setTimeout(() => {
-          if (this.isOnline) {
-            this.sendWithRetry(item, maxRetries);
-          } else {
-            this.webhookQueue.push(item);
-          }
-        }, delay);
-      } else {
-        this.webhookQueue.push(item);
-      }
+      console.error('❌ Webhook error:', error.message);
     }
   }
 
@@ -244,7 +207,7 @@ class SurveyApp {
 
     this.answerChangeThrottle = setTimeout(() => {
       if (oldValue !== value) {
-        this.sendWebhook('answer_change', { [key]: value });
+        // Removed webhook - only sending on final submit
       }
     }, 300);
   }
@@ -422,15 +385,12 @@ class SurveyApp {
       return;
     }
 
-    await this.sendWebhook('step_submit');
-
     const visibleSteps = this.getVisibleSteps();
     if (this.currentStepIndex < visibleSteps.length - 1) {
       this.currentStepIndex++;
       this.saveToCache();
       this.render();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      this.sendWebhook('step_view');
     } else {
       await this.submitSurvey();
     }
@@ -442,19 +402,16 @@ class SurveyApp {
       this.saveToCache();
       this.render();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      this.sendWebhook('step_view');
     }
   }
 
   async handleStart() {
     this.hasStarted = true;
     this.saveToCache();
-    await this.sendWebhook('start_click');
     this.currentStepIndex++;
     this.saveToCache();
     this.render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.sendWebhook('step_view');
   }
 
   async submitSurvey() {
@@ -530,6 +487,10 @@ class SurveyApp {
     `;
 
     this.attachEventListeners();
+    
+    setTimeout(() => {
+      this.updateConditionalVisibility();
+    }, 0);
   }
 
   renderIntro() {
@@ -959,7 +920,7 @@ class SurveyApp {
         </div>
       </div>
 
-      <div id="provider_details" class="${this.answers.provider_hired !== 'yes' ? 'hidden' : ''}">
+      <div id="provider_details" class="hidden">
         <div class="form-group">
           <label for="provider_duration" class="required">Dauer der Zusammenarbeit (Wochen)</label>
           <input type="number" id="provider_duration" name="provider_duration" min="0" value="${this.answers.provider_duration || '1'}" placeholder="1">
@@ -1023,6 +984,7 @@ class SurveyApp {
       </div>
 
       <div class="form-group">
+        <label class="required">Datenschutz</label>
         <div class="checkbox-group">
           ${this.renderCheckbox('data_consent', 'accepted', 'Ich stimme der Verarbeitung meiner Daten zu.')}
         </div>
@@ -1032,7 +994,7 @@ class SurveyApp {
       </div>
 
       <div class="form-group">
-        <label for="report_email" class="required">E-Mail für den Report</label>
+        <label for="report_email" class="required">Email Adresse</label>
         <input type="email" id="report_email" name="report_email" value="${this.answers.report_email || ''}" placeholder="ihre.email@beispiel.de">
       </div>
 
@@ -1110,6 +1072,72 @@ class SurveyApp {
     const values = this.answers[name] || [];
     const selected = values.includes(value) ? 'selected' : '';
     return `<option value="${value}" ${selected}>${label}</option>`;
+  }
+
+  updateConditionalVisibility() {
+    const erpNameGroup = document.getElementById('erp_name_group');
+    if (erpNameGroup) {
+      if (this.answers.uses_erp === 'yes') {
+        erpNameGroup.classList.remove('hidden');
+      } else {
+        erpNameGroup.classList.add('hidden');
+      }
+    }
+
+    const measurableBlockerGroup = document.getElementById('measurable_blocker_group');
+    if (measurableBlockerGroup) {
+      if (this.answers.genai_measurable === 'no') {
+        measurableBlockerGroup.classList.remove('hidden');
+      } else {
+        measurableBlockerGroup.classList.add('hidden');
+      }
+    }
+
+    const saasSatisfiedGroup = document.getElementById('saas_satisfied_group');
+    if (saasSatisfiedGroup) {
+      if (this.answers.saas_has_satisfied === 'yes') {
+        saasSatisfiedGroup.classList.remove('hidden');
+      } else {
+        saasSatisfiedGroup.classList.add('hidden');
+      }
+    }
+
+    const saasUnsatisfiedGroup = document.getElementById('saas_unsatisfied_group');
+    if (saasUnsatisfiedGroup) {
+      if (this.answers.saas_has_unsatisfied === 'yes') {
+        saasUnsatisfiedGroup.classList.remove('hidden');
+      } else {
+        saasUnsatisfiedGroup.classList.add('hidden');
+      }
+    }
+
+    const automationAgentsUseGroup = document.getElementById('automation_agents_use_group');
+    if (automationAgentsUseGroup) {
+      if (this.answers.automation_agents_deployed === 'yes') {
+        automationAgentsUseGroup.classList.remove('hidden');
+      } else {
+        automationAgentsUseGroup.classList.add('hidden');
+      }
+    }
+
+    const automationValueOtherGroup = document.getElementById('automation_value_other_group');
+    if (automationValueOtherGroup) {
+      const automationValue = this.answers.automation_value || [];
+      if (automationValue.includes('other')) {
+        automationValueOtherGroup.classList.remove('hidden');
+      } else {
+        automationValueOtherGroup.classList.add('hidden');
+      }
+    }
+
+    const providerDetails = document.getElementById('provider_details');
+    if (providerDetails) {
+      if (this.answers.provider_hired === 'yes') {
+        providerDetails.classList.remove('hidden');
+      } else {
+        providerDetails.classList.add('hidden');
+      }
+    }
   }
 
   attachEventListeners() {
@@ -1307,3 +1335,4 @@ class SurveyApp {
 document.addEventListener('DOMContentLoaded', () => {
   new SurveyApp();
 });
+
