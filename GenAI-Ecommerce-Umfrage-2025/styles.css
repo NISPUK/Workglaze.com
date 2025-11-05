@@ -134,8 +134,8 @@ p {
   margin-bottom: 1.5rem;
 }
 
-.form-group.hidden {
-  display: none;
+.hidden {
+  display: none !important;
 }
 
 label {
@@ -514,14 +514,16 @@ button:disabled {
 
 .privacy-link {
   color: var(--gray-700);
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
   font-size: 0.875rem;
   transition: color 0.2s ease;
+  font-weight: 500;
 }
 
 .privacy-link:hover {
   color: var(--black);
+  text-decoration: underline;
 }
 
 .privacy-modal {
