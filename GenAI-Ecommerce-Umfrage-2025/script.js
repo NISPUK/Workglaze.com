@@ -507,7 +507,7 @@ class SurveyApp {
         <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
         <p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen.</p>
         <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird.</p>
-        <p>Die Umfrage dauert ca. 5 Minuten.</p>
+        <p>Die Umfrage dauert ca. 3 Minuten.</p>
         <p>Vielen Dank im Voraus für deine Teilnahme.</p>
         <p><strong>PS: Am Ende der Umfrage würden wir dich noch um einen kleinen Gefallen bitten.</strong></p>
       </div>
