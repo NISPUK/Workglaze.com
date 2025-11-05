@@ -5,9 +5,11 @@ const CONFIG = {
     prod: 'https://automation.workglaze.com/webhook/08910fe2-2748-45e2-8abc-68ffb14c098e',
   },
   HEADSHOT_URL: 'https://raw.githubusercontent.com/NISPUK/Workglaze.com/main/img/Carlo%20Headshot%20with%20Name.png',
-  LINKEDIN_URL: 'https://www.linkedin.com/in/DEIN-LINK',
+  LINKEDIN_URL: 'https://www.linkedin.com/in/carlonicolussi/',
   COMPANY_NAME: 'Workglaze',
-  PHONE: '+49 176 62693862'
+  PHONE: '+49 176 62693862',
+  PRIVACY_TEXT: 'Wir erheben unternehmensbezogene Angaben ohne Personenbezug. Einzige personenbezogene Angabe ist Ihre E-Mail-Adresse für Rückfragen und die Zusendung von Ergebnissen. Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 a DSGVO). Widerruf jederzeit mit Wirkung für die Zukunft möglich. Empfänger/Auftragsverarbeiter: n8n (self-hosted) auf Servern der Hetzner Online GmbH (Deutschland/EU) sowie Notion Labs, Inc. zur Speicherung/Organisation. Datenübermittlungen in Drittländer: Übermittlung in die USA an Notion unter Einsatz der EU-Standardvertragsklauseln (SCCs) gem. Art. 46 DSGVO. Speicherdauer: bis Abschluss der Kommunikation/Ergebnisversand, spätestens 12 Monate oder bis Widerruf. Keine automatisierten Entscheidungen/Profiling. Rechte: Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Beschwerde. Verantwortlicher: Carlo Nicolussi, Am Dahlberg 8, 46244 Bottrop, carlo@workglaze.com',
+  STORAGE_KEY: 'workglaze_survey_data'
 };
 
 function generateUUID() {
@@ -40,12 +42,18 @@ class SurveyApp {
       { id: 'abschluss', title: 'Abschluss' }
     ];
 
+    this.loadFromCache();
     this.setupEventListeners();
     this.render();
     this.sendWebhook('step_view');
   }
 
   setupEventListeners() {
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', () => {
+      history.pushState(null, null, location.href);
+    });
+
     window.addEventListener('online', () => {
       this.isOnline = true;
       this.processWebhookQueue();
@@ -113,6 +121,42 @@ class SurveyApp {
       total: visibleSteps.length - 1,
       percent: Math.round((this.currentStepIndex / (visibleSteps.length - 1)) * 100)
     };
+  }
+
+  loadFromCache() {
+    try {
+      const cached = localStorage.getItem(CONFIG.STORAGE_KEY);
+      if (cached) {
+        const data = JSON.parse(cached);
+        this.answers = data.answers || {};
+        this.currentStepIndex = data.currentStepIndex || 0;
+        this.hasStarted = data.hasStarted || false;
+      }
+    } catch (error) {
+      console.error('Error loading from cache:', error);
+    }
+  }
+
+  saveToCache() {
+    try {
+      const data = {
+        answers: this.answers,
+        currentStepIndex: this.currentStepIndex,
+        hasStarted: this.hasStarted,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+    } catch (error) {
+      console.error('Error saving to cache:', error);
+    }
+  }
+
+  clearCache() {
+    try {
+      localStorage.removeItem(CONFIG.STORAGE_KEY);
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+    }
   }
 
   async sendWebhook(event, answersDelta = {}, useBeacon = false) {
@@ -192,6 +236,7 @@ class SurveyApp {
   handleAnswerChange(key, value) {
     const oldValue = this.answers[key];
     this.answers[key] = value;
+    this.saveToCache();
 
     if (this.answerChangeThrottle) {
       clearTimeout(this.answerChangeThrottle);
@@ -260,29 +305,23 @@ class SurveyApp {
         if (!this.answers.desktop_use_cases || this.answers.desktop_use_cases.length === 0) {
           errors.desktop_use_cases = 'Bitte wählen Sie mindestens eine Option.';
         }
-        if (!this.answers.desktop_quality_change) {
-          errors.desktop_quality_change = 'Bitte wählen Sie eine Option.';
+        if (!this.answers.desktop_quality_improved) {
+          errors.desktop_quality_improved = 'Bitte wählen Sie eine Option.';
         }
         if (!this.answers.desktop_faster) {
           errors.desktop_faster = 'Bitte wählen Sie eine Option.';
         }
-        if (!this.answers.desktop_has_satisfied) {
-          errors.desktop_has_satisfied = 'Bitte wählen Sie eine Option.';
-        }
-        if (!this.answers.desktop_has_unsatisfied) {
-          errors.desktop_has_unsatisfied = 'Bitte wählen Sie eine Option.';
-        }
         break;
 
       case 'saas':
-        if (!this.answers.saas_tools || this.answers.saas_tools.length === 0) {
-          errors.saas_tools = 'Bitte wählen Sie mindestens eine Option.';
+        if (!this.answers.saas_tools || this.answers.saas_tools.trim().length === 0) {
+          errors.saas_tools = 'Bitte geben Sie mindestens ein Tool ein.';
         }
         if (!this.answers.saas_use_cases || this.answers.saas_use_cases.length === 0) {
           errors.saas_use_cases = 'Bitte wählen Sie mindestens eine Option.';
         }
-        if (!this.answers.saas_usage_intensity) {
-          errors.saas_usage_intensity = 'Bitte wählen Sie eine Option.';
+        if (!this.answers.saas_usage_frequency) {
+          errors.saas_usage_frequency = 'Bitte wählen Sie eine Option.';
         }
         if (!this.answers.saas_has_satisfied) {
           errors.saas_has_satisfied = 'Bitte wählen Sie eine Option.';
@@ -299,11 +338,8 @@ class SurveyApp {
         if (!this.answers.automation_agents_deployed) {
           errors.automation_agents_deployed = 'Bitte wählen Sie eine Option.';
         }
-        if (!this.answers.automation_kpis || this.answers.automation_kpis.length === 0) {
-          errors.automation_kpis = 'Bitte wählen Sie mindestens eine Option.';
-        }
-        if (!this.answers.automation_review_frequency) {
-          errors.automation_review_frequency = 'Bitte wählen Sie eine Option.';
+        if (!this.answers.automation_value || this.answers.automation_value.length === 0) {
+          errors.automation_value = 'Bitte wählen Sie mindestens eine Option.';
         }
         if (this.answers.automation_count === undefined || this.answers.automation_count === '') {
           errors.automation_count = 'Bitte geben Sie eine Zahl ein.';
@@ -327,12 +363,6 @@ class SurveyApp {
           if (this.answers.provider_duration === undefined || this.answers.provider_duration === '') {
             errors.provider_duration = 'Bitte geben Sie die Dauer ein.';
           }
-          if (!this.answers.provider_on_time_budget) {
-            errors.provider_on_time_budget = 'Bitte wählen Sie eine Option.';
-          }
-          if (!this.answers.provider_work_again) {
-            errors.provider_work_again = 'Bitte wählen Sie eine Option.';
-          }
           if (!this.answers.provider_satisfaction) {
             errors.provider_satisfaction = 'Bitte geben Sie eine Bewertung ab.';
           }
@@ -345,6 +375,10 @@ class SurveyApp {
         }
         if (!this.answers.plan_2026_investment) {
           errors.plan_2026_investment = 'Bitte wählen Sie eine Option.';
+        }
+        const dataConsent = this.answers.data_consent || [];
+        if (!dataConsent.includes('accepted')) {
+          errors.data_consent = 'Bitte stimmen Sie der Datenverarbeitung zu.';
         }
         if (!this.answers.report_email) {
           errors.report_email = 'Bitte geben Sie eine E-Mail-Adresse ein.';
@@ -393,6 +427,7 @@ class SurveyApp {
     const visibleSteps = this.getVisibleSteps();
     if (this.currentStepIndex < visibleSteps.length - 1) {
       this.currentStepIndex++;
+      this.saveToCache();
       this.render();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.sendWebhook('step_view');
@@ -404,6 +439,7 @@ class SurveyApp {
   handleBack() {
     if (this.currentStepIndex > 0) {
       this.currentStepIndex--;
+      this.saveToCache();
       this.render();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.sendWebhook('step_view');
@@ -412,8 +448,10 @@ class SurveyApp {
 
   async handleStart() {
     this.hasStarted = true;
+    this.saveToCache();
     await this.sendWebhook('start_click');
     this.currentStepIndex++;
+    this.saveToCache();
     this.render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.sendWebhook('step_view');
@@ -421,6 +459,7 @@ class SurveyApp {
 
   async submitSurvey() {
     await this.sendWebhook('final_submit');
+    this.clearCache();
     this.currentStepIndex++;
     this.render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -432,6 +471,7 @@ class SurveyApp {
 
     if (this.currentStepIndex >= this.getVisibleSteps().length) {
       app.innerHTML = this.renderSuccess();
+      this.attachPrivacyModalListeners();
       return;
     }
     
@@ -474,10 +514,20 @@ class SurveyApp {
     if (currentStep.id !== 'intro') {
       app.innerHTML += `
         <footer class="footer">
-          <p>Daten nur zur Auswertung dieser Umfrage. Kein Verkauf. Report per E-Mail.</p>
+          <p><a href="#" id="privacy-footer-link" class="privacy-link">Datenschutz</a></p>
         </footer>
       `;
     }
+
+    app.innerHTML += `
+      <div id="privacy-modal" class="privacy-modal hidden">
+        <div class="privacy-modal-content">
+          <span class="privacy-modal-close" id="privacy-modal-close">&times;</span>
+          <h3>Datenschutz</h3>
+          <p>${CONFIG.PRIVACY_TEXT}</p>
+        </div>
+      </div>
+    `;
 
     this.attachEventListeners();
   }
@@ -492,17 +542,17 @@ class SurveyApp {
         </div>
       </div>
       <div class="intro-text">
-  <p>Hi, ich bin Carlo von ${CONFIG.COMPANY_NAME}.</p>
-  <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
-  <p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen.</p>
-  <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird.</p>
-  <p>Die Umfrage dauert 5 bis 10 Minuten.</p>
-  <p>Vielen Dank im Voraus für deine Teilnahme.</p>
-  <p>PS: Am Ende der Umfrage würden wir dich noch um einen kleinen Gefallen bitten.</p>
-</div>
+        <p>Hi, ich bin Carlo von Workglaze.</p>
+        <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
+        <p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen.</p>
+        <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird.</p>
+        <p>Die Umfrage dauert 5 bis 10 Minuten.</p>
+        <p>Vielen Dank im Voraus für deine Teilnahme.</p>
+        <p><strong>PS: Am Ende der Umfrage würden wir dich noch um einen kleinen Gefallen bitten.</strong></p>
+      </div>
       <div class="button-group">
         <button type="button" class="btn-primary" id="start-btn">
-          Umfrage starten
+          Umfrage Starten
         </button>
       </div>
     `;
@@ -973,6 +1023,15 @@ class SurveyApp {
       </div>
 
       <div class="form-group">
+        <div class="checkbox-group">
+          ${this.renderCheckbox('data_consent', 'accepted', 'Ich stimme der Verarbeitung meiner Daten zu.')}
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <a href="#" id="privacy-details-link" class="privacy-link">Mehr Details</a>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="report_email" class="required">E-Mail für den Report</label>
         <input type="email" id="report_email" name="report_email" value="${this.answers.report_email || ''}" placeholder="ihre.email@beispiel.de">
       </div>
@@ -1006,8 +1065,15 @@ class SurveyApp {
         </div>
       </div>
       <footer class="footer">
-        <p>Daten nur zur Auswertung dieser Umfrage. Kein Verkauf. Report per E-Mail.</p>
+        <p><a href="#" id="privacy-footer-link" class="privacy-link">Datenschutz</a></p>
       </footer>
+      <div id="privacy-modal" class="privacy-modal hidden">
+        <div class="privacy-modal-content">
+          <span class="privacy-modal-close" id="privacy-modal-close">&times;</span>
+          <h3>Datenschutz</h3>
+          <p>${CONFIG.PRIVACY_TEXT}</p>
+        </div>
+      </div>
     `;
   }
 
@@ -1189,6 +1255,51 @@ class SurveyApp {
           s.classList.toggle('active', starValue <= value);
         });
       });
+    });
+
+    this.attachPrivacyModalListeners();
+  }
+
+  attachPrivacyModalListeners() {
+    const privacyLinks = document.querySelectorAll('#privacy-details-link, #privacy-footer-link');
+    privacyLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.getElementById('privacy-modal');
+        if (modal) {
+          modal.classList.remove('hidden');
+        }
+      });
+    });
+
+    const closeModal = () => {
+      const modal = document.getElementById('privacy-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    };
+
+    const privacyModalClose = document.getElementById('privacy-modal-close');
+    if (privacyModalClose) {
+      privacyModalClose.addEventListener('click', closeModal);
+    }
+
+    const privacyModal = document.getElementById('privacy-modal');
+    if (privacyModal) {
+      privacyModal.addEventListener('click', (e) => {
+        if (e.target === privacyModal) {
+          closeModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('privacy-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      }
     });
   }
 }
