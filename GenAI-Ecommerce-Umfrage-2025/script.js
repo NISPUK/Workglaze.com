@@ -507,7 +507,7 @@ class SurveyApp {
         <p>Wir sind ein dynamisches Team aus drei Leuten mit einer klaren Mission: Wir wollen für deutsche E-Commerce-Unternehmen mit Gen-AI und Automatisierung echte, messbare Ergebnisse erzielen.</p>
         <p>Mit deiner Teilnahme können wir ein klareres Bild der aktuellen Lage zeichnen und Gen-AI in Deutschland voranbringen.</p>
         <p>Sobald genug Antworten gesammelt sind, bekommst du den Report natürlich zugeschickt, damit du besser einschätzen kannst, wo dein Unternehmen gerade steht und deine Strategie für 2026 so datenbasiert wie möglich wird.</p>
-        <p>Die Umfrage dauert 5 bis 10 Minuten.</p>
+        <p>Die Umfrage dauert ca. 5 Minuten.</p>
         <p>Vielen Dank im Voraus für deine Teilnahme.</p>
         <p><strong>PS: Am Ende der Umfrage würden wir dich noch um einen kleinen Gefallen bitten.</strong></p>
       </div>
@@ -637,7 +637,7 @@ class SurveyApp {
       </div>
 
       <div class="form-group">
-        <label for="genai_champions" class="required">Wie viele interne Gen-AI-Champions (stark Interessierte) gibt es aktuell?</label>
+        <label for="genai_champions" class="required">Wie viele KI Interessierte gibt es bei euch intern?</label>
         <input type="number" id="genai_champions" name="genai_champions" min="0" value="${this.answers.genai_champions || ''}" placeholder="0">
       </div>
 
@@ -996,13 +996,13 @@ class SurveyApp {
       <div class="form-group">
         <label for="report_email" class="required">Email Adresse</label>
         <input type="email" id="report_email" name="report_email" value="${this.answers.report_email || ''}" placeholder="ihre.email@beispiel.de">
+        <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Wenn du keine Zusatzfelder auswählst, schicken wir dir nur den Report, kein Marketing-Newsletter und kein anderer Spam. Keine Sorge.</p>
       </div>
 
       <div class="form-group">
         <label>Nächste Schritte</label>
         <div class="checkbox-group">
           ${this.renderCheckbox('next_steps', 'contact', 'Ich erlaube, mich bei Rückfragen zur Umfrage zu kontaktieren.')}
-          ${this.renderCheckbox('next_steps', 'report', 'Ich möchte die Ergebnisse/den Report per E-Mail erhalten.')}
           ${this.renderCheckbox('next_steps', 'strategy', 'Ich erlaube Carlo, mich auf Basis meiner Antworten eventuell zu einem Strategie Gespräch einzuladen.')}
         </div>
       </div>
@@ -1335,4 +1335,3 @@ class SurveyApp {
 document.addEventListener('DOMContentLoaded', () => {
   new SurveyApp();
 });
-
