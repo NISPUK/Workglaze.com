@@ -58,7 +58,7 @@ class SurveyApp {
       this.isOnline = false;
     });
 
-    window.addEventListener('beforeunload', (e) => {
+    window.addEventListener('beforeunload', () => {
       if (this.hasStarted && this.getCurrentStep().id !== 'success') {
         // Removed webhook - only sending on final submit
       }
@@ -962,6 +962,7 @@ class SurveyApp {
     `;
   }
 
+  // 🔧 NEUE VERSION mit Audit-Text, Referral-Textfeldern & Copy-Button
   renderAbschluss() {
     return `
       <h2>Abschluss</h2>
@@ -996,15 +997,63 @@ class SurveyApp {
       <div class="form-group">
         <label for="report_email" class="required">Email Adresse</label>
         <input type="email" id="report_email" name="report_email" value="${this.answers.report_email || ''}" placeholder="ihre.email@beispiel.de">
-        <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Wenn du keine Zusatzfelder auswählst, schicken wir dir nur den Report, kein Marketing-Newsletter und kein anderer Spam. Keine Sorge.</p>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+          Wenn du keine Zusatzfelder auswählst, schicken wir dir nur den Report, kein Marketing-Newsletter und kein anderer Spam. Keine Sorge.
+        </p>
       </div>
 
       <div class="form-group">
         <label>Nächste Schritte</label>
+        <p class="hint">
+          In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
+          In einem kurzen Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
+        </p>
         <div class="checkbox-group">
           ${this.renderCheckbox('next_steps', 'contact', 'Ich erlaube, mich bei Rückfragen zur Umfrage zu kontaktieren.')}
-          ${this.renderCheckbox('next_steps', 'strategy', 'Ich erlaube Carlo, mich auf Basis meiner Antworten eventuell zu einem Strategie Gespräch einzuladen.')}
+          ${this.renderCheckbox('next_steps', 'strategy', 'Ich bin an einem kostenlosen Audit meiner Backoffice-Prozesse interessiert.')}
         </div>
+      </div>
+
+      <div class="form-group">
+        <p>
+          Danke, dass du bei unserer Umfrage mitmachst. Du bekommst den Report, sobald genug Daten vorliegen.
+        </p>
+        <p>
+          Wie angekündigt haben wir zum Schluss noch eine kleine Bitte: Teile diese Umfrage mit bis zu drei Online-Shops,
+          mit denen du vernetzt bist, und trage die URLs unten ein. Für jeden Shop, der nach deiner Absendung über dich
+          an der Umfrage teilnimmt, schenken wir dir 1 Stunde kostenlose Automation, in der wir ganz konkret an deinen Prozessen arbeiten.
+        </p>
+
+        <label>Umfragelink geteilt mit:</label>
+        <input
+          type="text"
+          name="referral_shop_1"
+          placeholder="Shop-URL 1 (optional)"
+          value="${this.answers.referral_shop_1 || ''}"
+        >
+        <input
+          type="text"
+          name="referral_shop_2"
+          placeholder="Shop-URL 2 (optional)"
+          value="${this.answers.referral_shop_2 || ''}"
+          style="margin-top: 0.5rem;"
+        >
+        <input
+          type="text"
+          name="referral_shop_3"
+          placeholder="Shop-URL 3 (optional)"
+          value="${this.answers.referral_shop_3 || ''}"
+          style="margin-top: 0.5rem;"
+        >
+
+        <button
+          type="button"
+          class="btn-secondary btn-small"
+          id="copy-link-btn"
+          style="margin-top: 0.75rem;"
+        >
+          Umfrage-Link kopieren
+        </button>
       </div>
 
       <div class="button-group">
@@ -1284,6 +1333,52 @@ class SurveyApp {
         });
       });
     });
+
+    // 🔧 Copy-Button für Umfragelink
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', () => {
+        const surveyLink = 'https://workglaze.com/GenAI-Ecommerce-Umfrage-2025';
+        const originalText = copyLinkBtn.textContent;
+
+        const setCopiedState = () => {
+          copyLinkBtn.textContent = 'Link kopiert!';
+          setTimeout(() => {
+            copyLinkBtn.textContent = originalText;
+          }, 2000);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(surveyLink)
+            .then(setCopiedState)
+            .catch(() => {
+              const textarea = document.createElement('textarea');
+              textarea.value = surveyLink;
+              document.body.appendChild(textarea);
+              textarea.select();
+              try {
+                document.execCommand('copy');
+                setCopiedState();
+              } catch (err) {
+                console.error('Copy failed', err);
+              }
+              document.body.removeChild(textarea);
+            });
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = surveyLink;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            setCopiedState();
+          } catch (err) {
+            console.error('Copy failed', err);
+          }
+          document.body.removeChild(textarea);
+        }
+      });
+    }
 
     this.attachPrivacyModalListeners();
   }
