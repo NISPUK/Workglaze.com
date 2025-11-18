@@ -338,6 +338,12 @@ button:disabled {
   box-shadow: var(--focus-ring);
 }
 
+/* 🔧 kleiner Button für "Umfrage-Link kopieren" */
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
 .success-message {
   text-align: center;
   padding: 3rem 1.5rem;
