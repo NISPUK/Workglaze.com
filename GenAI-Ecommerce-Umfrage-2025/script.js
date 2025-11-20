@@ -964,10 +964,8 @@ class SurveyApp {
   }
 
   // 🔧 NEUE VERSION mit umsortiertem Abschluss-Step
+   // 🔧 Abschluss-Step mit Audit-Checkbox und Datenschutz unten
   renderAbschluss() {
-    const nextSteps = Array.isArray(this.answers.next_steps) ? this.answers.next_steps : [];
-    const isAuditInterested = nextSteps.includes('strategy');
-
     return `
       <h2>Abschluss</h2>
 
@@ -997,27 +995,16 @@ class SurveyApp {
         </p>
       </div>
 
-      <!-- Direkt darunter: Checkbox für Rückfragen -->
-      <div class="form-group">
-        <div class="checkbox-group">
-          ${this.renderCheckbox('next_steps', 'contact', 'Ich erlaube, mich bei Rückfragen zur Umfrage zu kontaktieren.')}
-        </div>
-      </div>
-
-      <!-- Kostenloses Audit: Text + Button -->
+      <!-- Kostenloses Audit: Text + Checkbox -->
       <div class="form-group">
         <label>Kostenloses Audit</label>
         <p class="hint">
           In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
           In einem Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
         </p>
-        <button
-          type="button"
-          id="audit-interest-btn"
-          class="${isAuditInterested ? 'btn-primary' : 'btn-secondary'} btn-small"
-        >
-          Ich bin an einem kostenlosen Audit meiner Backoffice-Prozesse interessiert.
-        </button>
+        <div class="checkbox-group">
+          ${this.renderCheckbox('next_steps', 'strategy', 'Ich bin an einem kostenlosen Audit meiner Backoffice-Prozesse interessiert.')}
+        </div>
       </div>
 
       <!-- Extra-Bereich mit Referral-URLs -->
