@@ -966,7 +966,7 @@ class SurveyApp {
   // 🔧 NEUE VERSION mit umsortiertem Abschluss-Step
    // 🔧 Abschluss-Step mit Audit-Checkbox und Datenschutz unten
     // 🔧 Abschluss-Step mit Audit-Checkbox, ohne Rückfragen-Checkbox
-  renderAbschluss() {
+   renderAbschluss() {
     return `
       <h2>Abschluss</h2>
 
@@ -997,9 +997,9 @@ class SurveyApp {
       </div>
 
       <!-- Kostenloses Audit: Text + Checkbox -->
-       <div class="form-group">
+      <div class="form-group">
         <label>Kostenloses Audit</label>
-        <p>
+        <p style="font-size: 1rem; line-height: 1.6; color: var(--gray-700); margin-bottom: 1rem;">
           In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
           In einem Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
         </p>
