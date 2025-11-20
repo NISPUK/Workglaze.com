@@ -965,6 +965,7 @@ class SurveyApp {
 
   // 🔧 NEUE VERSION mit umsortiertem Abschluss-Step
    // 🔧 Abschluss-Step mit Audit-Checkbox und Datenschutz unten
+    // 🔧 Abschluss-Step mit Audit-Checkbox, ohne Rückfragen-Checkbox
   renderAbschluss() {
     return `
       <h2>Abschluss</h2>
