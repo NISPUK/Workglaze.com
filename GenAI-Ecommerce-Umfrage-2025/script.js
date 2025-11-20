@@ -963,8 +963,11 @@ class SurveyApp {
     `;
   }
 
-  // 🔧 NEUE VERSION mit Audit-Text, Referral-Textfeldern & Copy-Button
+  // 🔧 NEUE VERSION mit umsortiertem Abschluss-Step
   renderAbschluss() {
+    const nextSteps = Array.isArray(this.answers.next_steps) ? this.answers.next_steps : [];
+    const isAuditInterested = nextSteps.includes('strategy');
+
     return `
       <h2>Abschluss</h2>
 
@@ -985,16 +988,7 @@ class SurveyApp {
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="required">Datenschutz</label>
-        <div class="checkbox-group">
-          ${this.renderCheckbox('data_consent', 'accepted', 'Ich stimme der Verarbeitung meiner Daten zu.')}
-        </div>
-        <div style="margin-top: 0.5rem;">
-          <a href="#" id="privacy-details-link" class="privacy-link">Mehr Details</a>
-        </div>
-      </div>
-
+      <!-- Ganz oben: E-Mail-Feld + Hinweis -->
       <div class="form-group">
         <label for="report_email" class="required">Email Adresse</label>
         <input type="email" id="report_email" name="report_email" value="${this.answers.report_email || ''}" placeholder="ihre.email@beispiel.de">
@@ -1003,26 +997,37 @@ class SurveyApp {
         </p>
       </div>
 
+      <!-- Direkt darunter: Checkbox für Rückfragen -->
       <div class="form-group">
-        <label>Nächste Schritte</label>
-        <p class="hint">
-          In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
-          In einem kurzen Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
-        </p>
         <div class="checkbox-group">
           ${this.renderCheckbox('next_steps', 'contact', 'Ich erlaube, mich bei Rückfragen zur Umfrage zu kontaktieren.')}
-          ${this.renderCheckbox('next_steps', 'strategy', 'Ich bin an einem kostenlosen Audit meiner Backoffice-Prozesse interessiert.')}
         </div>
       </div>
 
+      <!-- Kostenloses Audit: Text + Button -->
       <div class="form-group">
+        <label>Kostenloses Audit</label>
+        <p class="hint">
+          In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
+          In einem Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
+        </p>
+        <button
+          type="button"
+          id="audit-interest-btn"
+          class="${isAuditInterested ? 'btn-primary' : 'btn-secondary'} btn-small"
+        >
+          Ich bin an einem kostenlosen Audit meiner Backoffice-Prozesse interessiert.
+        </button>
+      </div>
+
+      <!-- Extra-Bereich mit Referral-URLs -->
+      <div class="form-group">
+        <h3>Extra: Wir verschenken bis zu 3 Automation Hours</h3>
         <p>
           Danke, dass du bei unserer Umfrage mitmachst. Du bekommst den Report, sobald genug Daten vorliegen.
         </p>
         <p>
-          Wie angekündigt haben wir zum Schluss noch eine kleine Bitte: Teile diese Umfrage mit bis zu drei Online-Shops,
-          mit denen du vernetzt bist, und trage die URLs unten ein. Für jeden Shop, der nach deiner Absendung über dich
-          an der Umfrage teilnimmt, schenken wir dir 1 Stunde kostenlose Automation, in der wir ganz konkret an deinen Prozessen arbeiten.
+          Wie angekündigt haben wir zum Schluss noch eine kleine Bitte: Teile diese Umfrage mit bis zu drei Online-Shops, aus deinem Netzwerk und trage die URLs unten ein. Für jeden Shop, der nach deiner Absendung an der Umfrage teilnimmt, schenken wir dir 1 Stunde Automation Work, in der wir ganz konkret deine Prozesse automatisieren.
         </p>
 
         <label>Umfragelink geteilt mit:</label>
@@ -1055,6 +1060,17 @@ class SurveyApp {
         >
           Umfrage-Link kopieren
         </button>
+      </div>
+
+      <!-- Datenschutz ganz ans Ende -->
+      <div class="form-group">
+        <label class="required">Datenschutz</label>
+        <div class="checkbox-group">
+          ${this.renderCheckbox('data_consent', 'accepted', 'Ich stimme der Verarbeitung meiner Daten zu.')}
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <a href="#" id="privacy-details-link" class="privacy-link">Mehr Details</a>
+        </div>
       </div>
 
       <div class="button-group">
