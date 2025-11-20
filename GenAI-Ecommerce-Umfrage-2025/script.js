@@ -332,23 +332,24 @@ class SurveyApp {
         }
         break;
 
-      case 'abschluss':
+           case 'abschluss':
         if (!this.answers.has_it_department) {
           errors.has_it_department = 'Bitte wählen Sie eine Option.';
         }
         if (!this.answers.plan_2026_investment) {
           errors.plan_2026_investment = 'Bitte wählen Sie eine Option.';
         }
-        const dataConsent = this.answers.data_consent || [];
-        if (!dataConsent.includes('accepted')) {
-          errors.data_consent = 'Bitte stimmen Sie der Datenverarbeitung zu.';
-        }
         if (!this.answers.report_email) {
           errors.report_email = 'Bitte geben Sie eine E-Mail-Adresse ein.';
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.answers.report_email)) {
           errors.report_email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
         }
+        const dataConsent = this.answers.data_consent || [];
+        if (!dataConsent.includes('accepted')) {
+          errors.data_consent = 'Bitte stimmen Sie der Datenverarbeitung zu.';
+        }
         break;
+
     }
 
     return errors;
