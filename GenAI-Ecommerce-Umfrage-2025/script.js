@@ -997,9 +997,9 @@ class SurveyApp {
       </div>
 
       <!-- Kostenloses Audit: Text + Checkbox -->
-      <div class="form-group">
+       <div class="form-group">
         <label>Kostenloses Audit</label>
-        <p class="hint">
+        <p>
           In unserem kostenlosen Backoffice-Audit schauen wir uns gemeinsam an, wie eure aktuellen Prozesse und Systeme funktionieren.
           In einem Gespräch sammeln wir dafür Daten und zeigen euch konkrete Potenziale für Automatisierung auf.
         </p>
